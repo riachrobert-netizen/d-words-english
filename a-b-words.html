@@ -1,0 +1,487 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#edf7ff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="A + B Word Club"><title>A + B Word Club · English practice</title><style>
+:root{color-scheme:light;--ink:#16304f;--muted:#4b6077;--blue:#155cc4;--line:#b9cee3}*{box-sizing:border-box}body{margin:0;background:#edf7ff;color:var(--ink);font:18px/1.5 'Trebuchet MS','Segoe UI',sans-serif}button{font:inherit;cursor:pointer;color:var(--ink);touch-action:manipulation}button:disabled{cursor:default}button:focus-visible,a:focus-visible{outline:3px solid #8c43cd;outline-offset:4px}.wrap{max-width:1000px;margin:auto;padding:22px}header{display:flex;align-items:center;gap:14px;margin-bottom:24px}.logo{display:grid;place-items:center;background:#ffda65;border:2px solid #c49c22;border-radius:18px;width:58px;height:58px;font-size:37px;font-weight:bold;box-shadow:0 4px #d4ad39}.brand{font-weight:bold;font-size:23px;flex:1}.brand small{display:block;font-size:13px;font-weight:normal;color:var(--muted)}.quiet{background:white;border:1px solid var(--line);padding:8px 13px;border-radius:12px;font-size:15px}.rounds{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}.roundbtn{text-align:left;padding:15px;border:2px solid var(--line);border-radius:16px;background:white}.roundbtn strong{display:block;font-size:18px}.roundbtn small{font-size:13px;color:var(--muted)}.roundbtn.active{border-color:var(--blue);background:#ddecff}.card{background:white;border:1px solid #c6d9e9;box-shadow:0 10px 35px #25538c0c;border-radius:25px;padding:30px;max-width:800px;margin:auto}.meta{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}.bar{height:10px;background:#e0eaf4;border-radius:20px;margin:12px 0 25px;overflow:hidden}.fill{height:100%;background:#2977db;transition:width .25s}.tag{font-size:13px;letter-spacing:1.5px;color:#674397;font-weight:bold;text-transform:uppercase}h1{font-size:30px;line-height:1.25;margin:10px 0}h2{font-size:23px}.hint{font-size:16px;color:var(--muted);margin:8px 0 22px}.prompt{background:#f0f6ff;border:1px solid #c3d8f1;border-radius:18px;padding:23px;margin:20px 0;font-size:26px;font-weight:bold;line-height:1.55}.chinese{font-family:'Microsoft YaHei','PingFang SC',sans-serif}.translation{font-size:17px;font-weight:normal;color:#405873;margin-top:8px}.options{display:grid;gap:12px}.option,.tile{background:#fff;border:2px solid #b9cce1;border-bottom-width:5px;border-radius:13px;padding:13px 18px;font-size:21px}.option{text-align:left;width:100%}.option:hover:not(:disabled),.tile:hover:not(:disabled){background:#edf5ff;border-color:#5588c4}.option.selected{background:#ddebff;border-color:var(--blue)}.option.right{background:#e1f5df;border-color:#448044}.option.wrong{background:#ffe5e0;border-color:#b14c38}.option .n{font-size:14px;display:inline-grid;place-items:center;width:25px;height:25px;background:#eef3fa;border-radius:6px;margin-right:14px}.answer{display:flex;align-content:center;flex-wrap:wrap;gap:8px;min-height:91px;padding:15px;border:2px dashed #9eb7d4;background:#f8fbff;border-radius:15px;margin-bottom:18px}.placeholder{color:#536d89;font-size:16px;align-self:center}.pool{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;min-height:110px;align-content:flex-start}.tile{padding:10px 16px;font-size:20px}.tile:disabled{background:#edf1f5;color:#566b80;border-color:#cbd6e1}.tile.used{visibility:hidden}.matching{display:grid;grid-template-columns:1fr 1fr;gap:15px}.column{display:grid;gap:12px}.matching .option{text-align:center;min-height:74px;font-size:20px}.matched{background:#e3f3df!important;border-color:#608951!important;color:#2c5121}.selected{background:#ddebff!important;border-color:var(--blue)!important}.audio{display:flex;gap:8px;margin-top:15px}.audio button{font-size:15px;background:#e3eeff;border:1px solid #92b5e7;color:#164786;border-radius:10px;padding:8px 14px}.feedback{padding:18px 21px;border:2px solid #5c9250;border-radius:16px;background:#e9f7e4;margin-top:22px;color:#254c20}.feedback.bad{border-color:#b96542;background:#fff0e5;color:#773818}.feedback strong{font-size:22px;display:block}.feedback p{margin:7px 0;font-size:17px}.actions{display:flex;justify-content:space-between;align-items:center;gap:15px;border-top:1px solid #d2deeb;padding-top:22px;margin-top:25px}.primary{background:var(--blue);border:0;border-bottom:4px solid #0d3e88;color:white;padding:13px 25px;border-radius:13px;font-weight:bold;min-width:175px}.primary:disabled{background:#dae4ef;border-color:#c1cddd;color:#4b6077}.footnote{font-size:13px;color:var(--muted);text-align:center;margin:20px 0}.stats{display:flex;justify-content:center;gap:15px;margin:28px 0;flex-wrap:wrap}.stat{background:#edf5ff;border-radius:16px;padding:20px;min-width:120px}.stat strong{display:block;font-size:32px;color:#1657a8}.summary{text-align:center}.summary .actions{justify-content:center;flex-wrap:wrap}.notice{font-size:14px;color:#633f13;background:#fff4d2;padding:12px;border-radius:10px;margin:12px 0}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#173753;color:white;border-radius:12px;padding:12px 18px;max-width:90%;width:max-content;display:none;z-index:10;font-size:16px}.celebrate{font-size:58px;color:#996600}.saved{font-size:13px;color:var(--muted)}@media(max-width:600px){.wrap{padding:14px}.card{padding:20px 17px}.rounds{grid-template-columns:repeat(2,1fr)}header{gap:9px}.brand{font-size:20px}.logo{width:48px;height:48px}.quiet{font-size:13px;padding:7px}.prompt{font-size:23px;padding:18px}h1{font-size:26px}.option{font-size:19px}.actions .saved{max-width:100px}.primary{min-width:145px;padding:12px 17px}.matching{gap:10px}.matching .option{padding:10px 5px;font-size:18px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><div class="wrap"><header><div class="logo" style="font-size:22px;flex-shrink:0">A+B</div><div class="brand">A + B Word Club<small>English practice · 英语练习</small></div><button class="quiet" id="sound">Sound: on</button><button class="quiet" id="reset">Restart</button></header><nav class="rounds" id="rounds" aria-label="Choose round"></nav><main class="card" id="app"></main><p class="footnote">61 words · 4 rounds · Tap, match & build!<br>Progress stays in this browser. English audio uses your device’s voices.</p></div><div id="toast" role="status"></div>
+<script>
+// Each entry: word, meaning in this sentence, original sentence, translation, tested form.
+const WORDS=[
+  [
+    "a",
+    "一个（辅音音素前用）",
+    "I have a cat.",
+    "我有一只猫。",
+    "a"
+  ],
+  [
+    "about",
+    "关于",
+    "This book is about animals.",
+    "这本书是关于动物的。",
+    "about"
+  ],
+  [
+    "act",
+    "表演；演戏",
+    "She can act in movies.",
+    "她可以在电影中表演。",
+    "act"
+  ],
+  [
+    "actually",
+    "其实；实际上",
+    "I actually like this game.",
+    "其实我喜欢这个游戏。",
+    "actually"
+  ],
+  [
+    "add",
+    "添加",
+    "Please add sugar to my tea.",
+    "请在我的茶里加糖。",
+    "add"
+  ],
+  [
+    "after",
+    "在……之后",
+    "We will eat after the game.",
+    "我们会在比赛后吃饭。",
+    "after"
+  ],
+  [
+    "again",
+    "再一次",
+    "Read the book again.",
+    "再读一遍这本书。",
+    "again"
+  ],
+  [
+    "against",
+    "反对",
+    "He is against the idea.",
+    "他反对这个想法。",
+    "against"
+  ],
+  [
+    "age",
+    "年龄",
+    "She is five years old in age.",
+    "她的年龄是五岁。",
+    "age"
+  ],
+  [
+    "ago",
+    "……以前",
+    "I saw him two days ago.",
+    "我两天前见过他。",
+    "ago"
+  ],
+  [
+    "air",
+    "空气",
+    "We breathe air every day.",
+    "我们每天呼吸空气。",
+    "air"
+  ],
+  [
+    "all",
+    "所有的",
+    "All the apples are red.",
+    "所有的苹果都是红色的。",
+    "All"
+  ],
+  [
+    "also",
+    "也",
+    "She likes cats, and she also likes dogs.",
+    "她喜欢猫，也喜欢狗。",
+    "also"
+  ],
+  [
+    "always",
+    "总是",
+    "He is always happy.",
+    "他总是很开心。",
+    "always"
+  ],
+  [
+    "am",
+    "是；处于某种状态（与 I 连用）",
+    "I am hungry.",
+    "我饿了。",
+    "am"
+  ],
+  [
+    "among",
+    "在……之中（三者或更多）",
+    "The cat is among the dogs.",
+    "猫在那群狗之中。",
+    "among"
+  ],
+  [
+    "an",
+    "一个（元音音素前用）",
+    "I saw an elephant.",
+    "我看见了一头大象。",
+    "an"
+  ],
+  [
+    "and",
+    "和；并且",
+    "She has a cat and a dog.",
+    "她有一只猫和一只狗。",
+    "and"
+  ],
+  [
+    "animal",
+    "动物",
+    "A tiger is an animal.",
+    "老虎是一种动物。",
+    "animal"
+  ],
+  [
+    "another",
+    "另一个",
+    "I want another apple.",
+    "我想再要一个苹果。",
+    "another"
+  ],
+  [
+    "answer",
+    "回答；答案",
+    "Please answer the question.",
+    "请回答这个问题。",
+    "answer"
+  ],
+  [
+    "appear",
+    "出现",
+    "The stars appear at night.",
+    "星星在夜晚出现。",
+    "appear"
+  ],
+  [
+    "are",
+    "是（与 they、we、you 等连用）",
+    "They are my friends.",
+    "他们是我的朋友。",
+    "are"
+  ],
+  [
+    "area",
+    "区域；地区",
+    "This area is clean.",
+    "这个区域很干净。",
+    "area"
+  ],
+  [
+    "as",
+    "像……一样（as … as）",
+    "He is as tall as his father.",
+    "他和他父亲一样高。",
+    "as"
+  ],
+  [
+    "ask",
+    "问；询问",
+    "Please ask a question.",
+    "请问一个问题。",
+    "ask"
+  ],
+  [
+    "at",
+    "在（某个地点）",
+    "She is at the park.",
+    "她在公园。",
+    "at"
+  ],
+  [
+    "back",
+    "背部；回来",
+    "I hurt my back.",
+    "我弄伤了背。",
+    "back"
+  ],
+  [
+    "ball",
+    "球",
+    "He threw the ball.",
+    "他扔出了球。",
+    "ball"
+  ],
+  [
+    "base",
+    "底座；基地",
+    "The base of the table is strong.",
+    "桌子的底座很结实。",
+    "base"
+  ],
+  [
+    "be",
+    "是；成为（原形）",
+    "I want to be a doctor.",
+    "我想当医生。",
+    "be"
+  ],
+  [
+    "beauty",
+    "美；美丽",
+    "The flower has great beauty.",
+    "这朵花非常美丽。",
+    "beauty"
+  ],
+  [
+    "because",
+    "因为",
+    "I am happy because I passed the test.",
+    "我很开心，因为我通过了考试。",
+    "because"
+  ],
+  [
+    "become",
+    "变成；成为",
+    "He wants to become a teacher.",
+    "他想成为一名老师。",
+    "become"
+  ],
+  [
+    "bed",
+    "床",
+    "I sleep in my bed.",
+    "我睡在我的床上。",
+    "bed"
+  ],
+  [
+    "been",
+    "去过；曾经是（be 的过去分词）",
+    "I have been to the park.",
+    "我去过那个公园。",
+    "been"
+  ],
+  [
+    "before",
+    "在……之前",
+    "Wash your hands before eating.",
+    "吃饭前要洗手。",
+    "before"
+  ],
+  [
+    "began",
+    "开始了（过去式）",
+    "She began to sing.",
+    "她开始唱歌了。",
+    "began"
+  ],
+  [
+    "begin",
+    "开始（原形）",
+    "Let's begin the game.",
+    "让我们开始游戏吧。",
+    "begin"
+  ],
+  [
+    "behind",
+    "在……后面",
+    "The ball is behind the chair.",
+    "球在椅子后面。",
+    "behind"
+  ],
+  [
+    "best",
+    "最好的",
+    "She is my best friend.",
+    "她是我最好的朋友。",
+    "best"
+  ],
+  [
+    "better",
+    "更好的",
+    "This book is better than that one.",
+    "这本书比那本更好。",
+    "better"
+  ],
+  [
+    "between",
+    "在两者之间",
+    "The cat is between the two dogs.",
+    "猫在两只狗之间。",
+    "between"
+  ],
+  [
+    "big",
+    "大的",
+    "He has a big house.",
+    "他有一栋大房子。",
+    "big"
+  ],
+  [
+    "bird",
+    "鸟",
+    "The bird is singing.",
+    "鸟正在鸣叫。",
+    "bird"
+  ],
+  [
+    "black",
+    "黑色的",
+    "She has a black car.",
+    "她有一辆黑色的汽车。",
+    "black"
+  ],
+  [
+    "blue",
+    "蓝色的",
+    "The sky is blue.",
+    "天空是蓝色的。",
+    "blue"
+  ],
+  [
+    "boat",
+    "船",
+    "The boat is on the water.",
+    "船在水面上。",
+    "boat"
+  ],
+  [
+    "body",
+    "身体",
+    "The human body has many bones.",
+    "人体有很多骨头。",
+    "body"
+  ],
+  [
+    "book",
+    "书",
+    "I am reading a book.",
+    "我正在读一本书。",
+    "book"
+  ],
+  [
+    "both",
+    "两者都",
+    "Both apples are red.",
+    "两个苹果都是红色的。",
+    "Both"
+  ],
+  [
+    "bottom",
+    "底部",
+    "The toy is at the bottom of the box.",
+    "玩具在盒子的底部。",
+    "bottom"
+  ],
+  [
+    "box",
+    "盒子",
+    "The gift is in a box.",
+    "礼物在一个盒子里。",
+    "box"
+  ],
+  [
+    "boy",
+    "男孩",
+    "The boy is playing.",
+    "男孩正在玩。",
+    "boy"
+  ],
+  [
+    "bring",
+    "带来（原形）",
+    "Please bring me a pen.",
+    "请给我带一支笔。",
+    "bring"
+  ],
+  [
+    "brought",
+    "带来了（过去式）",
+    "She brought a cake to the party.",
+    "她带了一个蛋糕来参加聚会。",
+    "brought"
+  ],
+  [
+    "build",
+    "建造（原形）",
+    "They build houses.",
+    "他们建造房屋。",
+    "build"
+  ],
+  [
+    "built",
+    "建造了（过去式）",
+    "He built a sandcastle.",
+    "他建了一座沙堡。",
+    "built"
+  ],
+  [
+    "busy",
+    "忙碌的",
+    "She is very busy today.",
+    "她今天很忙。",
+    "busy"
+  ],
+  [
+    "but",
+    "但是",
+    "I like cake, but I don’t like pie.",
+    "我喜欢蛋糕，但不喜欢馅饼。",
+    "but"
+  ],
+  [
+    "by",
+    "在……旁边；乘坐",
+    "The book is by the window.",
+    "书在窗户旁边。",
+    "by"
+  ]
+];
+const EXTRA=[{"index":1,"sentence":"He is about to leave.","translation":"他就要离开了。"},{"index":2,"sentence":"Be kind and act nicely.","translation":"要善良，举止要友好。"},{"index":7,"sentence":"The ball is against the wall.","translation":"球紧靠着墙。"},{"index":8,"sentence":"What is your age?","translation":"你多大了？"},{"index":10,"sentence":"The bird flies in the air.","translation":"鸟在空中飞。"},{"index":20,"sentence":"That is the right answer.","translation":"那是正确的答案。"},{"index":24,"sentence":"Do as I say.","translation":"照我说的做。"},{"index":27,"sentence":"Please come back soon.","translation":"请快点回来。"},{"index":29,"sentence":"He lives on a military base.","translation":"他住在一个军事基地里。"},{"index":60,"sentence":"He went by car.","translation":"他乘汽车去了。"}];
+const CHATS=[{"prompt":"Would you like to play this game?","choices":["Yes, I actually like this game.","The ball is against the wall.","I saw him two days ago."],"answer":"Yes, I actually like this game.","note":"Actually = 其实；实际上。"},{"prompt":"What animal did you see?","choices":["I saw an elephant.","Please ask a question.","This area is clean."],"answer":"I saw an elephant.","note":"An elephant = 一头大象。"},{"prompt":"When should I wash my hands?","choices":["Before eating.","She began to sing.","He has a big house."],"answer":"Before eating.","note":"Before eating = 吃饭前。"},{"prompt":"What did she bring to the party?","choices":["She brought a cake.","The sky is blue.","The boy is playing."],"answer":"She brought a cake.","note":"Brought 是 bring 的过去式，表示带来了。"}];
+const shuffle=a=>{const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>s.toLowerCase().replace(/[.,!?]/g,'').replace(/[’]/g,"'").replace(/\s+/g,' ').trim();
+const BOUNDS=[0,15,30,45,61];
+const ROUNDS=Array.from({length:4},(_,r)=>{
+ const start=BOUNDS[r],words=WORDS.slice(start,BOUNDS[r+1]),questions=[];
+ words.forEach((w,i)=>{
+  const type=i%2===0?'tiles':'blank';
+  questions.push({id:`r${r}w${i}`,type,word:w[0],sentence:w[2],translation:w[3],answer:type==='tiles'?w[2]:w[4],note:`${w[0]} = ${w[1]}`,choices:type==='blank'?[w[4],...['pencil','banana','window'].filter(x=>x!==w[4]).slice(0,2)]:[],alternatives:[]});
+  questions.push({id:`r${r}s${i}`,type:'spell',word:w[0],meaning:w[1],answer:w[0],note:`${w[0]} = ${w[1]}`});
+ });
+ const groups=Math.ceil(words.length/5),size=Math.ceil(words.length/groups);
+ for(let i=0;i<words.length;i+=size){
+  const pairs=words.slice(i,i+size).map(w=>[w[0],w[1]]);
+  questions.push({id:`r${r}m${i}`,type:'match',pairs,note:'All pairs are connected. 词语配对完成！'});
+ }
+ EXTRA.filter(q=>q.index>=start&&q.index<BOUNDS[r+1]).forEach((q,i)=>questions.push({id:`r${r}extra${i}`,type:'tiles',word:WORDS[q.index][0],sentence:q.sentence,translation:q.translation,answer:q.sentence,note:`More practice: ${WORDS[q.index][0]}`,alternatives:[]}));
+ const w=words[0];
+ questions.push({id:`r${r}choice`,type:'choice',word:w[0],sentence:w[2],answer:w[1],choices:[w[1],words[2][1],words[4][1]],note:`${w[0]} = ${w[1]}`,translation:w[3]});
+ questions.push({id:`r${r}chat`,type:'chat',...CHATS[r]});
+ return {words,questions};
+});
+
+let state={round:0,sessions:{},sound:true};const KEY='ab-word-club-v1';let pairPick=null,timer,ctx;
+try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Number.isInteger(x.round)&&x.round>=0&&x.round<4&&x.sessions)state=x;}catch{}
+const $=s=>document.querySelector(s);
+function toast(t){$('#toast').textContent=t;$('#toast').style.display='block';clearTimeout(timer);timer=setTimeout(()=>$('#toast').style.display='none',4000);}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{}}
+function session(){if(!state.sessions[state.round])state.sessions[state.round]={pos:0,results:{},queue:shuffle(ROUNDS[state.round].questions.map(q=>q.id)),review:false,done:false};return state.sessions[state.round];}
+function question(){const s=session();return ROUNDS[state.round].questions.find(q=>q.id===s.queue[s.pos]);}
+function prepare(){const s=session(),q=question();if(s.current!==q.id){let pool=[];if(q.type==='tiles')pool=shuffle(q.sentence.replace(/[.!?]$/,'').split(' '));if(q.type==='spell'){pool=shuffle(q.answer.split(''));if(pool.join('').toLowerCase()===q.answer.toLowerCase()&&pool.length>1)pool.push(pool.shift());}Object.assign(s,{current:q.id,selected:null,checked:false,tiles:[],matched:[],pairErrors:0,options:shuffle(q.choices||[]),pool,right:q.type==='match'?shuffle(q.pairs.map((_,i)=>i)):[]});pairPick=null;save();}}
+function beep(ok){if(!state.sound)return;try{ctx??=new(window.AudioContext||window.webkitAudioContext)();ctx.resume();const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=ok?660:220;g.gain.setValueAtTime(.04,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.18);o.start();o.stop(ctx.currentTime+.18);}catch{}}
+function speak(text,slow){if(!state.sound)return toast('Sound is off. Turn it on to listen.');if(!window.speechSynthesis)return toast('English audio is not supported here.');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);const voices=speechSynthesis.getVoices();const voice=voices.find(v=>v.lang==='en-GB')||voices.find(v=>v.lang.startsWith('en'));if(voice)u.voice=voice;u.lang=voice?.lang||'en-GB';u.rate=slow?.65:.9;u.onerror=e=>{if(!['canceled','interrupted'].includes(e.error))toast('Audio is unavailable. Check your device’s English voice.');};speechSynthesis.speak(u);}
+function audio(text){return `<div class="audio"><button data-say="${esc(text)}">▶ Listen</button><button data-say="${esc(text)}" data-slow="1">▶ Slowly</button></div>`;}
+function ready(){const q=question(),s=session();return q.type==='tiles'||q.type==='spell'?s.tiles.length===s.pool.length:q.type==='match'?s.matched.length===q.pairs.length:s.selected!==null;}
+function evaluate(){const q=question(),s=session();if(q.type==='match')return s.pairErrors===0;if(q.type==='tiles')return [q.answer,...(q.alternatives||[])].some(a=>norm(a)===norm(s.tiles.map(i=>s.pool[i]).join(' ')));if(q.type==='spell')return s.tiles.map(i=>s.pool[i]).join('').toLowerCase()===q.answer.toLowerCase();return s.selected===q.answer;}
+function check(){const s=session();if(s.checked){if(s.pos===s.queue.length-1)s.done=true;else{s.pos++;s.current=null;}pairPick=null;window.speechSynthesis?.cancel();save();render();$('#heading')?.focus();return;}if(!ready())return;s.ok=evaluate();s.checked=true;if(!s.review)s.results[question().id]=s.ok;else if(!s.ok)s.reviewWrong.push(question().id);beep(s.ok);save();render();$('#feedback')?.focus();}
+function switchRound(r){window.speechSynthesis?.cancel();state.round=r;pairPick=null;save();render();}
+function review(){const s=session();const ids=s.review?s.reviewWrong:Object.keys(s.results).filter(id=>!s.results[id]);if(!ids.length)return;Object.assign(s,{queue:shuffle(ids),review:true,reviewWrong:[],pos:0,done:false,current:null});save();render();}
+function restart(){if(!confirm('Restart this round? Its score will be reset.'))return;delete state.sessions[state.round];pairPick=null;save();render();}
+function match(side,i){const s=session();if(s.checked||s.matched.includes(i))return;if(!pairPick||pairPick.side===side){pairPick=pairPick?.i===i&&pairPick.side===side?null:{side,i};render();return;}if(pairPick.i===i){s.matched.push(i);beep(true);}else{s.pairErrors++;beep(false);toast('Try again — those words have different meanings. 再试一次。');}pairPick=null;save();render();}
+function render(){const s=session();$('#sound').textContent=`Sound: ${state.sound?'on':'off'}`;$('#sound').setAttribute('aria-pressed',state.sound);$('#rounds').innerHTML=ROUNDS.map((r,i)=>`<button class="roundbtn ${i===state.round?'active':''}" data-round="${i}" aria-current="${i===state.round?'step':'false'}"><strong>${state.sessions[i]?.done?'✓ ':''}Round ${i+1}</strong><small>${r.words[0][0]} → ${r.words[r.words.length-1][0]}</small></button>`).join('');document.querySelectorAll('[data-round]').forEach(b=>b.onclick=()=>switchRound(+b.dataset.round));if(s.done)return summary();prepare();const q=question();const titles={tiles:'Build the sentence',spell:'Spell the word',blank:'Fill in the blank',match:'Match the pairs',choice:'Choose the meaning',chat:'Complete the conversation'};const hints={tiles:'Tap every word in order. Tap a chosen word to return it. 按顺序排列单词。',spell:'Tap the scrambled letters to spell the English word. 按顺序点击字母，拼出英文单词。 缩写词也要加上撇号（’）。',blank:'Use the Chinese sentence to choose the missing English word. 选择正确的单词。',match:'Match an English word with its Chinese meaning. 配对英文和中文。',choice:`What does “${q.word}” mean in this sentence? 选择它在句中的意思。`,chat:'Choose the reply that makes sense. 选择合适的回答。'};let body='';
+if(q.type==='tiles'||q.type==='spell'){const spelling=q.type==='spell';body=`<div class="prompt chinese">${spelling?esc(q.meaning):esc(q.translation)}</div><div class="answer" aria-label="${spelling?'Your word':'Your sentence'}">${s.tiles.length?s.tiles.map(i=>`<button class="tile" data-remove="${i}" ${s.checked?'disabled':''}>${esc(s.pool[i])}</button>`).join(''):`<span class="placeholder">${spelling?'Spell the English word here…':'Build your English sentence here…'}</span>`}</div><div class="pool">${s.pool.map((t,i)=>`<button class="tile ${s.tiles.includes(i)?'used':''}" data-tile="${i}" ${s.checked||s.tiles.includes(i)?'disabled':''}>${esc(t)}</button>`).join('')}</div>`;}
+else if(q.type==='match'){body=`<div class="matching">${['left','right'].map(side=>`<div class="column">${(side==='left'?q.pairs.map((_,i)=>i):s.right).map(i=>`<button class="option ${s.matched.includes(i)?'matched':''} ${pairPick?.side===side&&pairPick.i===i?'selected':''}" data-side="${side}" data-pair="${i}" ${s.checked||s.matched.includes(i)?'disabled':''}>${esc(q.pairs[i][side==='left'?0:1])}${s.matched.includes(i)?' ✓':''}</button>`).join('')}</div>`).join('')}</div>`;}
+else{let p=q.type==='blank'?q.sentence.replace(q.answer,'______'):q.type==='chat'?q.prompt:q.sentence;body=`<div class="prompt">${esc(p)}${q.type==='blank'?`<div class="translation chinese">${esc(q.translation)}</div>`:audio(p)}</div><div class="options">${s.options.map((v,i)=>`<button class="option ${s.checked?(v===q.answer?'right':v===s.selected?'wrong':''):v===s.selected?'selected':''}" data-choice="${i}" aria-pressed="${v===s.selected}" ${s.checked?'disabled':''}><span class="n">${i+1}</span>${esc(v)}</button>`).join('')}</div>`;}
+const solution=q.type==='tiles'||q.type==='blank'?q.sentence:q.answer;const feedback=s.checked?`<div id="feedback" tabindex="-1" role="status" class="feedback ${s.ok?'':'bad'}"><strong>${s.ok?'✓ Well done! 答对了！':q.type==='match'?'All matched — keep practising!':'Let’s learn this one. 再学一下。'}</strong>${solution?`<p>${esc(solution)}</p>`:''}<p>${esc(q.note)}</p>${q.translation?`<p class="chinese">${esc(q.translation)}</p>`:''}${solution?audio(q.type==='choice'?q.sentence:solution):''}</div>`:'';
+$('#app').innerHTML=`<div class="meta"><span>${s.review?'Mistake review · 错题复习':'Round '+(state.round+1)+' · '+ROUNDS[state.round].words.length+' words'}</span><span>${s.pos+1} / ${s.queue.length}</span></div><div class="bar" role="progressbar" aria-label="Round progress" aria-valuemin="0" aria-valuemax="${s.queue.length}" aria-valuenow="${s.pos+(s.checked?1:0)}"><div class="fill" style="width:${(s.pos+(s.checked?1:0))/s.queue.length*100}%"></div></div><div class="tag">A + B Word Club · ${q.type==='tiles'?'Sentence builder':'English practice'}</div><h1 id="heading" tabindex="-1">${titles[q.type]}</h1><p class="hint">${hints[q.type]}</p>${body}${feedback}<div class="actions"><span class="saved">Take your time.<br>慢慢来。</span><button class="primary" id="check" ${!s.checked&&!ready()?'disabled':''}>${s.checked?(s.pos===s.queue.length-1?'Finish round':'Continue →'):'Check answer'}</button></div>`;
+$('#check').onclick=check;document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{s.selected=s.options[+b.dataset.choice];save();render();});document.querySelectorAll('[data-tile]').forEach(b=>b.onclick=()=>{s.tiles.push(+b.dataset.tile);save();render();});document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{s.tiles=s.tiles.filter(i=>i!==+b.dataset.remove);save();render();});document.querySelectorAll('[data-side]').forEach(b=>b.onclick=()=>match(b.dataset.side,+b.dataset.pair));document.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say,!!b.dataset.slow));}
+function summary(){const s=session(),good=Object.values(s.results).filter(Boolean).length,wrong=s.review?s.reviewWrong:Object.keys(s.results).filter(id=>!s.results[id]),total=ROUNDS[state.round].questions.length;$('#app').innerHTML=`<div class="summary"><div class="celebrate">★</div><div class="tag">${s.review?'Review complete':'Round complete'}</div><h1 id="heading" tabindex="-1">Nice work! 做得好！</h1><p>You practised ${ROUNDS[state.round].words.map(w=>esc(w[0])).join(', ')}.</p><div class="stats"><div class="stat"><strong>${good} / ${total}</strong>First try</div><div class="stat"><strong>${good*10}</strong>Points</div></div><p class="hint">Matching questions earn a point when all pairs are correct without a mismatch.<br>配对题需要一次全部配对正确才能得分。</p><div class="actions">${wrong.length?`<button class="primary" id="review">Review ${wrong.length} mistakes</button>`:''}${state.round<3?'<button class="primary" id="nextRound">Next round →</button>':'<button class="primary" id="firstRound">Back to Round 1</button>'}<button class="quiet" id="again">Repeat round</button></div></div>`;if($('#review'))$('#review').onclick=review;if($('#nextRound'))$('#nextRound').onclick=()=>switchRound(state.round+1);if($('#firstRound'))$('#firstRound').onclick=()=>switchRound(0);$('#again').onclick=restart;}
+$('#sound').onclick=()=>{state.sound=!state.sound;if(!state.sound)window.speechSynthesis?.cancel();save();render();};$('#reset').onclick=restart;document.addEventListener('keydown',e=>{if(e.isComposing||session().done)return;if(e.key==='Enter'&&e.target.tagName!=='BUTTON'){e.preventDefault();if(session().checked||ready())check();}else if(!session().checked&&/^[1-3]$/.test(e.key))document.querySelector(`[data-choice="${+e.key-1}"]`)?.click();});render();
+</script></body></html>
