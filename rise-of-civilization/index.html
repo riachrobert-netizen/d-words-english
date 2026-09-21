@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Rise of Civilization — Solo Skirmish</title>
 <style>
 :root{--bg:#171815;--panel:#252720;--panel2:#2e3028;--text:#f4f0df;--muted:#bbb6a3;--border:#555849;--ready:#586f3d;--ready2:#789c50;--blue:#315b78;--red:#8b3f36;--gold:#c7a442}
@@ -41,6 +41,32 @@ body{background:radial-gradient(ellipse at 50% 0,#293a32 0,#111e1b 70%);color:va
 @media(max-height:800px){.solo-setup{align-items:flex-start}.solo-box{padding:25px 32px}.solo-box h1{font-size:34px}.solo-eyebrow{margin-bottom:12px}.solo-lead{margin-bottom:14px}.solo-fields{gap:10px}}
 @media(max-width:600px){.solo-setup{padding:12px}.solo-box{padding:22px}.solo-box h1{font-size:32px}}
 
+/* Mobile command patch v1. Pinch applies only to the battlefield. */
+#game{touch-action:none;user-select:none;-webkit-user-select:none}
+.commandbar{display:flex;gap:6px;margin-top:8px;flex-shrink:0}.commandbar .btn{min-height:44px;flex:1}
+.commandbar [hidden],.command-sheet[hidden]{display:none!important}
+.commandbar button[aria-expanded="true"]{background:#607744;border-color:#d2be84}
+.command-sheet{position:fixed;z-index:30;right:18px;bottom:18px;width:min(480px,calc(100% - 24px));max-height:70dvh;overflow:auto;overscroll-behavior:contain;background:#20372f;border:1px solid #a1976d;border-radius:12px;box-shadow:0 12px 55px #000b;padding:12px}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.sheet-head strong{font:20px Georgia,serif}.sheet-head button{min-height:44px}
+.command-sheet .actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.command-sheet .action{min-height:58px;width:100%}.command-sheet .toolbar{margin-top:12px;justify-content:flex-start}.command-sheet .toolbar button{min-height:44px}.command-sheet .features{grid-template-columns:repeat(3,1fr)}.command-sheet .info{grid-template-columns:1fr}.touch-help{font:12px/1.5 Arial;color:#c4cbb7}.command-sheet .stance-panel{margin:12px 0}
+.maptools button,.maptools #zoomFit{min-width:40px;height:40px}.maptools #homeView{font-size:11px;padding:0 7px}.pan-hint{bottom:64px}
+.app:is(.compact,.immersive){position:relative;display:flex;flex-direction:column;width:100%;max-width:none;height:100vh;height:100dvh;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);overflow:hidden;background:#172820}
+.app.immersive{position:fixed;inset:0;z-index:100}
+.app:is(.compact,.immersive)>.topbar,.app:is(.compact,.immersive)>.guide,.app:is(.compact,.immersive)>.legend{display:none}
+.app:is(.compact,.immersive)>.civrow{display:block;flex-shrink:0}
+.app:is(.compact,.immersive) .civcard:not(.active){display:none}
+.app:is(.compact,.immersive) .civcard.active{display:block;width:100%;padding:6px 10px;border:0;border-radius:0;box-shadow:none}
+.app:is(.compact,.immersive) .civhead strong{font-size:14px}.app:is(.compact,.immersive) .civhead .sub{display:none}.app:is(.compact,.immersive) .age{font-size:10px;padding:2px 4px}.app:is(.compact,.immersive) .role{padding:1px 4px;font-size:8px}
+.app:is(.compact,.immersive) .resources{margin-top:5px;font-size:12px;gap:4px}
+.app:is(.compact,.immersive)>.stage{flex:1;min-height:0;margin:0;border-radius:0;box-shadow:none;border-left:0;border-right:0}
+.app:is(.compact,.immersive) #game{width:100%;height:100%;aspect-ratio:auto}
+.app:is(.compact,.immersive) .commandbar{margin:0;padding:5px;gap:4px}.app:is(.compact,.immersive) .commandbar .btn{padding:6px 3px;font-size:12px;min-width:0}
+.app:is(.compact,.immersive)>.status{padding:2px 8px 6px;min-height:30px;font-size:11px;line-height:1.3;max-height:44px;overflow:auto;flex-shrink:0}
+.app:is(.compact,.immersive) .command-sheet{bottom:92px;right:8px;width:min(480px,calc(100% - 16px));max-height:calc(100dvh - 160px)}
+.app:is(.compact,.immersive) .banner{font-size:10px;max-width:calc(100% - 16px);top:6px;left:8px;padding:4px 7px}.app:is(.compact,.immersive) .place{bottom:60px;font-size:11px}
+.app:is(.compact,.immersive) .pan-hint{display:none}.app:is(.compact,.immersive) .maptools{bottom:6px;right:6px;padding:2px}.app:is(.compact,.immersive) .modal{overflow:auto;align-items:flex-start}.app:is(.compact,.immersive) .modalbox{margin:auto;padding:15px}.app:is(.compact,.immersive) .modalbox h2{font-size:23px}
+@media(max-height:500px){.app:is(.compact,.immersive) .civhead{display:none}.app:is(.compact,.immersive) .resources{margin:0}.app:is(.compact,.immersive) .command-sheet{bottom:82px;max-height:calc(100dvh - 115px)}}
+
 </style></head>
 <body>
 <section id="soloSetup" class="solo-setup" role="dialog" aria-modal="true" aria-labelledby="soloTitle">
@@ -56,7 +82,7 @@ body{background:radial-gradient(ellipse at 50% 0,#293a32 0,#111e1b 70%);color:va
   <p class="solo-fair">Same starting resources. Same costs. No free armies.<br>Difficulty changes planning speed, expansion and attack timing.</p>
   <button class="start" id="soloPlay">Begin your civilization →</button>
   <button class="btn" id="soloCancel" hidden>Return to paused match</button>
-  <div class="solo-foot">Best with a mouse on desktop · runs entirely in your browser<br>Matches are not saved when you close or reload the page.</div>
+  <div class="solo-foot">Touch or mouse · pinch to zoom · drag to explore<br>Matches are not saved when you close or reload the page.</div>
  </div>
 </section>
 
@@ -119,7 +145,33 @@ function placementReason(type,x,y){const d=BUILD[type],g={x,y,w:d.w,h:d.h};if(x-
 function beginPlacement(type){const d=BUILD[type],c=CIV[active];if(!d||c.age<d.age||!canAfford(c,d.cost))return;pending={type};selected=null;q('placeLabel').classList.remove('hidden');q('placeLabel').textContent='Place '+d.label+' · green = valid · red = blocked · Esc = cancel';q('banner').textContent='Choose where to build your '+d.label+'.';updateUI()}
 function cancelPlacement(){if(!pending)return;pending=null;q('placeLabel').classList.add('hidden');q('status').textContent='Placement cancelled. No resources spent.';updateUI()}
 function placeAt(x,y){if(!pending)return;const d=BUILD[pending.type],reason=placementReason(pending.type,x,y),c=CIV[active];if(reason){q('status').textContent='Cannot build here: '+reason+'.';return}if(!canAfford(c,d.cost)){cancelPlacement();return}pay(c,d.cost);buildings.push({id:'b'+(++bseq),civ:active,type:pending.type,x,y,w:d.w,h:d.h,hp:d.hp,maxHP:d.hp,buildProgress:0,complete:false});if(pending.type==='house')c.cap+=5;q('banner').textContent=d.label+' constructed.';pending=null;q('placeLabel').classList.add('hidden');sfx('build');updateUI()}
-canvas.addEventListener('pointermove',e=>hover=point(e));canvas.addEventListener('contextmenu',e=>{if(pending){e.preventDefault();cancelPlacement()}});canvas.addEventListener('pointerdown',e=>{unlockAudio();if(ended)return;const p=point(e);hover=p;if(pending){placeAt(p.x,p.y);return}const own=units.slice().reverse().find(u=>u.civ===active&&u.hp>0&&hit(p,u,8));if(own){selected=own;sfx('select');q('status').textContent=(own.type==='spearman'?'Spearman':own.type==='swordsman'?'Swordsman':own.type==='archer'?'Archer':'Villager')+' selected.';updateUI();return}if(!selected)return;if(selected.type==='villager'){const drop=buildings.slice().reverse().find(b=>b.civ===selected.civ&&b.hp>0&&(b.type==='store'||b.type==='tc')&&p.x>=b.x-b.w/2&&p.x<=b.x+b.w/2&&p.y>=b.y-b.h/2&&p.y<=b.y+b.h/2);if(drop&&selected.carry>0){selected.target={kind:'drop',dropId:drop.id};q('status').textContent='Villager returning carried resources.';updateUI();return}const r=resources.slice().reverse().find(x=>x.amount>0&&hit(p,x,10));selected.target=r?(selected.carry>0?{kind:'drop',resourceId:r.id}:{kind:'resource',id:r.id}):{kind:'move',x:p.x,y:p.y};if(r){q('status').textContent='Villager gathering '+r.type+'.'}}else{const eu=units.find(u=>u.civ!==active&&u.hp>0&&hit(p,u,9));if(eu){issueCombatOrder(selected,{kind:'attackUnit',id:eu.id});return}const eb=buildings.find(b=>b.civ!==active&&b.hp>0&&p.x>b.x-b.w/2&&p.x<b.x+b.w/2&&p.y>b.y-b.h/2&&p.y<b.y+b.h/2);issueCombatOrder(selected,eb?{kind:'attackBuilding',id:eb.id}:{kind:'move',x:p.x,y:p.y})}});
+function handleMapCommand(e){
+  if(!solo.started||paused||ended)return;
+  unlockAudio();const p=point(e);hover=p;
+  if(p.x<0||p.x>W||p.y<0||p.y>H)return;
+  if(pending){const count=buildings.length;placeAt(p.x,p.y);if(buildings.length>count)q('status').textContent=q('banner').textContent;return}
+  const own=units.slice().reverse().find(u=>u.civ===active&&u.hp>0&&hit(p,u,8));
+  if(own){selected=own;sfx('select');q('status').textContent=own.type+' selected. Tap a destination or target.';updateUI();return}
+  if(!selected||selected.hp<=0)return;
+  const u=selected;
+  if(u.type==='villager'){
+    const drop=buildings.slice().reverse().find(b=>b.civ===u.civ&&b.hp>0&&(b.type==='store'||b.type==='tc')&&p.x>=b.x-b.w/2&&p.x<=b.x+b.w/2&&p.y>=b.y-b.h/2&&p.y<=b.y+b.h/2);
+    if(drop&&u.carry>0){u.target={kind:'drop',dropId:drop.id};q('status').textContent='Villager returning carried resources.'}
+    else{
+      const r=resources.slice().reverse().find(x=>x.amount>0&&hit(p,x,10));
+      u.target=r?(u.carry>0?{kind:'drop',resourceId:r.id}:{kind:'resource',id:r.id}):{kind:'move',x:p.x,y:p.y};
+      q('status').textContent=r?'Villager gathering '+r.type+'.':'Villager moving.';
+    }
+  }else{
+    const eu=units.find(u=>u.civ!==active&&u.hp>0&&hit(p,u,9));
+    const eb=buildings.find(b=>b.civ!==active&&b.hp>0&&p.x>b.x-b.w/2&&p.x<b.x+b.w/2&&p.y>b.y-b.h/2&&p.y<b.y+b.h/2);
+    issueCombatOrder(u,eu?{kind:'attackUnit',id:eu.id}:eb?{kind:'attackBuilding',id:eb.id}:{kind:'move',x:p.x,y:p.y});
+    q('status').textContent=eu||eb?'Attack ordered.':'Soldier moving.';
+  }
+  selected=null;updateUI();
+}
+canvas.addEventListener('contextmenu',e=>{e.preventDefault();cancelPlacement()});
+
 function move(u,t,s,dt,stop){
 const dx=t.x-u.x,dy=t.y-u.y,d=Math.hypot(dx,dy);
 if(d<=stop){if(u.target&&u.target.kind==='move')u.target=null;return}
@@ -773,21 +825,70 @@ let galleryWasPaused=false;
 galleryButton.addEventListener('click',()=>{galleryWasPaused=paused;paused=true;gallery.showModal();const old=g;g=q('galleryCanvas').getContext('2d');try{const bg=g.createLinearGradient(0,0,1440,720);bg.addColorStop(0,'#6c7c57');bg.addColorStop(1,'#9a976c');rect(0,0,1440,720,bg);const rng=randSeed(6743);for(let i=0;i<15000;i++)rect(rng()*1440,rng()*720,1.5,1,rng()>.5?'rgba(236,220,158,.15)':'rgba(29,47,22,.12)');const types=['tc','house','store','farm','barracks','archery','temple','gov','scribe','monument'];for(const [index,civ]of ['A','B'].entries()){const yy=index*240;g.fillStyle='#f3e4bd';g.font='24px Georgia';g.textAlign='left';g.fillText(civ==='A'?'Mediterranean settlement':'Eastern settlement',30,yy+40);g.font='12px Arial';g.fillStyle='#e0d4ae';g.fillText('BRONZE AGE',1160,yy+38);for(let i=0;i<types.length;i++){const type=types[i],d=type==='tc'?{w:132,h:100,label:'Town Center'}:BUILD[type],xx=62+i*140;g.save();g.translate(xx,yy+140);structureArt(type,civ,d.w,d.h,2);g.restore();g.fillStyle='#f6e8bf';g.font='13px Arial';g.textAlign='center';g.fillText(d.label,xx,yy+218)}}line(30,490,1410,490,'rgba(240,222,170,.3)',1);g.textAlign='left';g.font='24px Georgia';g.fillStyle='#f3e4bd';g.fillText('People & military',30,535);const names=['Villager','Spearman','Swordsman','Archer'];for(let i=0;i<8;i++){const xx=105+i*175;g.save();g.translate(xx,612);g.scale(2,2);const civ=i<4?'A':'B',type=['villager','spearman','swordsman','archer'][i%4];enhancedUnit({id:'gallery'+i,civ,type,x:0,y:0,hp:100,maxHP:100,phase:0,carry:0,target:null},0);g.restore();g.fillStyle='#f6e8bf';g.font='14px Arial';g.textAlign='center';g.fillText(names[i%4]+' · '+(i<4?'A':'B'),xx,686)}}finally{g=old}});
 q('closeGallery').addEventListener('click',()=>gallery.close());gallery.addEventListener('close',()=>{paused=galleryWasPaused;q('pause').textContent=paused?'Resume':'Pause'});
 
-// The camera changes presentation and pointer coordinates together.
+// World coordinates remain fixed; the viewport adapts to the available screen.
 const camera={x:W/2,y:H/2,zoom:1};
 const cameraTools=document.createElement('div');cameraTools.className='maptools';cameraTools.innerHTML='<button type="button" id="zoomOut" aria-label="Zoom out">−</button><span id="zoomLabel">100%</span><button type="button" id="zoomIn" aria-label="Zoom in">+</button><button type="button" id="zoomFit">Fit map</button>';canvas.parentElement.append(cameraTools);
-const panHint=document.createElement('div');panHint.className='pan-hint';panHint.textContent='Scroll to zoom · Shift + drag to pan';canvas.parentElement.append(panHint);
-function clampCamera(){const hw=W/(2*camera.zoom),hh=H/(2*camera.zoom);camera.x=Math.max(hw,Math.min(W-hw,camera.x));camera.y=Math.max(hh,Math.min(H-hh,camera.y));q('zoomLabel').textContent=Math.round(camera.zoom*100)+'%'}
-function zoomCamera(z,p={x:W/2,y:H/2}){const before={x:(p.x-W/2)/camera.zoom+camera.x,y:(p.y-H/2)/camera.zoom+camera.y};camera.zoom=Math.max(1,Math.min(3,z));camera.x=before.x-(p.x-W/2)/camera.zoom;camera.y=before.y-(p.y-H/2)/camera.zoom;clampCamera()}
-point=function(e){const r=canvas.getBoundingClientRect();return{x:((e.clientX-r.left)*W/r.width-W/2)/camera.zoom+camera.x,y:((e.clientY-r.top)*H/r.height-H/2)/camera.zoom+camera.y}};
+const panHint=document.createElement('div');panHint.className='pan-hint';panHint.textContent='Pinch to zoom · drag to pan · mouse: Shift + drag';canvas.parentElement.append(panHint);
+function clampCamera(){
+  const hw=canvas.width/(2*camera.zoom),hh=canvas.height/(2*camera.zoom);
+  camera.x=hw>=W/2?W/2:Math.max(hw,Math.min(W-hw,camera.x));
+  camera.y=hh>=H/2?H/2:Math.max(hh,Math.min(H-hh,camera.y));
+  q('zoomLabel').textContent=Math.round(camera.zoom*100)+'%';
+}
+function screenPoint(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}}
+point=function(e){const p=screenPoint(e);return{x:(p.x-canvas.width/2)/camera.zoom+camera.x,y:(p.y-canvas.height/2)/camera.zoom+camera.y}};
+function zoomCamera(z,p={x:canvas.width/2,y:canvas.height/2}){
+  const before={x:(p.x-canvas.width/2)/camera.zoom+camera.x,y:(p.y-canvas.height/2)/camera.zoom+camera.y};
+  camera.zoom=Math.max(1,Math.min(6,z));
+  camera.x=before.x-(p.x-canvas.width/2)/camera.zoom;camera.y=before.y-(p.y-canvas.height/2)/camera.zoom;clampCamera();
+}
 q('zoomIn').addEventListener('click',()=>zoomCamera(camera.zoom*1.25));q('zoomOut').addEventListener('click',()=>zoomCamera(camera.zoom/1.25));q('zoomFit').addEventListener('click',()=>zoomCamera(1));
-canvas.addEventListener('wheel',e=>{e.preventDefault();const r=canvas.getBoundingClientRect();zoomCamera(camera.zoom*Math.exp(-e.deltaY*.0015),{x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height});hover=point(e)},{passive:false});
-let dragging=null;
-canvas.addEventListener('pointerdown',e=>{if(e.shiftKey){e.preventDefault();e.stopImmediatePropagation();dragging={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId)}},true);
-canvas.addEventListener('pointermove',e=>{if(!dragging)return;const r=canvas.getBoundingClientRect();camera.x-=(e.clientX-dragging.x)*W/r.width/camera.zoom;camera.y-=(e.clientY-dragging.y)*H/r.height/camera.zoom;dragging={x:e.clientX,y:e.clientY};clampCamera();hover=point(e)});
-canvas.addEventListener('pointerup',()=>dragging=null);canvas.addEventListener('pointercancel',()=>dragging=null);
-const sceneRender=render;render=function(t){ctx.save();ctx.translate(W/2,H/2);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-camera.x,-camera.y);try{sceneRender(t)}finally{ctx.restore()}};
+canvas.addEventListener('wheel',e=>{e.preventDefault();zoomCamera(camera.zoom*Math.exp(-e.deltaY*.0015),screenPoint(e));hover=point(e)},{passive:false});
+const touches=new Map();let touchGesture=false,mouseDrag=null;
+function gesturePair(){const a=[...touches.values()];return{clientX:(a[0].x+a[1].x)/2,clientY:(a[0].y+a[1].y)/2,d:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}}
+canvas.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='touch'){
+    e.preventDefault();touches.set(e.pointerId,{x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY});
+    if(touches.size===1)touchGesture=false;else touchGesture=true;
+    canvas.setPointerCapture(e.pointerId);return;
+  }
+  if(e.button===1||(e.button===0&&e.shiftKey)){e.preventDefault();mouseDrag={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);return}
+  if(e.button===0)handleMapCommand(e);
+});
+canvas.addEventListener('pointermove',e=>{
+  if(touches.has(e.pointerId)){
+    e.preventDefault();const old=touches.get(e.pointerId),before=touches.size>=2?gesturePair():null;
+    if(Math.hypot(e.clientX-old.sx,e.clientY-old.sy)>8)touchGesture=true;
+    const r=canvas.getBoundingClientRect();
+    if(before){
+      const anchor=point(before);touches.set(e.pointerId,{...old,x:e.clientX,y:e.clientY});const after=gesturePair(),p=screenPoint(after);
+      camera.zoom=Math.max(1,Math.min(6,camera.zoom*after.d/Math.max(1,before.d)));
+      camera.x=anchor.x-(p.x-canvas.width/2)/camera.zoom;camera.y=anchor.y-(p.y-canvas.height/2)/camera.zoom;clampCamera();
+    }else{
+      if(touchGesture){camera.x-=(e.clientX-old.x)*canvas.width/r.width/camera.zoom;camera.y-=(e.clientY-old.y)*canvas.height/r.height/camera.zoom;clampCamera()}
+      touches.set(e.pointerId,{...old,x:e.clientX,y:e.clientY});
+    }
+  }else if(mouseDrag){
+    const r=canvas.getBoundingClientRect();camera.x-=(e.clientX-mouseDrag.x)*canvas.width/r.width/camera.zoom;camera.y-=(e.clientY-mouseDrag.y)*canvas.height/r.height/camera.zoom;mouseDrag={x:e.clientX,y:e.clientY};clampCamera();
+  }
+  hover=point(e);
+});
+canvas.addEventListener('pointerup',e=>{
+  if(touches.has(e.pointerId)){
+    const start=touches.get(e.pointerId),tap=touches.size===1&&!touchGesture&&Math.hypot(e.clientX-start.sx,e.clientY-start.sy)<=8;
+    touches.delete(e.pointerId);if(tap)handleMapCommand(e);
+  }
+  mouseDrag=null;
+});
+function cancelGesture(e){touches.delete(e.pointerId);touchGesture=true;mouseDrag=null}
+canvas.addEventListener('pointercancel',cancelGesture);canvas.addEventListener('lostpointercapture',cancelGesture);
+window.addEventListener('blur',()=>{touches.clear();touchGesture=true;mouseDrag=null});
+const sceneRender=render;render=function(t){
+  ctx.clearRect(0,0,canvas.width,canvas.height);ctx.save();ctx.translate(canvas.width/2,canvas.height/2);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-camera.x,-camera.y);
+  try{sceneRender(t)}finally{ctx.restore()}
+};
 q('reset').addEventListener('click',()=>zoomCamera(1));q('again').addEventListener('click',()=>zoomCamera(1));
+
 
 const stancePanel=document.createElement('div');stancePanel.className='stance-panel';
 stancePanel.innerHTML='<span id="stanceUnit">Select a soldier to set its stance.</span><div class="stance-buttons"><button class="btn" id="stanceAggressive" type="button">Aggressive</button><button class="btn" id="stanceDefensive" type="button">Defensive</button><button class="btn" id="stanceHold" type="button">Hold Position</button></div><span id="stanceHelp">New soldiers defend themselves and nearby allies.</span>';
@@ -1012,6 +1113,54 @@ q('app').addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA','BUTTON'
 for(const k of ['A','B']){q('card'+k).title=k===solo.human?'Your civilization':'Computer opponent';q('card'+k).addEventListener('click',e=>{intercept(e);if(k===solo.human)q('homeView').click()},true)}
 // A paused or unstarted match cannot accept orders or spend resources.
 for(const id of ['game','age','villager','spearman','swordsman','archer','repair',...Object.keys(BUILD)])q(id).addEventListener(id==='game'?'pointerdown':'click',e=>{if(!solo.started||paused||ended)intercept(e)},true);
+
+// Compact command menus use the original buttons and their existing rules.
+const app=q('app'),stage=canvas.parentElement,commandbar=document.createElement('nav');
+commandbar.className='commandbar';commandbar.setAttribute('aria-label','Game controls');
+commandbar.innerHTML='<button class="btn" id="buildMenu" aria-expanded="false" aria-controls="buildSheet">Build</button><button class="btn" id="trainMenu" aria-expanded="false" aria-controls="trainSheet">Train</button><button class="btn" id="moreMenu" aria-expanded="false" aria-controls="moreSheet">More</button><button class="btn" id="cancelOrder" hidden>Cancel</button><button class="btn" id="fullscreen">Full screen</button>';
+stage.after(commandbar);commandbar.insertBefore(q('pause'),q('fullscreen'));
+cameraTools.append(q('homeView'));q('homeView').textContent='Home';
+const sheets={};let openSheet=null;
+for(const [key,title]of [['build','Build your settlement'],['train','Train people & soldiers'],['more','Match & settings']]){
+  const sheet=document.createElement('section');sheet.className='command-sheet';sheet.id=key+'Sheet';sheet.hidden=true;
+  sheet.setAttribute('aria-label',title);
+  sheet.innerHTML='<div class="sheet-head"><strong>'+title+'</strong><button class="btn" aria-label="Close '+key+' menu">Close</button></div><div class="sheet-content"></div>';
+  app.append(sheet);sheets[key]=sheet;sheet.querySelector('button').addEventListener('click',()=>closeSheet(true));
+  q(key+'Menu').addEventListener('click',()=>{const already=openSheet===key;closeSheet();if(!already){openSheet=key;sheet.hidden=false;q(key+'Menu').setAttribute('aria-expanded','true');sheet.querySelector('button').focus()}});
+}
+function closeSheet(focus=false){if(!openSheet)return;const key=openSheet;sheets[key].hidden=true;q(key+'Menu').setAttribute('aria-expanded','false');openSheet=null;if(focus)q(key+'Menu').focus()}
+const buildGrid=document.createElement('div');buildGrid.className='actions';sheets.build.lastElementChild.append(buildGrid);
+for(const type of Object.keys(BUILD)){if(q(type))buildGrid.append(q(type))}
+const trainGrid=document.createElement('div');trainGrid.className='actions';sheets.train.lastElementChild.append(trainGrid);
+for(const id of ['villager','spearman','swordsman','archer'])trainGrid.append(q(id));
+const more=sheets.more.lastElementChild;
+more.append(q('age'),q('repair'),stancePanel,document.querySelector('.toolbar'),q('soloStatus'),document.querySelector('.guide'),document.querySelector('.info'),document.querySelector('.features'));
+for(const el of [...app.children])if(el.classList.contains('actions'))el.remove();
+document.querySelector('.legend').textContent='Tap a person, then a task · pinch to zoom · drag to pan · orders clear selection';
+const touchHelp=document.createElement('p');touchHelp.className='touch-help';touchHelp.textContent='Touch: tap a person, then a resource, enemy or destination. Selection clears after the order. Drag to explore; pinch to zoom. Build: choose a building, then tap its location. Cancel exits placement. Mouse: scroll to zoom; Shift + drag to pan.';more.append(touchHelp);
+for(const type of Object.keys(BUILD))if(q(type))q(type).addEventListener('click',()=>{if(pending){closeSheet();q('status').textContent='Tap the map to place '+BUILD[pending.type].label+'. Drag or pinch to adjust the view.'}});
+q('cancelOrder').addEventListener('click',()=>{cancelPlacement();selected=null;q('status').textContent='Selection cleared. Existing tasks continue.';updateUI()});
+q('app').addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet(true);selected=null;updateUI()}});
+q('help').addEventListener('click',()=>closeSheet());q('reset').addEventListener('click',()=>closeSheet(),true);
+let immersiveFallback=false;
+function fullscreenUI(){const on=!!document.fullscreenElement||immersiveFallback;app.classList.toggle('immersive',on);q('fullscreen').textContent=on?'Exit screen':'Full screen'}
+q('fullscreen').addEventListener('click',async()=>{
+  closeSheet();
+  if(document.fullscreenElement){await document.exitFullscreen();return}
+  if(immersiveFallback){immersiveFallback=false;fullscreenUI();return}
+  try{if(!document.documentElement.requestFullscreen)throw Error('unavailable');await document.documentElement.requestFullscreen()}
+  catch{immersiveFallback=true;fullscreenUI();q('status').textContent='Expanded view. On iPhone: Share → Add to Home Screen → Open as Web App for more space.'}
+});
+document.addEventListener('fullscreenchange',fullscreenUI);
+const mobileQuery=matchMedia('(max-width: 900px), (pointer: coarse)');
+function compactLayout(){app.classList.toggle('compact',mobileQuery.matches)}
+compactLayout();mobileQuery.addEventListener('change',compactLayout);
+function resizeMap(){const r=canvas.getBoundingClientRect();if(r.width<1||r.height<1)return;const height=Math.round(W*r.height/r.width);if(canvas.height!==height)canvas.height=height;clampCamera()}
+new ResizeObserver(resizeMap).observe(canvas);
+const beforeMobileUI=updateUI;updateUI=function(){beforeMobileUI();if(solo.busy)return;q('cancelOrder').hidden=!pending&&!selected;commandbar.classList.toggle('has-cancel',!!pending||!!selected);q('pause').textContent=paused?'Resume':'Pause'};
+function homeCamera(){camera.zoom=mobileQuery.matches&&innerHeight>innerWidth?3:1.5;camera.x=CIV[solo.human].x;camera.y=CIV[solo.human].y;clampCamera()}
+q('homeView').addEventListener('click',homeCamera);q('soloPlay').addEventListener('click',()=>{closeSheet();resizeMap();homeCamera();q('status').textContent='Tap a villager, then a resource. Pinch to zoom; drag to explore.'});
+q('status').setAttribute('role','status');q('status').setAttribute('aria-live','polite');
 
 reset();openSoloSetup();requestAnimationFrame(loop);
 })();
