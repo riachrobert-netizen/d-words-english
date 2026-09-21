@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: rise-civ-connection-test
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: rise-of-civilization/connection-test
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://riachrobert-netizen.github.io

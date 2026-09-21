@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rise of Civilization · Connection test</title>
+<style>
+:root{color-scheme:dark;--ink:#efe9d5;--muted:#b9c8bd;--line:#506456;--gold:#d8c185;--green:#a1ce99}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0,#345442,#101e19 65%);color:var(--ink);font:15px/1.5 system-ui,sans-serif;min-height:100vh}main{width:min(850px,100%);padding:40px 22px 60px;margin:auto}header small{letter-spacing:2px;color:var(--gold);font-size:11px}h1{font:clamp(32px,6vw,48px)/1.1 Georgia,serif;margin:12px 0}p{color:var(--muted)}.intro{max-width:620px;margin:0 0 24px}section{padding:20px;margin:14px 0;border:1px solid var(--line);border-radius:12px;background:#20372cdc}h2{font:22px Georgia,serif;margin:0 0 14px}label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}input,button,.button{font:inherit;border:1px solid var(--line);border-radius:6px;padding:11px 13px;min-height:46px}input{background:#12261d;color:var(--ink);width:100%;min-width:0}button,.button{background:#395b40;color:var(--ink);cursor:pointer;display:inline-block;text-decoration:none;text-align:center}button:hover,.button:hover{border-color:var(--gold)}button:disabled{opacity:.45;cursor:default}button.secondary,.button.secondary{background:#233c30}input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.row{display:flex;gap:8px;align-items:center}.row input{flex:1}.row button{flex-shrink:0}.note{font-size:12px;margin:10px 0 0}.connection{display:flex;align-items:center;gap:10px;margin:16px 0 0;color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;background:#9b9f95;flex-shrink:0}.online .dot{background:var(--green);box-shadow:0 0 12px #97d69366}.code{font:32px monospace;letter-spacing:5px;color:var(--gold)}.room-info{margin:16px 0;padding:12px 15px;background:#152b20;border-radius:7px;display:flex;align-items:center;justify-content:space-between;gap:10px}.room-info small{color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.metric{background:#172c22;border-radius:7px;padding:14px}.metric strong{font-size:25px;display:block;color:var(--gold)}.metric small{color:var(--muted);font-size:11px}.track{height:5px;background:#14281e;border-radius:5px;overflow:hidden;margin:16px 0}.track div{height:100%;width:0;background:var(--green);transition:width .3s}#log{font:12px/1.6 monospace;color:var(--muted);max-height:130px;overflow:auto;padding-left:20px}#result{color:var(--ink)}[hidden]{display:none!important}details{font-size:13px;color:var(--muted);margin-top:18px}summary{cursor:pointer;color:var(--gold)}details p{margin:10px 0}footer{font-size:12px;color:var(--muted);margin-top:25px}a{color:var(--gold)}.signal{background:#577745}#message{min-height:24px;color:var(--gold)}@media(max-width:520px){main{padding:24px 14px}.row{flex-wrap:wrap}.row input{flex-basis:100%}.row button{flex:1}.metrics{gap:6px}.metric{padding:10px 7px}.metric strong{font-size:22px}section{padding:16px}.room-info{flex-wrap:wrap}.code{font-size:27px}}
+</style>
+</head>
+<body><main>
+<header><small>RISE OF CIVILIZATION / ONLINE PLAY</small><h1>Can our worlds connect?</h1><p class="intro">A two-player connection test. Open this page on two devices, preferably using different networks. No game progress is affected.</p></header>
+<section><h2>1. Connect to the server</h2><label for="server">Render server address</label><div class="row"><input id="server" type="url" placeholder="https://your-server.onrender.com" autocomplete="url" spellcheck="false"><button id="connect">Connect</button><button id="disconnect" class="secondary" hidden>Disconnect</button></div><div class="connection" id="connection"><span class="dot"></span><span id="state">Enter the server address to begin.</span></div><p class="note">A sleeping free server can take about a minute to wake up. Keep this page open.</p>
+<details id="setup"><summary>First time? Deploy the free test server</summary><p>The server configuration is already prepared. Sign in to Render, review the service and confirm the <b>Free</b> plan. After deployment, paste its <b>onrender.com</b> address above.</p><a class="button secondary" href="https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2Friachrobert-netizen%2Fd-words-english" target="_blank" rel="noopener noreferrer">Deploy free server</a><p>Region: Singapore. No database is needed. This deploys the connection test only.</p></details>
+</section>
+<section><h2>2. Meet in the same room</h2><div class="row"><button id="create" disabled>Create room</button><input id="code" aria-label="Room code" placeholder="Friend’s 6-letter code" maxlength="6" autocapitalize="characters" spellcheck="false"><button id="join" class="secondary" disabled>Join</button></div><div id="roomInfo" class="room-info" hidden><div><small>YOUR ROOM</small><div id="roomCode" class="code"></div></div><div><div id="players">Waiting for your friend</div><button id="invite" class="secondary">Copy invite link</button></div></div><input id="inviteFallback" readonly aria-label="Invite link to copy" hidden><p id="message" role="status" aria-live="polite"></p></section>
+<section><h2>3. Test the connection</h2><p class="note">The 30-second test starts when both players arrive. Keep both pages in the foreground. You can also send a visible signal to each other.</p><div class="metrics"><div class="metric"><small>SERVER ROUND TRIP</small><strong id="serverMs">—</strong></div><div class="metric"><small>PLAYER ROUND TRIP</small><strong id="peerMs">—</strong></div><div class="metric"><small>PROBES RETURNED</small><strong id="returned">—</strong></div></div><div class="track"><div id="progress"></div></div><p id="result" aria-live="polite">Waiting for two players.</p><div class="row"><button id="test" disabled>Run 30-second test</button><button id="signal" class="secondary" disabled>Send signal</button><button id="copyReport" class="secondary" disabled>Copy results</button></div><ul id="log" aria-label="Connection events"></ul></section>
+<footer><a href="https://riachrobert-netizen.github.io/d-words-english/rise-of-civilization/">Return to the solo game</a><p>This measures connectivity and delay, not full-game performance. Rooms are temporary. A server restart or disconnect may require a new room. Idle connections close after 10 minutes.</p></footer>
+</main>
+<script>
+(()=>{
+ const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
+ let ws=null,epoch=0,online=false,room='',players=0,retryTimer=null,connectTimeout=null,runTimer=null,settleTimer=null,pingTimer=null,run=null,report='',seq=0,lastTotal=0;
+ let pending=new Map(),serverPending=new Map(),serverSamples=[],peerSamples=[];
+ let requestedRoom=(params.get('room')||'').toUpperCase();$('code').value=requestedRoom.slice(0,6);
+ let stored='';try{stored=localStorage.getItem('roc-probe-server')||''}catch{}
+ $('server').value=params.get('server')||((location.hostname.endsWith('.onrender.com')||['localhost','127.0.0.1'].includes(location.hostname))?location.origin:stored);
+ function note(s){$('message').textContent=s}
+ function log(s){const li=document.createElement('li');li.textContent=new Date().toLocaleTimeString()+' · '+s;$('log').prepend(li);while($('log').children.length>8)$('log').lastChild.remove()}
+ function status(s){$('state').textContent=s;$('connection').classList.toggle('online',online)}
+ function buttons(){for(const id of ['create','join'])$(id).disabled=!online;$('test').disabled=!online||players!==2||!!run;$('signal').disabled=!online||players!==2;$('connect').disabled=online||!!connectTimeout;$('disconnect').hidden=!online&&!connectTimeout;$('server').disabled=online||!!connectTimeout}
+ function send(m){if(ws?.readyState===WebSocket.OPEN)ws.send(JSON.stringify(m))}
+ function median(a){if(!a.length)return null;const s=[...a].sort((a,b)=>a-b);return s[Math.floor(s.length/2)]}
+ function ms(v){return v===null?'—':Math.round(v)+' ms'}
+ function metrics(){ $('serverMs').textContent=ms(median(serverSamples));$('peerMs').textContent=ms(median(peerSamples));$('returned').textContent=run?peerSamples.length+'/'+run.sent:lastTotal?peerSamples.length+'/'+lastTotal:'—' }
+ function clearTest(){clearInterval(runTimer);clearTimeout(settleTimer);runTimer=settleTimer=null;run=null;pending.clear();buttons()}
+ function finish(reason='complete'){
+   if(!run)return;const sent=run.sent,received=peerSamples.length,late=sent-received,mid=median(peerSamples),serverMid=median(serverSamples);
+   lastTotal=sent;clearTest();$('progress').style.width=reason==='complete'?'100%':$('progress').style.width;
+   $('returned').textContent=received+'/'+sent;
+   const assessment=reason!=='complete'?'Test interrupted: '+reason+'.':received===0?'No player replies returned.':late>0?'Connection worked, but some probes timed out.':mid<=150?'Connection looks promising for a two-player test.':mid<=300?'Connection works; noticeable command delay is possible.':'Connection works, but delay is high.';
+   $('result').textContent=assessment;
+   report=['Rise of Civilization connection test',new Date().toISOString(),'Server: '+$('server').value,'Outcome: '+reason,'Server round trip (median): '+ms(serverMid),'Player round trip via server (median): '+ms(mid),'Player round trip (maximum): '+ms(received?Math.max(...peerSamples):null),'Probes returned: '+received+'/'+sent,'Timeouts (over 2 seconds): '+late,'Result: '+assessment,'Connectivity test only; full game performance has not been measured.'].join('\n');
+   $('copyReport').disabled=false;log('Test '+reason+'. '+received+'/'+sent+' probes returned.');
+ }
+ function serverPing(){const id=++seq;serverPending.set(id,performance.now());send({type:'ping',id});for(const [k,t] of serverPending)if(performance.now()-t>10000)serverPending.delete(k)}
+ function startTest(){
+   if(!online||players!==2||run)return;clearInterval(pingTimer);serverSamples=[];peerSamples=[];pending.clear();serverPending.clear();report='';$('copyReport').disabled=true;
+   run={sent:0};$('result').textContent='Testing… keep both pages open.';log('30-second player test started.');buttons();
+   function tick(){if(!run)return;for(const [id,t] of pending)if(performance.now()-t>2000)pending.delete(id);serverPing();const id=++seq;pending.set(id,performance.now());send({type:'probe',id});run.sent++;$('progress').style.width=(run.sent/30*100)+'%';metrics();if(run.sent===30){clearInterval(runTimer);settleTimer=setTimeout(()=>finish(),2200)}}
+   tick();runTimer=setInterval(tick,1000);
+ }
+ function left(){if(run)finish('other player disconnected');room='';players=0;$('roomInfo').hidden=true;buttons()}
+ function disconnect(){epoch++;clearTimeout(retryTimer);clearTimeout(connectTimeout);clearInterval(pingTimer);retryTimer=connectTimeout=null;if(run)finish('disconnected');if(ws){ws.onclose=null;ws.close();ws=null}online=false;left();status('Disconnected. Connect to start again.');buttons()}
+ function endpoint(){const u=new URL($('server').value.trim());if(!['https:','http:'].includes(u.protocol)||u.username||u.password)throw Error('Enter an https:// server address.');if(u.protocol==='http:'&&!['localhost','127.0.0.1'].includes(u.hostname))throw Error('Use the https:// address from Render.');u.pathname='/ws';u.search='';u.hash='';$('server').value=u.origin;try{localStorage.setItem('roc-probe-server',u.origin)}catch{}u.protocol=u.protocol==='https:'?'wss:':'ws:';return u.href}
+ function connect(){
+   let url;try{url=endpoint()}catch(e){note(e.message);return}disconnect();note('');serverSamples=[];peerSamples=[];lastTotal=0;report='';$('copyReport').disabled=true;$('progress').style.width='0%';$('result').textContent='Waiting for two players.';metrics();const generation=epoch;let attempts=0;
+   connectTimeout=setTimeout(()=>{if(generation!==epoch)return;disconnect();status('Could not connect. Check the address and Render deployment, then retry.');log('Connection timed out.')},100000);buttons();
+   function attempt(){
+     if(generation!==epoch)return;attempts++;status(attempts===1?'Connecting…':'Waiting for the server to wake up…');const socket=new WebSocket(url);ws=socket;let hello=false;
+     socket.onmessage=e=>{
+       if(generation!==epoch||ws!==socket)return;let m;try{m=JSON.parse(e.data)}catch{return}
+       if(m.type==='hello'){
+         if(m.service!=='roc-connection-probe-v1'){disconnect();note('This address is not the Rise of Civilization test server.');return}
+         hello=true;online=true;clearTimeout(connectTimeout);connectTimeout=null;buttons();status('Connected. Create a room or join your friend.');log('Server connected.');serverPing();let n=1;pingTimer=setInterval(()=>{serverPing();if(++n>=30)clearInterval(pingTimer)},1000);
+         if(requestedRoom){send({type:'join',code:requestedRoom});requestedRoom=''}return;
+       }
+       if(!hello)return;
+       if(m.type==='room'){
+         const was=room===m.code?players:0;if(room!==m.code&&run)finish('changed rooms');room=m.code;players=m.players;$('roomInfo').hidden=false;$('roomCode').textContent=room;$('players').textContent=players===2?'Both players connected':'Waiting for your friend';note(players===2?'Connected to your friend.':'Share the invite link or room code.');buttons();
+         if(players===2&&was!==2)startTest();else if(players!==2&&run)finish('other player disconnected');return;
+       }
+       if(m.type==='pong'){const t=serverPending.get(m.id);if(t!==undefined){serverSamples.push(performance.now()-t);serverPending.delete(m.id);metrics()}return}
+       if(m.type==='probe'){send({type:'ack',id:m.id});return}
+       if(m.type==='ack'){const t=pending.get(m.id);if(run&&t!==undefined){const delay=performance.now()-t;if(delay<=2000)peerSamples.push(delay);pending.delete(m.id);metrics()}return}
+       if(m.type==='signal'){note('Your friend’s signal arrived!');log('Received a signal from the other device.');return}
+       if(m.type==='error'){note(m.message);log(m.message);return}
+     };
+     socket.onerror=()=>{};
+     socket.onclose=()=>{if(generation!==epoch||ws!==socket)return;if(!hello){retryTimer=setTimeout(attempt,3500);return}if(run)finish('connection lost');online=false;left();clearInterval(pingTimer);status('Connection lost. Reconnect and create or join a room.');log('Disconnected from server.');buttons()};
+   }
+   attempt();
+ }
+ $('connect').onclick=connect;$('disconnect').onclick=disconnect;
+ $('create').onclick=()=>{if(run)finish('new room requested');note('');send({type:'create'})};
+ $('join').onclick=()=>{const code=$('code').value.trim().toUpperCase();if(!/^[A-Z2-9]{6}$/.test(code)){note('Enter the six characters shown on your friend’s screen.');return}if(run)finish('joining another room');send({type:'join',code})};
+ $('test').onclick=startTest;$('signal').onclick=()=>{send({type:'signal'});note('Signal sent. Ask your friend if it arrived.');log('Signal sent.')};
+ async function copy(text,fallback){try{await navigator.clipboard.writeText(text);note('Copied.')}catch{fallback.value=text;fallback.hidden=false;fallback.focus();fallback.select();note('Select and copy the text below.')}}
+ $('invite').onclick=()=>{const u=new URL(location.href);u.search='';u.searchParams.set('server',$('server').value);u.searchParams.set('room',room);copy(u.href,$('inviteFallback'))};
+ const reportBox=document.createElement('textarea');reportBox.hidden=true;reportBox.readOnly=true;reportBox.style.cssText='width:100%;min-height:160px;margin-top:12px';reportBox.setAttribute('aria-label','Connection results');$('copyReport').parentElement.after(reportBox);
+ $('copyReport').onclick=()=>copy(report,reportBox);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&run)finish('page moved to background')});
+ window.addEventListener('pagehide',()=>{if(ws)ws.close()});
+})();
+</script></body></html>
