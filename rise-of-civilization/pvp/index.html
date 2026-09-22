@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PvP · Rise of Civilization — Solo Skirmish</title>
+<style>
+:root{--bg:#171815;--panel:#252720;--panel2:#2e3028;--text:#f4f0df;--muted:#bbb6a3;--border:#555849;--ready:#586f3d;--ready2:#789c50;--blue:#315b78;--red:#8b3f36;--gold:#c7a442}
+*{box-sizing:border-box}body{margin:0;background:#11120f;color:var(--text);font-family:Arial,Helvetica,sans-serif}button{font:inherit;color:inherit}.app{max-width:1500px;margin:0 auto;padding:14px}.topbar,.civrow,.info,.features,.actions{display:grid;gap:10px}.topbar{grid-template-columns:1fr auto;align-items:center}.toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.btn,.action,.civcard{background:var(--panel);border:1px solid var(--border);border-radius:10px;color:var(--text);cursor:pointer}.btn{padding:9px 12px}.btn:hover,.action:hover,.civcard:hover{filter:brightness(1.08)}.guide{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin:10px 0}.guide small{display:block;color:var(--muted);margin-bottom:4px}.civrow{grid-template-columns:1fr 1fr}.civcard{text-align:left;padding:12px;border-width:2px}.civcard.active{border-color:#e2d582}.civhead{display:flex;justify-content:space-between;gap:10px}.sub{font-size:12px;color:var(--muted);margin-top:3px}.age{font-size:12px;border:1px solid var(--border);padding:5px 7px;border-radius:8px;height:max-content}.resources{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;font-size:13px;margin-top:9px}.stage{position:relative;margin-top:10px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#000}.stage canvas{display:block;width:100%;height:auto;aspect-ratio:5/3}.overlay{position:absolute;left:12px;right:12px;background:rgba(0,0,0,.68);padding:9px 11px;border-radius:9px;font-size:14px;pointer-events:none}.banner{top:12px}.place{bottom:12px}.hidden{display:none!important}.modal{position:absolute;inset:0;background:rgba(0,0,0,.78);display:flex;align-items:center;justify-content:center;padding:18px;z-index:10}.modalbox{width:min(620px,96%);background:#23251f;border:1px solid var(--border);border-radius:14px;padding:20px}.modalbox h2{margin:0 0 8px}.modalbox p,.modalbox li{color:#ddd7c4;line-height:1.45}.modalbox ul{padding-left:20px}.start{width:100%;background:#6e7f45;border:1px solid #9baa6a;padding:12px;border-radius:10px;cursor:pointer;font-weight:700}.legend{font-size:12px;color:var(--muted);margin:8px 0}.actions{grid-template-columns:repeat(4,1fr)}.action{min-height:62px;padding:8px;transition:.15s}.action small{display:block;color:#d1cbb7;margin-top:4px}.action[data-ready="true"]{background:linear-gradient(#627b45,#4d6537);border-color:#99b66c;font-weight:700;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}.action[data-ready="false"]{opacity:.42;cursor:not-allowed}.action[data-placing="true"]{outline:3px solid #e7d671;outline-offset:2px}.info{grid-template-columns:repeat(3,1fr);margin-top:10px}.infobox,.feature{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:11px}.infobox small{color:var(--muted)}.features{grid-template-columns:repeat(6,1fr);margin-top:10px}.feature{font-size:12px;text-align:center}.status{font-size:13px;color:var(--muted);padding:10px 2px}.title{font-size:16px;font-weight:700}.kbd{display:inline-block;padding:1px 5px;border:1px solid var(--border);border-radius:5px;background:#292b24}.desktop-note{font-size:12px;color:var(--muted)}
+@media(max-width:900px){.actions{grid-template-columns:repeat(3,1fr)}.features{grid-template-columns:repeat(3,1fr)}.info{grid-template-columns:1fr}.topbar{grid-template-columns:1fr}.toolbar{justify-content:flex-start}}@media(max-width:600px){.civrow{grid-template-columns:1fr}.actions{grid-template-columns:repeat(2,1fr)}.resources{grid-template-columns:repeat(5,minmax(0,1fr));font-size:12px}}
+</style>
+<style>
+/* Enhanced edition: a compact, warm stone and patinated bronze interface. */
+:root{--panel:#25322e;--panel2:#30413a;--text:#efe8d4;--muted:#b7c0ad;--border:#536253}
+body{background:radial-gradient(ellipse at 50% 0,#293a32 0,#111e1b 70%);color:var(--text)}
+.app{max-width:1560px;padding:22px 26px 24px}.title{font-family:Georgia,'Times New Roman',serif;font-size:27px;font-weight:400;letter-spacing:.2px;color:#f1dfb2}.desktop-note{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;margin-top:7px;color:#a9b7a3}
+.btn{border-radius:5px;background:linear-gradient(#34483e,#25382f);border-color:#596c59;font-size:12px;padding:10px 12px;box-shadow:inset 0 1px rgba(241,225,178,.06)}.btn:hover{border-color:#c3b780}.btn:focus-visible,.action:focus-visible,.civcard:focus-visible{outline:2px solid #ead294;outline-offset:3px}#graphics{color:#f5d99c;border-color:#aa9867;background:linear-gradient(#495846,#354435)}
+.guide{margin:16px 0 12px;padding:10px 15px;border-radius:5px;background:#202e28;border-color:#425648;border-left:3px solid #b5a471;font-size:13px}.guide small{display:inline-block;margin:0 12px 0 0;text-transform:uppercase;letter-spacing:1.4px;font-size:10px;color:#c6b67c}
+.civrow{gap:12px}.civcard{padding:12px 16px;border-radius:6px;background:linear-gradient(110deg,#2f443d,#25362f);border-color:#465d50}.civcard.active{border-color:#c5b47d;box-shadow:inset 3px 0 #c5b47d}.civhead strong{font-family:Georgia,serif;font-size:18px;font-weight:400}.sub{font-size:11px}.age{border-color:#61715b;border-radius:3px;font-size:11px;color:#e2d1a0}.resources{gap:12px;font-size:13px}.resources>div{padding-top:7px;border-top:1px solid #496052}
+.stage{border-radius:5px;border-color:#7e8662;box-shadow:0 10px 36px #07130d70;margin-top:12px;isolation:isolate}.stage canvas{cursor:crosshair}.overlay{font-size:12px;background:#172720d9;border:1px solid #65755880;border-radius:4px;padding:8px 12px;left:10px;right:auto;max-width:calc(100% - 20px)}.banner{top:10px}.place{bottom:10px;color:#f2dfae}.legend{margin:12px 0;color:#b1bca8;font-size:11px}.actions{gap:8px}.action{border-radius:5px;min-height:61px;background:#26382e;border-color:#4d624e;font-size:13px}.action small{font-size:10px;color:#c3cbb7}.action[data-ready="true"]{background:linear-gradient(#63784d,#485f3b);border-color:#9ba976;color:#faf0d2}.action[data-ready="false"]{opacity:.52}.infobox,.feature{border-radius:5px;background:#23332b;border-color:#415843;font-size:12px}.feature{padding:9px}.status{font-size:12px;padding-top:12px}.modalbox{background:linear-gradient(135deg,#34473a,#202e27);border-color:#9b946a;border-radius:8px;box-shadow:0 20px 80px #0008}.modalbox h2{font:30px Georgia,serif;color:#ebd7a6}.start{background:linear-gradient(#748552,#4e663f);border-color:#a3af78;border-radius:5px}.modalbox p,.modalbox li{font-size:14px}
+/* These legacy floating panels duplicate the functioning footer and obscure play. */
+#civPanel,#effectPanel{display:none}
+#artGallery{padding:0;width:min(1480px,96vw);max-width:96vw;max-height:92vh;border:1px solid #a7996b;border-radius:8px;background:#23362c;color:#f1e4bd;box-shadow:0 20px 90px #0009}#artGallery::backdrop{background:#06100cce}.gallery-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 22px}.gallery-head strong{font:23px Georgia,serif}.gallery-head p{margin:6px 0 0;font-size:12px;color:#b8c4ab}#galleryCanvas{width:100%;height:auto;display:block}
+.classic-view #graphics{background:#2b3630;color:#ded7bd;border-color:#68705b}
+@media(max-width:900px){.app{padding:12px}.title{font-size:23px}.toolbar{gap:6px}.btn{padding:8px 10px}.resources{gap:5px}.topbar{gap:14px}.guide small{display:block;margin-bottom:4px}}
+@media(max-width:600px){.title{font-size:21px}.gallery-head{padding:12px}.gallery-head strong{font-size:18px}.gallery-head p{font-size:11px}.overlay{font-size:10px;padding:5px 8px}.civcard{padding:10px 12px}}
+.maptools{position:absolute;bottom:12px;right:12px;display:flex;gap:2px;align-items:center;background:#182b23e8;border:1px solid #7d8863;border-radius:5px;padding:3px;z-index:2}.maptools button{color:#f2deb0;background:transparent;border:0;cursor:pointer;min-width:30px;height:29px;font:16px Arial}.maptools button:hover{background:#526347}.maptools span{min-width:43px;text-align:center;font:11px Arial;color:#d6dcc6}.maptools #zoomFit{font:11px Arial;padding:0 9px;border-left:1px solid #52634a}.pan-hint{position:absolute;right:12px;bottom:56px;color:#e6dfbf;background:#182b23c9;padding:4px 7px;border-radius:3px;font:10px Arial;pointer-events:none}@media(max-width:600px){.pan-hint{display:none}.maptools{bottom:6px;right:6px}.maptools button{height:25px;min-width:25px}}
+
+</style>
+<style>#evolutionDialog{padding:0;width:min(1240px,96vw);max-width:96vw;max-height:92vh;border:1px solid #a7996b;border-radius:8px;background:#23362c;color:#f1e4bd}#evolutionDialog::backdrop{background:#06100cce}#evolutionCanvas{display:block;width:100%;height:auto}</style><style>.stance-panel{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:11px 13px;margin-top:10px;background:#23372e;border:1px solid #52674e;border-radius:5px;font-size:12px}.stance-buttons{display:flex;gap:5px}.stance-buttons button[aria-pressed="true"]{background:#697849;border-color:#c3b980;color:#fff1c6}.stance-buttons button:disabled{opacity:.45;cursor:default}#stanceHelp{color:#b9c6af;font-size:11px}</style><style>#archer.action,#archery.action{border-color:#7f7651}</style><style>
+.solo-setup{position:fixed;inset:0;z-index:1000;overflow:auto;display:flex;align-items:center;justify-content:center;padding:28px;background:radial-gradient(ellipse at 12% 10%,#527365aa,transparent 58%),linear-gradient(110deg,#0c201df5,#162d25f2);backdrop-filter:blur(8px)}
+.solo-box{width:min(600px,100%);padding:34px 40px;border:1px solid #7a876180;border-radius:12px;background:linear-gradient(145deg,#28443ae8,#142b24f2);box-shadow:0 25px 100px #03100a70}
+.solo-eyebrow{font:10px Arial,sans-serif;letter-spacing:2.6px;color:#c8bb8d;margin-bottom:18px}
+.solo-box h1{font:44px/1.05 Georgia,serif;letter-spacing:-1px;color:#f0e6c8;margin:0 0 18px}.solo-box h1 em{font-style:normal;color:#cfb979}
+.solo-lead{font:14px/1.55 Arial,sans-serif;color:#bbcbb9;max-width:450px;margin:0 0 22px}
+.solo-fields{display:grid;gap:13px}.solo-fields label{display:grid;gap:6px;font:12px Arial,sans-serif;color:#d6ddc6}
+.solo-fields select{appearance:auto;width:100%;font:14px Arial,sans-serif;background:#152b24;color:#f3e8c7;border:1px solid #6d8060;border-radius:5px;padding:11px 10px}
+.solo-fields select:focus-visible{outline:2px solid #ead294;outline-offset:3px}
+.solo-fair{font:11px/1.6 Arial,sans-serif;color:#acbba4;margin:17px 0}.solo-foot{font:10px/1.6 Arial,sans-serif;color:#95aa96;margin-top:16px;text-align:center}.solo-box .start{min-height:47px}.solo-box #soloCancel{display:block;margin:10px auto 0}.solo-box #soloCancel[hidden]{display:none}
+.role{display:inline-block;font:9px Arial,sans-serif;letter-spacing:1.3px;color:#e2cd94;border:1px solid #748269;padding:4px 6px;border-radius:3px;margin-left:8px;vertical-align:middle}.solo-strip{color:#c9d0b9;font:12px Arial,sans-serif;margin-top:14px;padding:8px 0;border-bottom:1px solid #52664a}#cardA,#cardB{cursor:default}
+@media(max-height:800px){.solo-setup{align-items:flex-start}.solo-box{padding:25px 32px}.solo-box h1{font-size:34px}.solo-eyebrow{margin-bottom:12px}.solo-lead{margin-bottom:14px}.solo-fields{gap:10px}}
+@media(max-width:600px){.solo-setup{padding:12px}.solo-box{padding:22px}.solo-box h1{font-size:32px}}
+
+/* Mobile command patch v1. Pinch applies only to the battlefield. */
+#game{touch-action:none;user-select:none;-webkit-user-select:none}
+.commandbar{display:flex;gap:6px;margin-top:8px;flex-shrink:0}.commandbar .btn{min-height:44px;flex:1}
+.commandbar [hidden],.command-sheet[hidden]{display:none!important}
+.commandbar button[aria-expanded="true"]{background:#607744;border-color:#d2be84}
+.command-sheet{position:fixed;z-index:30;right:18px;bottom:18px;width:min(480px,calc(100% - 24px));max-height:70dvh;overflow:auto;overscroll-behavior:contain;background:#20372f;border:1px solid #a1976d;border-radius:12px;box-shadow:0 12px 55px #000b;padding:12px}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.sheet-head strong{font:20px Georgia,serif}.sheet-head button{min-height:44px}
+.command-sheet .actions{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.command-sheet .action{min-height:58px;width:100%}.command-sheet .toolbar{margin-top:12px;justify-content:flex-start}.command-sheet .toolbar button{min-height:44px}.command-sheet .features{grid-template-columns:repeat(3,1fr)}.command-sheet .info{grid-template-columns:1fr}.touch-help{font:12px/1.5 Arial;color:#c4cbb7}.command-sheet .stance-panel{margin:12px 0}
+.maptools button,.maptools #zoomFit{min-width:40px;height:40px}.maptools #homeView{font-size:11px;padding:0 7px}.pan-hint{bottom:64px}
+.app:is(.compact,.immersive){position:relative;display:flex;flex-direction:column;width:100%;max-width:none;height:100vh;height:100dvh;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);overflow:hidden;background:#172820}
+.app.immersive{position:fixed;inset:0;z-index:100}
+.app:is(.compact,.immersive)>.topbar,.app:is(.compact,.immersive)>.guide,.app:is(.compact,.immersive)>.legend{display:none}
+.app:is(.compact,.immersive)>.civrow{display:block;flex-shrink:0}
+.app:is(.compact,.immersive) .civcard:not(.active){display:none}
+.app:is(.compact,.immersive) .civcard.active{display:block;width:100%;padding:6px 10px;border:0;border-radius:0;box-shadow:none}
+.app:is(.compact,.immersive) .civhead strong{font-size:14px}.app:is(.compact,.immersive) .civhead .sub{display:none}.app:is(.compact,.immersive) .age{font-size:10px;padding:2px 4px}.app:is(.compact,.immersive) .role{padding:1px 4px;font-size:8px}
+.app:is(.compact,.immersive) .resources{margin-top:5px;font-size:12px;gap:4px}
+.app:is(.compact,.immersive)>.stage{flex:1;min-height:0;margin:0;border-radius:0;box-shadow:none;border-left:0;border-right:0}
+.app:is(.compact,.immersive) #game{width:100%;height:100%;aspect-ratio:auto}
+.app:is(.compact,.immersive) .commandbar{margin:0;padding:5px;gap:4px}.app:is(.compact,.immersive) .commandbar .btn{padding:6px 3px;font-size:12px;min-width:0}
+.app:is(.compact,.immersive)>.status{padding:2px 8px 6px;min-height:30px;font-size:11px;line-height:1.3;max-height:44px;overflow:auto;flex-shrink:0}
+.app:is(.compact,.immersive) .command-sheet{bottom:92px;right:8px;width:min(480px,calc(100% - 16px));max-height:calc(100dvh - 160px)}
+.app:is(.compact,.immersive) .banner{font-size:10px;max-width:calc(100% - 16px);top:6px;left:8px;padding:4px 7px}.app:is(.compact,.immersive) .place{bottom:60px;font-size:11px}
+.app:is(.compact,.immersive) .pan-hint{display:none}.app:is(.compact,.immersive) .maptools{bottom:6px;right:6px;padding:2px}.app:is(.compact,.immersive) .modal{overflow:auto;align-items:flex-start}.app:is(.compact,.immersive) .modalbox{margin:auto;padding:15px}.app:is(.compact,.immersive) .modalbox h2{font-size:23px}
+@media(max-height:500px){.app:is(.compact,.immersive) .civhead{display:none}.app:is(.compact,.immersive) .resources{margin:0}.app:is(.compact,.immersive) .command-sheet{bottom:82px;max-height:calc(100dvh - 115px)}}
+
+</style></head>
+<body>
+<section id="soloSetup" class="solo-setup" role="dialog" aria-modal="true" aria-labelledby="soloTitle">
+ <div class="solo-box">
+  <div class="solo-eyebrow">RISE OF CIVILIZATION / TWO PLAYER MATCH</div>
+  <h1 id="soloTitle">Build together.<br><em>Compete across the river.</em></h1>
+  <p class="solo-lead">The room creator commands Civilization A. The friend who joins commands Civilization B.</p>
+  <div class="solo-fields" style="display:grid;gap:10px">
+   <label>Server address<input id="pvpServer" type="url" placeholder="https://rise-civ-connection-test.your-name.workers.dev" style="width:100%;padding:12px;background:#17251d;color:#fff;border:1px solid #8d9878;border-radius:6px"></label>
+   <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="pvpConnect">Connect to server</button><button class="btn" id="pvpCreate" disabled>Create room · Civ A</button></div>
+   <label>Friend's room code<input id="pvpCode" maxlength="6" autocapitalize="characters" spellcheck="false" placeholder="ABC234" style="width:100%;padding:12px;background:#17251d;color:#fff;border:1px solid #8d9878;border-radius:6px"></label>
+   <button class="btn" id="pvpJoin" disabled>Join room · Civ B</button>
+   <button class="btn" id="pvpInvite" hidden>Copy invite link</button>
+  </div>
+  <p id="pvpMessage" class="solo-lead" role="status" aria-live="polite">Connect, then create a room or join your friend.</p>
+  <p class="solo-foot">Keep both pages open. A match pauses if either player leaves. Room progress is temporary.</p>
+  <button id="soloPlay" hidden></button><button id="soloCancel" hidden></button>
+ </div>
+</section>
+<div class="app" id="app" tabindex="0">
+  <div class="topbar">
+    <div><div class="title">Young Historians — Rise of Civilization</div><div class="desktop-note">Online match · two human players · no installation</div></div>
+    <div class="toolbar"><button class="btn" id="homeView">Home view</button><button class="btn" id="help">? Help</button><button class="btn" id="sound">🔊 Sound on</button><button class="btn" id="pause">Pause</button><button class="btn" id="reset">Restart</button></div>
+  </div>
+  <div class="solo-strip" id="soloStatus">Choose your civilization to begin</div><div class="guide"><small>Next step</small><strong id="guideText">Select a villager and begin gathering.</strong></div>
+  <div class="civrow">
+    <button id="cardA" class="civcard active"><div class="civhead"><div><strong>Civilization A <span class="role" id="roleA">YOU</span></strong><div class="sub">Mediterranean architectural tradition</div></div><span class="age" id="ageA">Hunter-Gatherer</span></div><div class="resources"><span>🍖 <b id="foodA">60</b></span><span>🪵 <b id="woodA">45</b></span><span>🪨 <b id="stoneA">0</b></span><span>🟡 <b id="goldA">0</b></span><span>👥 <b id="popA">3/5</b></span></div></button>
+    <button id="cardB" class="civcard"><div class="civhead"><div><strong>Civilization B <span class="role" id="roleB">COMPUTER</span></strong><div class="sub">Eastern plateau architectural tradition</div></div><span class="age" id="ageB">Hunter-Gatherer</span></div><div class="resources"><span>🍖 <b id="foodB">60</b></span><span>🪵 <b id="woodB">45</b></span><span>🪨 <b id="stoneB">0</b></span><span>🟡 <b id="goldB">0</b></span><span>👥 <b id="popB">3/5</b></span></div></button>
+  </div>
+
+  <div class="stage">
+    <canvas id="game" width="1500" height="900"></canvas>
+    <div class="overlay banner" id="banner">Explore the larger world, gather resources, and plan your settlement.</div>
+    <div class="overlay place hidden" id="placeLabel"></div>
+    <div class="modal" id="tutorial"><div class="modalbox"><h2>Build a Civilization</h2><p>Start as hunter-gatherers, enter the Neolithic Age, then build a Bronze Age civilization.</p><ul><li><b>Select a villager</b>, then click trees, deer, berries, stone, or gold.</li><li>Workers carry resources back to the Town Center or nearest Storehouse.</li><li>Action buttons turn green when available.</li><li>For buildings, choose the building button, move the preview over the map, then click a valid location.</li><li><b>Green footprint</b> = valid. <b>Red footprint</b> = blocked. Press <span class="kbd">Esc</span> to cancel.</li><li>In the Neolithic Age, build a Barracks for spearmen. In the Bronze Age, train swordsmen and build an Archery Range for archers. Build a bridge across the river to reach your opponent.</li></ul><p><b>Win:</b> Conquest means destroying the enemy Town Center and all its people. If enabled, Civilization Victory requires all six feature boxes below the map. Houses and farms support settlement growth.</p><button class="start" id="start">Start playing</button></div></div>
+    <div class="modal hidden" id="end"><div class="modalbox" style="text-align:center"><h2 id="endTitle"></h2><p id="endText"></p><button class="start" id="again">Play again</button></div></div>
+  </div>
+  <div class="legend">Green buttons = available · dimmed = locked/unaffordable · outlined = placement mode · <span class="kbd">H</span> home view · Space pauses · click a friendly store to unload</div>
+  <div class="actions">
+    <button id="age" class="action">Advance Age</button><button id="farm" class="action">🌾 Farm<small>50 wood</small></button><button id="house" class="action">🏠 House<small>40 wood</small></button><button id="store" class="action">📦 Storehouse<small>60 wood</small></button>
+    <button id="villager" class="action">👤 Villager<small>35 food</small></button><button id="barracks" class="action">⚔ Barracks<small>80 wood · 60 stone</small></button><button id="spearman" class="action">🛡 Spearman<small>50 food · 25 gold</small></button><button id="archery" class="action">🏹 Archery Range<small>100 wood · 40 stone</small></button><button id="archer" class="action">🏹 Archer<small>55 food · 35 wood</small></button><button id="swordsman" class="action">⚔ Swordsman<small>70 food · 40 gold</small></button><button id="temple" class="action">Temple<small>90 stone · 25 gold</small></button>
+    <button id="gov" class="action">Government Hall<small>70 wood · 80 stone</small></button><button id="scribe" class="action">Scribal School<small>80 wood · 35 gold</small></button><button id="monument" class="action">Monument<small>120 stone · 45 gold</small></button><button id="bridge" class="action">🌉 Bridge<small>60 wood</small></button><button id="repair" class="action">🔨 Repair Town Center<small>40 wood</small></button>
+  </div>
+  <div class="info"><div class="infobox"><small>Active</small><div id="active">Civilization A</div><div class="sub" id="selected">No unit selected</div></div><div class="infobox"><small>Victory routes</small><div><span id="victoryLabel">🏛 Civilization · ⚔ Conquest</span></div></div><div class="infobox"><small>Historical effect</small><div id="effect">Wild resources are finite.</div></div></div>
+  <div class="features"><div class="feature">🏙 Cities <b id="fc">—</b></div><div class="feature">👑 Government <b id="fg">—</b></div><div class="feature">⛩ Religion <b id="fr">—</b></div><div class="feature">👥 Social Structure <b id="fs">—</b></div><div class="feature">✍ Writing <b id="fw">—</b></div><div class="feature">🎨 Art <b id="fart">—</b></div></div>
+  <div class="status" id="status">Select a villager and click a resource.</div>
+</div>
+<script>
+(()=>{
+const q=id=>document.getElementById(id),canvas=q('game'),ctx=canvas.getContext('2d'),W=1500,H=900,AGE=['Hunter-Gatherer','Neolithic Age','Bronze Age'];
+const CIV={A:{name:'Civilization A',style:'Mediterranean',main:'#315b78',x:185,y:455,age:0,food:60,wood:45,stoneR:0,gold:0,pop:3,cap:5,farmTick:0},B:{name:'Civilization B',style:'Eastern',main:'#8b3f36',x:1315,y:455,age:0,food:60,wood:45,stoneR:0,gold:0,pop:3,cap:5,farmTick:0}};
+const BUILD={farm:{label:'Farm',age:1,cost:{wood:50},w:94,h:68,hp:180},house:{label:'House',age:1,cost:{wood:40},w:72,h:68,hp:260},store:{label:'Storehouse',age:1,cost:{wood:60},w:88,h:72,hp:320},barracks:{label:'Barracks',age:1,cost:{wood:80,stone:60},w:116,h:82,hp:420},temple:{label:'Temple',age:2,cost:{stone:90,gold:25},w:102,h:94,hp:450},gov:{label:'Government Hall',age:2,cost:{wood:70,stone:80},w:126,h:94,hp:480},scribe:{label:'Scribal School',age:2,cost:{wood:80,gold:35},w:98,h:76,hp:360},archery:{label:'Archery Range',age:2,cost:{wood:100,stone:40},w:120,h:84,hp:400},monument:{label:'Monument',age:2,cost:{stone:120,gold:45},w:72,h:106,hp:520},bridge:{label:'Bridge',age:1,cost:{wood:60},w:120,h:30,hp:300}};
+let active='A',selected=null,pending=null,hover={x:400,y:400},paused=false,soundOn=true,ended=false,last=performance.now(),seq=0,bseq=0,audio=null,resources=[],units=[],buildings=[],particles=[],projectiles=[],stuckArrows=[];
+function unlockAudio(){if(audio)return;try{audio=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+function tone(f,d=.07,type='triangle',gain=.025,delay=0){if(!soundOn)return;unlockAudio();if(!audio)return;const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(gain,audio.currentTime+delay);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+delay+d);o.connect(g);g.connect(audio.destination);o.start(audio.currentTime+delay);o.stop(audio.currentTime+delay+d)}
+function sfx(k){if(k==='select')tone(430,.05,'square',.015);if(k==='build'){tone(175,.05,'square');tone(245,.06,'square',.02,.08);tone(315,.07,'square',.018,.16)}if(k==='age')[220,330,440,660].forEach((f,i)=>tone(f,.25,'triangle',.03,i*.1));if(k==='chop'){tone(105,.04,'square',.02);tone(75,.045,'square',.018,.035)}if(k==='mine'){tone(680,.035,'square',.022);tone(380,.05,'triangle',.015,.025)}if(k==='attack'){tone(100,.05,'sawtooth');tone(145,.04,'square',.02,.03)}if(k==='arrow'){tone(330,.04,'triangle',.012);tone(205,.09,'triangle',.009,.03)}if(k==='death')tone(85,.25,'sawtooth');if(k==='victory')[262,330,392,523].forEach((f,i)=>tone(f,.32,'triangle',.035,i*.12))}
+const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),enemy=k=>k==='A'?'B':'A';
+function point(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height}}
+function hit(p,o,extra=0){return Math.hypot(p.x-o.x,p.y-o.y)<=((o.r||Math.max(o.w||0,o.h||0)/2)+extra)}
+function resourceKind(t){return t==='tree'?'wood':(t==='deer'||t==='berries')?'food':t==='stone'?'stoneR':'gold'}
+function canAfford(c,cost){return Object.entries(cost).every(([k,v])=>(k==='stone'?c.stoneR:c[k])>=v)}
+function pay(c,cost){for(const[k,v]of Object.entries(cost)){if(k==='stone')c.stoneR-=v;else c[k]-=v}}
+function addRes(type,x,y,amount){resources.push({id:'r'+(++seq),type,x,y,amount,max:amount,r:type==='tree'?25:20,phase:Math.random()*6})}
+function addUnit(civ,type,x,y){
+const spec=type==='spearman'?{r:15,hp:120}
+  :type==='swordsman'?{r:16,hp:170}
+  :type==='archer'?{r:14,hp:85}
+  :{r:13,hp:70};
+units.push({id:'u'+(++seq),civ,type,x,y,r:spec.r,hp:spec.hp,maxHP:spec.hp,target:null,carry:0,carryKind:null,gather:0,attack:0,phase:Math.random()*6})
+}
+function addBase(k){const c=CIV[k];buildings.push({id:'tc'+k,civ:k,type:'tc',x:c.x,y:c.y,w:132,h:100,hp:700,maxHP:700})}
+function reset(){ended=false;paused=false;active='A';selected=null;pending=null;seq=bseq=0;resources=[];units=[];buildings=[];particles=[];projectiles=[];stuckArrows=[];Object.assign(CIV.A,{age:0,food:60,wood:45,stoneR:0,gold:0,pop:3,cap:5,farmTick:0});Object.assign(CIV.B,{age:0,food:60,wood:45,stoneR:0,gold:0,pop:3,cap:5,farmTick:0});addBase('A');addBase('B');for(let i=0;i<3;i++){addUnit('A','villager',135+i*40,530);addUnit('B','villager',1365-i*40,530)}
+const rs=[['tree',250,130,120],['tree',305,160,120],['tree',360,120,120],['tree',250,220,120],['tree',330,245,120],['tree',430,185,120],['tree',180,280,120],['tree',450,310,120],['tree',555,150,120],['tree',570,250,120],['tree',1250,130,120],['tree',1195,160,120],['tree',1140,120,120],['tree',1250,220,120],['tree',1170,245,120],['tree',1070,185,120],['tree',1320,280,120],['tree',1050,310,120],['tree',945,150,120],['tree',930,250,120],['tree',615,680,120],['tree',660,730,120],['tree',840,730,120],['tree',885,680,120],['tree',520,780,120],['tree',980,780,120],['berries',250,690,100],['berries',380,610,100],['berries',505,530,100],['berries',1250,690,100],['berries',1120,610,100],['berries',995,530,100],['berries',650,415,90],['berries',850,415,90],['deer',420,410,110],['deer',530,390,110],['deer',600,520,110],['deer',1080,410,110],['deer',970,390,110],['deer',900,520,110],['deer',675,250,100],['deer',825,250,100],['stone',350,790,200],['stone',520,650,190],['stone',610,820,210],['stone',1150,790,200],['stone',980,650,190],['stone',890,820,210],['stone',660,120,180],['stone',840,120,180],['gold',470,110,160],['gold',585,330,160],['gold',650,610,160],['gold',1030,110,160],['gold',915,330,160],['gold',850,610,160],['gold',700,770,150],['gold',800,770,150]];rs.forEach(r=>addRes(...r));q('end').classList.add('hidden');q('placeLabel').classList.add('hidden');q('banner').textContent='The world is large and resource-rich. Plan your settlement carefully.';q('effect').textContent='Wild resources are finite, but geography creates strategic choices.';q('status').textContent='Select a villager and click a resource.';updateUI()}
+function rectsOverlap(a,b,pad=10){return Math.abs(a.x-b.x)<(a.w+b.w)/2+pad&&Math.abs(a.y-b.y)<(a.h+b.h)/2+pad}
+function placementReason(type,x,y){const d=BUILD[type],g={x,y,w:d.w,h:d.h};if(x-d.w/2<20||x+d.w/2>W-20||y-d.h/2<80||y+d.h/2>H-20)return'Too close to map edge';if(type!=='bridge'&&x+d.w/2>720&&x-d.w/2<780)return'River blocks construction';for(const b of buildings)if(b.hp>0&&rectsOverlap(g,b,14))return'Too close to another building';for(const r of resources)if(r.amount>0&&Math.hypot(x-r.x,y-r.y)<Math.max(d.w,d.h)/2+r.r+12)return'Resource blocks this location';const etc=buildings.find(b=>b.civ===enemy(active)&&b.type==='tc'&&b.hp>0);if(etc&&dist({x,y},etc)<190)return'Too close to enemy Town Center';return''}
+function beginPlacement(type){const d=BUILD[type],c=CIV[active];if(!d||c.age<d.age||!canAfford(c,d.cost))return;pending={type};selected=null;q('placeLabel').classList.remove('hidden');q('placeLabel').textContent='Place '+d.label+' · green = valid · red = blocked · Esc = cancel';q('banner').textContent='Choose where to build your '+d.label+'.';updateUI()}
+function cancelPlacement(){if(!pending)return;pending=null;q('placeLabel').classList.add('hidden');q('status').textContent='Placement cancelled. No resources spent.';updateUI()}
+function placeAt(x,y){if(!pending)return;const d=BUILD[pending.type],reason=placementReason(pending.type,x,y),c=CIV[active];if(reason){q('status').textContent='Cannot build here: '+reason+'.';return}if(!canAfford(c,d.cost)){cancelPlacement();return}pay(c,d.cost);buildings.push({id:'b'+(++bseq),civ:active,type:pending.type,x,y,w:d.w,h:d.h,hp:d.hp,maxHP:d.hp,buildProgress:0,complete:false});if(pending.type==='house')c.cap+=5;q('banner').textContent=d.label+' constructed.';pending=null;q('placeLabel').classList.add('hidden');sfx('build');updateUI()}
+function handleMapCommand(e){
+  if(!solo.started||paused||ended)return;
+  unlockAudio();const p=point(e);hover=p;
+  if(p.x<0||p.x>W||p.y<0||p.y>H)return;
+  if(pending){const count=buildings.length;placeAt(p.x,p.y);if(buildings.length>count)q('status').textContent=q('banner').textContent;return}
+  const own=units.slice().reverse().find(u=>u.civ===active&&u.hp>0&&hit(p,u,8));
+  if(own){selected=own;sfx('select');q('status').textContent=own.type+' selected. Tap a destination or target.';updateUI();return}
+  if(!selected||selected.hp<=0)return;
+  const u=selected;
+  if(u.type==='villager'){
+    const drop=buildings.slice().reverse().find(b=>b.civ===u.civ&&b.hp>0&&(b.type==='store'||b.type==='tc')&&p.x>=b.x-b.w/2&&p.x<=b.x+b.w/2&&p.y>=b.y-b.h/2&&p.y<=b.y+b.h/2);
+    if(drop&&u.carry>0){u.target={kind:'drop',dropId:drop.id};q('status').textContent='Villager returning carried resources.'}
+    else{
+      const r=resources.slice().reverse().find(x=>x.amount>0&&hit(p,x,10));
+      u.target=r?(u.carry>0?{kind:'drop',resourceId:r.id}:{kind:'resource',id:r.id}):{kind:'move',x:p.x,y:p.y};
+      q('status').textContent=r?'Villager gathering '+r.type+'.':'Villager moving.';
+    }
+  }else{
+    const eu=units.find(u=>u.civ!==active&&u.hp>0&&hit(p,u,9));
+    const eb=buildings.find(b=>b.civ!==active&&b.hp>0&&p.x>b.x-b.w/2&&p.x<b.x+b.w/2&&p.y>b.y-b.h/2&&p.y<b.y+b.h/2);
+    issueCombatOrder(u,eu?{kind:'attackUnit',id:eu.id}:eb?{kind:'attackBuilding',id:eb.id}:{kind:'move',x:p.x,y:p.y});
+    q('status').textContent=eu||eb?'Attack ordered.':'Soldier moving.';
+  }
+  selected=null;updateUI();
+}
+canvas.addEventListener('contextmenu',e=>{e.preventDefault();cancelPlacement()});
+
+function move(u,t,s,dt,stop){
+const dx=t.x-u.x,dy=t.y-u.y,d=Math.hypot(dx,dy);
+if(d<=stop){if(u.target&&u.target.kind==='move')u.target=null;return}
+
+const nx=u.x+dx/d*s*dt;
+const ny=u.y+dy/d*s*dt;
+
+// River barrier: units cannot cross the river unless a bridge exists.
+const crossingRiver=(u.x<720&&nx>=720)||(u.x>780&&nx<=780);
+if(crossingRiver){
+  const hasBridge=buildings.some(b=>{
+  if(b.type!=='bridge') return false;
+  const dist=Math.hypot((u.x-b.x),(u.y-b.y));
+  return dist < 100;
+});
+  if(!hasBridge)return;
+}
+
+u.x=nx;
+u.y=ny;
+}
+function nearestDrop(u){return buildings.filter(b=>b.civ===u.civ&&(b.type==='store'||b.type==='tc')&&b.hp>0).sort((a,b)=>dist(u,a)-dist(u,b))[0]}
+function updateVillager(u,dt){if(!u.target||u.target.kind!=='resource'||u.huntResource!==u.target.id){u.huntTime=0;u.huntResource=null}if(!u.target)return;if(u.target.kind==='move'){move(u,u.target,110,dt,4);return}if(u.target.kind==='resource'){const r=resources.find(x=>x.id===u.target.id);if(!r||r.amount<=0){u.target=u.carry>0?{kind:'drop',resourceId:u.target.id}:null;return}if(u.carry>=10){u.target={kind:'drop',resourceId:r.id};return}if(dist(u,r)>r.r+17){u.huntTime=0;move(u,r,90,dt,r.r+17);return}if(r.type==='deer'&&!r.hunted){u.huntResource=r.id;u.huntTime=(u.huntTime||0)+dt;if(u.huntTime>=.6){r.hunted=true;r.deathAge=0;u.huntTime=0;u.huntResource=null;u.gather=0;sfx('attack')}return}if(r.type==='deer'&&(r.deathAge||0)<.5)return;u.gather+=dt;if(u.gather>.42){u.gather=0;const a=Math.min(2,10-u.carry,r.amount);r.amount-=a;u.carry+=a;u.carryKind=resourceKind(r.type);u.carrySource=r.type;particles.push({x:u.x,y:u.y-20,text:'+'+a,life:.7,kind:u.carryKind});if(r.type==='tree')sfx('chop');if(r.type==='stone'||r.type==='gold')sfx('mine')}}else if(u.target.kind==='drop'){const d=buildings.find(b=>b.id===u.target.dropId&&b.civ===u.civ&&b.hp>0&&(b.type==='store'||b.type==='tc'))||nearestDrop(u);if(!d)return;if(dist(u,d)>65){move(u,d,100,dt,65);return}CIV[u.civ][u.carryKind]+=u.carry;u.carry=0;u.carryKind=null;u.carrySource=null;const rid=u.target.resourceId;u.target=resources.find(r=>r.id===rid&&r.amount>0)?{kind:'resource',id:rid}:null}}
+function stanceOf(u){return u.stance||'defensive'}
+function military(u){return u&&u.hp>0&&(u.type==='spearman'||u.type==='swordsman')}
+function combatTarget(u){if(!u.target)return null;return (u.target.kind==='attackUnit'?units:u.target.kind==='attackBuilding'?buildings:[]).find(t=>t.id===u.target.id&&t.hp>0&&t.civ!==u.civ)||null}
+function combatPath(a,b){
+  if((a.x<=720&&b.x<=720)||(a.x>=780&&b.x>=780))return true;
+  if(Math.abs(b.x-a.x)<.01)return buildings.some(v=>v.type==='bridge'&&v.hp>0&&Math.abs(a.y-v.y)<v.h/2+10);
+  const y=a.y+(b.y-a.y)*(750-a.x)/(b.x-a.x);
+  return buildings.some(v=>v.type==='bridge'&&v.hp>0&&v.x-v.w/2<=720&&v.x+v.w/2>=780&&Math.abs(y-v.y)<v.h/2+10);
+}
+function issueCombatOrder(u,target){u.combat=null;u.target=target;u.attack=0;u.autoDelay=0;u.inCombat=false}
+function endAutomaticCombat(u){
+  const c=u.combat;u.combat=null;u.attack=0;u.inCombat=false;u.autoDelay=1;
+  if(!c){u.target=null;return}
+  u.target=c.resume?{...c.resume}:(stanceOf(u)!=='hold'&&dist(u,c.anchor)>4?{kind:'move',x:c.anchor.x,y:c.anchor.y,returning:true}:null);
+}
+function startAutomaticCombat(u,enemy,retaliation=false){
+  if(!military(u)||!enemy||enemy.hp<=0||enemy.civ===u.civ||!combatPath(u,enemy))return false;
+  const distance=dist(u,enemy),stance=stanceOf(u);
+  if(distance>(stance==='hold'?32:stance==='aggressive'?160:100))return false;
+  if(!retaliation&&u.target&&!u.combat)return false;
+  if(u.combat&&dist(u.combat.anchor,enemy)>(stance==='hold'?32:stance==='aggressive'?200:120))return false;
+  if(!u.combat)u.combat={anchor:u.target&&u.target.returning?{x:u.target.x,y:u.target.y}:{x:u.x,y:u.y},resume:u.target?{...u.target}:null,stuck:0};
+  if(!u.target||u.target.id!==enemy.id)u.attack=0;
+  u.target={kind:'attackUnit',id:enemy.id,automatic:true};return true;
+}
+function alertDefenders(victim,attacker){
+  // Directly struck soldiers may interrupt orders. Allies with explicit orders keep them.
+  if(victim.hp>0&&military(victim))startAutomaticCombat(victim,attacker,true);
+  for(const ally of units){
+    if(ally===victim||!military(ally)||ally.civ!==victim.civ||dist(ally,victim)>120)continue;
+    if(ally.target)continue;
+    startAutomaticCombat(ally,attacker);
+  }
+}
+function acquireEnemy(u){
+  const stance=stanceOf(u);if(stance!=='aggressive')return;
+  const radius=stance==='hold'?32:140;
+  const enemies=units.filter(t=>t.hp>0&&t.civ!==u.civ&&dist(u,t)<=radius&&combatPath(u,t));
+  enemies.sort((a,b)=>(military(a)?0:1)-(military(b)?0:1)||dist(u,a)-dist(u,b));
+  if(enemies.length){startAutomaticCombat(u,enemies[0]);return}
+  // Buildings are a lower priority and are initiated only in Aggressive stance.
+  if(stance==='aggressive'){
+    const b=buildings.filter(t=>t.hp>0&&t.civ!==u.civ&&dist(u,t)<=100&&combatPath(u,t)).sort((a,b)=>dist(u,a)-dist(u,b))[0];
+    if(b){u.combat={anchor:{x:u.x,y:u.y},resume:null,stuck:0};u.target={kind:'attackBuilding',id:b.id,automatic:true};u.attack=0}
+  }
+}
+function updateFighter(u,dt){
+  if(!military(u))return;
+  u.inCombat=false;u.autoDelay=Math.max(0,(u.autoDelay||0)-dt);
+  if(!u.target&&!u.autoDelay)acquireEnemy(u);
+  if(!u.target)return;
+  if(u.target.kind==='move'){move(u,u.target,u.type==='swordsman'?112:120,dt,4);return}
+  const t=combatTarget(u);
+  if(!t){if(u.combat)endAutomaticCombat(u);else{u.target=null;u.attack=0}return}
+  const stance=stanceOf(u),range=u.target.kind==='attackUnit'?32:54;
+  if(u.combat&&(dist(u.combat.anchor,t)>(u.combat.leash||(stance==='hold'?range:stance==='aggressive'?200:120))||!combatPath(u,t))){endAutomaticCombat(u);return}
+  if(dist(u,t)>range){
+    u.attack=0;
+    if(stance==='hold'){if(u.combat)endAutomaticCombat(u);return}
+    const x=u.x,y=u.y;move(u,t,u.type==='swordsman'?100:108,dt,range);
+    if(u.combat){u.combat.stuck=Math.hypot(u.x-x,u.y-y)<.01?u.combat.stuck+dt:0;if(u.combat.stuck>1.5)endAutomaticCombat(u)}
+    return;
+  }
+  u.inCombat=true;u.faceTarget=t.x;u.attack+=dt;
+  const cooldown=u.type==='swordsman'?.8:.7;
+  if(u.attack>=cooldown){
+    u.attack=0;u.strikeFlash=.16;
+    const damage=u.target.kind==='attackUnit'?(u.type==='swordsman'?34:22):(u.type==='swordsman'?24:18);
+    t.hp=Math.max(0,t.hp-damage);t.hitFlash=.18;t.hitDirection=Math.sign(t.x-u.x)||1;
+    sfx('attack');particles.push({x:t.x,y:t.y-30,text:'-'+damage,life:.55,kind:'damage'});
+    alertDefenders(t,u);
+    if(t.hp<=0){sfx('death');if(u.combat)endAutomaticCombat(u);else{u.target=null;u.inCombat=false}checkDeathmatch()}
+  }
+}
+
+// Bronze Age ranged combat. Arrows carry damage so impacts match what players see.
+function archerRangeArt(A,w,h){
+  groundShadow(w,h);const x=-w*.38,y=-h*.13,bw=w*.57,bh=h*.43,d=w*.12;
+  box(x,y,bw,bh,d,A);if(A)pitchedRoof(x,y,bw,d,h*.25,true);else{box(x-3,y-7,bw+6,7,d,false);rect(x+3,y+3,bw-6,5,'#438c8b')}
+  door(x+bw*.5,y+bh,13,22);bannerArt(x-10,y+3,A,22);
+  // Open practice yard, targets, bow rack and arrow bundles.
+  poly([[-w*.42,h*.19],[w*.48,h*.13],[w*.48,h*.43],[-w*.43,h*.45]],'#ae9867');
+  for(let xx=-w*.42;xx<w*.49;xx+=w*.13)line(xx,h*.44,xx,h*.25,'#806844',2);
+  line(-w*.42,h*.31,w*.48,h*.31,'#c3a46e',2);
+  for(const tx of [w*.13,w*.34]){line(tx,h*.32,tx,h*.01,'#745a38',2);ellipse(tx,h*.02,9,11,'#bba476');ellipse(tx,h*.02,6.5,8,A?'#648695':'#aa7353');ellipse(tx,h*.02,3,4,'#d9bd7d')}
+  for(let i=0;i<5;i++){const ax=-w*.33+i*4;line(ax,h*.42,ax+2,h*.12,'#88673d',1.3);poly([[ax,h*.12],[ax+2,h*.05],[ax+4,h*.12]],'#c2c0a1')}
+  line(-w*.18,h*.4,-w*.16,h*.1,'#755a37',2);g.strokeStyle='#c8a868';g.lineWidth=2;g.beginPath();g.arc(-w*.12,h*.21,10,-Math.PI/2,Math.PI/2);g.stroke();line(-w*.12,h*.11,-w*.12,h*.31,'#d8c49b',.8);
+}
+const priorStructureArtForArchery=structureArt;
+structureArt=function(type,civ,w,h,age){if(type==='archery'){archerRangeArt(civ==='A',w,h);return}priorStructureArtForArchery(type,civ,w,h,age)};
+
+function ranged(u){return u&&u.hp>0&&u.type==='archer'}
+const previousMilitary=military;military=function(u){return previousMilitary(u)||ranged(u)};
+function unitSpeed(u){return u.type==='archer'?106:u.type==='swordsman'?112:120}
+function combatSpeed(u){return u.type==='archer'?102:u.type==='swordsman'?100:108}
+function weaponRange(u,kind){return u.type==='archer'?(kind==='attackUnit'?185:170):(kind==='attackUnit'?32:54)}
+function comfortRange(u){return u.type==='archer'?82:0}
+function canEngage(u,t){return ranged(u)&&dist(u,t)<=weaponRange(u,'attackUnit')||combatPath(u,t)}
+startAutomaticCombat=function(u,enemy,retaliation=false){
+  if(!military(u)||!enemy||enemy.hp<=0||enemy.civ===u.civ||!canEngage(u,enemy))return false;
+  const stance=stanceOf(u),reach=weaponRange(u,'attackUnit');
+  const notice=stance==='hold'?reach:stance==='aggressive'?(ranged(u)?220:160):(ranged(u)?185:100);
+  if(dist(u,enemy)>(stance==='hold'?reach:retaliation?220:notice))return false;
+  if(!retaliation&&u.target&&!u.combat)return false;
+  const leash=stance==='hold'?reach:stance==='aggressive'?(ranged(u)?260:200):(ranged(u)?190:120);
+  if(u.combat&&dist(u.combat.anchor,enemy)>(u.combat.leash||leash))return false;
+  if(!u.combat)u.combat={anchor:u.target&&u.target.returning?{x:u.target.x,y:u.target.y}:{x:u.x,y:u.y},resume:u.target?{...u.target}:null,stuck:0,leash:retaliation?220:leash};
+  if(!u.target||u.target.id!==enemy.id)u.attack=0;
+  u.target={kind:'attackUnit',id:enemy.id,automatic:true};return true;
+};
+acquireEnemy=function(u){
+  const aggressive=stanceOf(u)==='aggressive';
+  if(!ranged(u)&&!aggressive)return;
+  const radius=ranged(u)?(aggressive?210:weaponRange(u,'attackUnit')):140;
+  const enemies=units.filter(t=>t.hp>0&&t.civ!==u.civ&&dist(u,t)<=radius&&canEngage(u,t));
+  enemies.sort((a,b)=>{
+    const pa=ranged(u)?(ranged(a)?0:military(a)?1:2):(military(a)?0:1),pb=ranged(u)?(ranged(b)?0:military(b)?1:2):(military(b)?0:1);
+    return pa-pb||dist(u,a)-dist(u,b);
+  });
+  if(enemies.length){startAutomaticCombat(u,enemies[0]);return}
+  if(!aggressive)return;
+  const b=buildings.filter(t=>t.hp>0&&t.civ!==u.civ&&dist(u,t)<=(ranged(u)?170:100)&&combatPath(u,t)).sort((a,b)=>dist(u,a)-dist(u,b))[0];
+  if(b){u.combat={anchor:{x:u.x,y:u.y},resume:null,stuck:0};u.target={kind:'attackBuilding',id:b.id,automatic:true};u.attack=0}
+};
+function fireArrow(u,t){
+  const dx=t.x-u.x,dy=t.y-u.y,d=Math.hypot(dx,dy)||1,speed=390;
+  projectiles.push({id:'a'+(++seq),civ:u.civ,x:u.x+dx/d*13,y:u.y-13,vx:dx/d*speed,vy:dy/d*speed,target:t,targetId:t.id,targetKind:u.target.kind,damage:u.target.kind==='attackUnit'?20:10,life:1.2,angle:Math.atan2(dy,dx)});
+  u.strikeFlash=.16;sfx('arrow');
+}
+function updateArrow(a,dt){
+  if(a.done)return;
+  const target=a.target&&a.target.id===a.targetId&&a.target.hp>0?a.target:null;
+  if(target){const dx=target.x-a.x,dy=(target.y-8)-a.y,d=Math.hypot(dx,dy)||1,s=390;a.vx=dx/d*s;a.vy=dy/d*s;a.angle=Math.atan2(dy,dx)}
+  a.x+=a.vx*dt;a.y+=a.vy*dt;a.life-=dt;
+  if(target&&Math.hypot(target.x-a.x,target.y-8-a.y)<15){
+    target.hp=Math.max(0,target.hp-a.damage);target.hitFlash=.18;target.hitDirection=Math.sign(target.x-a.x)||1;
+    particles.push({x:target.x,y:target.y-30,text:'-'+a.damage,life:.55,kind:'damage'});alertDefenders(target,a.shooter);a.done=true;
+    stuckArrows.push({x:target.x,y:target.y-4,angle:a.angle,life:target.hp>0?1.4:4,attached:target.hp>0?target:null,ox:a.x-target.x,oy:a.y-target.y});
+    if(target.hp<=0){sfx('death');if(a.shooter&&a.shooter.target&&a.shooter.target.id===a.targetId){if(a.shooter.combat)endAutomaticCombat(a.shooter);else{a.shooter.target=null;a.shooter.inCombat=false}}checkDeathmatch()}
+  }else if(a.life<=0||a.x<0||a.x>W||a.y<0||a.y>H){a.done=true;stuckArrows.push({x:a.x,y:a.y,angle:a.angle,life:4,attached:null})}
+}
+function updateArcher(u,dt){
+  if(!military(u))return;u.inCombat=false;u.autoDelay=Math.max(0,(u.autoDelay||0)-dt);
+  if(!u.target&&!u.autoDelay)acquireEnemy(u);if(!u.target)return;
+  if(u.target.kind==='move'){move(u,u.target,unitSpeed(u),dt,4);return}
+  const t=combatTarget(u);if(!t){if(u.combat)endAutomaticCombat(u);else{u.target=null;u.attack=0}return}
+  const stance=stanceOf(u),range=weaponRange(u,u.target.kind),close=comfortRange(u),distance=dist(u,t);
+  if(u.combat&&(dist(u.combat.anchor,t)>(stance==='hold'?range:u.combat.leash||(stance==='aggressive'?260:190))||!canEngage(u,t))){endAutomaticCombat(u);return}
+  if(distance>range){u.attack=0;if(stance==='hold'){if(u.combat)endAutomaticCombat(u);return}move(u,t,combatSpeed(u),dt,range-8);return}
+  if(distance<close&&stance!=='hold'){
+    const dx=u.x-t.x,dy=u.y-t.y,d=Math.hypot(dx,dy)||1,dest={x:u.x+dx/d*55,y:u.y+dy/d*55};
+    if(dest.x<715||dest.x>785)move(u,dest,112,dt,3);
+    u.faceTarget=t.x;u.attack=Math.max(0,u.attack-dt*.5);return;
+  }
+  u.inCombat=true;u.faceTarget=t.x;u.attack+=dt;
+  if(u.attack>=1.25){u.attack=0;fireArrow(u,t);const a=projectiles.at(-1);a.shooter=u}
+}
+const meleeUpdateFighter=updateFighter;updateFighter=function(u,dt){if(u.type==='archer')updateArcher(u,dt);else meleeUpdateFighter(u,dt)};
+
+function drawArrow(a){g.save();g.translate(a.x,a.y);g.rotate(a.angle);line(-8,0,8,0,'#d9bd80',1.5);poly([[8,0],[3,-2],[3,2]],'#cbc9ae');line(-7,0,-10,-3,'#8d5846',1);line(-7,0,-10,3,'#8d5846',1);g.restore()}
+function drawStuckArrow(a){const x=a.attached&&a.attached.hp>0?a.attached.x+a.ox:a.x,y=a.attached&&a.attached.hp>0?a.attached.y+a.oy:a.y;g.save();g.globalAlpha=Math.min(1,a.life);g.translate(x,y);g.rotate(a.angle);line(-9,0,4,0,'#d5b878',1.3);line(-8,0,-11,-3,'#905546',1);line(-8,0,-11,3,'#905546',1);g.restore()}
+function drawArcher(u,t){
+  if(u.hp<=0){drawFallenUnit(u);return}let pose=poses.get(u.id);if(!pose){pose={x:u.x,y:u.y,face:u.civ==='A'?1:-1};poses.set(u.id,pose)}
+  const moving=Math.hypot(u.x-pose.x,u.y-pose.y)>.03;if(Math.abs(u.x-pose.x)>.01)pose.face=Math.sign(u.x-pose.x);if(u.inCombat&&Math.abs(u.faceTarget-u.x)>1)pose.face=Math.sign(u.faceTarget-u.x);pose.x=u.x;pose.y=u.y;
+  const A=u.civ==='A',draw=u.inCombat?Math.min(1,u.attack/1.25):0,walk=moving?Math.sin(t*.012+u.phase):0,sel=selected&&selected.id===u.id;
+  if(sel){g.strokeStyle='#efd99c';g.lineWidth=2;g.beginPath();g.ellipse(u.x,u.y+15,19,8,0,0,Math.PI*2);g.stroke()}
+  g.save();g.translate(u.x,u.y);ellipse(5,17,13,4,'rgba(25,34,24,.28)');g.scale(pose.face,1);g.translate(0,moving?Math.abs(walk)*-1.5:0);
+  line(-4,6,-5+walk*3,17,'#b68f63',2.7);line(4,6,4-walk*3,17,'#b68f63',2.7);line(-6+walk*3,17,-2+walk*3,17,'#4e4532',2.5);line(3-walk*3,17,7-walk*3,17,'#4e4532',2.5);
+  poly([[-6,-9],[6,-9],[8,10],[-8,10]],A?'#477b91':'#a75f4c');poly([[-6,-9],[-2,-8],[-2,9],[-8,10]],A?'#294c61':'#704233');rect(-7,1,14,2,'#715336');
+  rect(-2,-13,5,5,'#b89465');ellipse(1,-16,5.5,6,'#c5a171');ellipse(5,-16,1,1,'#29352d');ellipse(0,-20,5,3,A?'#67523a':'#c7b58c');
+  // Quiver and visible arrows.
+  poly([[-10,-7],[-6,-9],[-4,9],[-9,10]],'#8a5c3c');for(let i=0;i<4;i++){line(-9+i*2,-9,-11+i*2,-23,'#c4a16a',1);poly([[-12+i*2,-22],[-11+i*2,-27],[-10+i*2,-22]],'#c4c2a7')}
+  // Bow arm stays extended; drawing hand pulls the string back.
+  const handX=10-draw*14;line(-4,-5,3,-3,'#b89063',3);line(3,-3,13,-4,'#d0a776',2.4);line(5,-7,handX,-7,'#bc9568',3);
+  g.strokeStyle='#b48a4c';g.lineWidth=2;g.beginPath();g.arc(15,-5,15,-Math.PI/2,Math.PI/2);g.stroke();line(15,-20,handX,-7,'#e1d0a5',.8);line(handX,-7,15,10,'#e1d0a5',.8);
+  if(u.inCombat){line(handX,-7,20,-7,'#cfb176',1);poly([[20,-9],[27,-7],[20,-5]],'#c8c6aa')}
+  g.restore();if(sel||u.hp<u.maxHP)gauge(u.x,u.y-38,29,u.hp/u.maxHP,u.hp/u.maxHP>.4?'#abd28d':'#e38c71')
+}
+function drawFallenArcher(u){
+  const n=Math.max(0,Math.min(1,(u.deathAge||0)/.65)),e=n*n*(3-2*n),A=u.civ==='A',face=u.deathFace||(A?1:-1);
+  g.save();g.translate(u.x,u.y+17);ellipse(face*e*10,1,14+e*10,4,'rgba(24,31,23,.23)');g.rotate(face*e*Math.PI*.48);g.scale(face,1);
+  line(-4,-11,-6,-1,'#b28d62',3);line(4,-11,7,0,'#b28d62',3);line(-6,-1,-3,-1,'#4b4532',2.5);line(7,0,10,0,'#4b4532',2.5);
+  poly([[-6,-26],[6,-26],[7,-11],[-7,-10]],A?'#477b91':'#a75f4c');poly([[-6,-26],[-2,-24],[-2,-11],[-7,-10]],A?'#294c61':'#704233');rect(-6,-17,12,2,'#715336');
+  ellipse(0,-32,5.5,6,'#bf9c70');ellipse(0,-36,5,3,A?'#67523a':'#c7b58c');
+  poly([[-10,-25],[-6,-27],[-4,-10],[-9,-9]],'#865b3e');for(let i=0;i<3;i++)line(-9+i*2,-27,-11+i*2,-39,'#c4a16a',1);
+  g.restore();
+  const bx=u.x-face*(10+e*5),by=u.y+13;g.save();g.translate(bx,by);g.strokeStyle='#b48a4c';g.lineWidth=2;g.beginPath();g.arc(0,0,15,-Math.PI/2,Math.PI/2);g.stroke();line(0,-15,-5,0,'#e1d0a5',.8);line(-5,0,0,15,'#e1d0a5',.8);g.restore();
+}
+const fallenBeforeArchers=drawFallenUnit;drawFallenUnit=function(u){if(u.type==='archer')drawFallenArcher(u);else fallenBeforeArchers(u)};
+const unitRendererBeforeArchers=enhancedUnit;enhancedUnit=function(u,t){if(u.type==='archer'){drawArcher(u,t);return}unitRendererBeforeArchers(u,t)};
+
+function trainArcher(){
+  const c=CIV[active],range=buildings.find(b=>b.civ===active&&b.type==='archery'&&b.hp>0);
+  if(c.age<2||!range||c.food<55||c.wood<35||c.pop>=c.cap)return;
+  c.food-=55;c.wood-=35;addUnit(active,'archer',range.x+(Math.random()-.5)*40,range.y+58+(Math.random()-.5)*16);sfx('build');updateUI();
+}
+
+function features(k){const c=CIV[k],n=t=>buildings.filter(b=>b.civ===k&&b.type===t&&b.hp>0).length;return{city:c.age===2&&c.pop>=8&&n('house')>=2,gov:n('gov')>=1,rel:n('temple')>=1,social:c.pop>=7&&n('farm')>=2&&n('barracks')>=1,write:n('scribe')>=1,art:n('monument')>=1}}
+function checkDeathmatch(){for(const k of ['A','B']){const tc=buildings.find(b=>b.civ===k&&b.type==='tc'),alive=units.some(u=>u.civ===k&&u.hp>0);if(tc&&tc.hp<=0&&!alive)finish(enemy(k),'Deathmatch Victory',CIV[enemy(k)].name+' destroyed the rival civilization.')}}
+function checkWins(){if(ended)return;for(const k of ['A','B']){const c=CIV[k],f=features(k);if(Object.values(f).every(Boolean)){finish(k,'Civilization Victory',c.name+' developed all six features of civilization.');return}}}
+function finish(k,title,text){if(ended)return;ended=true;paused=true;sfx('victory');q('endTitle').textContent=CIV[k].name+' — '+title;q('endText').textContent=text;q('end').classList.remove('hidden')}
+function advance(){const c=CIV[active];if(c.age===0&&c.food>=120&&c.wood>=80){c.food-=120;c.wood-=80;c.age=1;sfx('age');q('banner').textContent=c.name+' entered the Neolithic Age.';q('effect').textContent='Agriculture allows permanent settlement, storage and population growth.'}else if(c.age===1&&c.food>=220&&c.wood>=150&&c.stoneR>=80&&c.gold>=40){c.food-=220;c.wood-=150;c.stoneR-=80;c.gold-=40;c.age=2;sfx('age');q('banner').textContent=c.name+' entered the Bronze Age.';q('effect').textContent='Complex societies can support organized institutions, monumental architecture and armies.'}updateUI()}
+function trainVillager(){const c=CIV[active];if(c.age<1||c.food<35||c.pop>=c.cap)return;c.food-=35;addUnit(active,'villager',c.x+(Math.random()-.5)*60,c.y+85);sfx('build');updateUI()}
+function trainSpearman(){const c=CIV[active],has=buildings.some(b=>b.civ===active&&b.type==='barracks'&&b.hp>0);if(c.age<1||!has||c.food<50||c.gold<25||c.pop>=c.cap)return;c.food-=50;c.gold-=25;const barracks=buildings.find(b=>b.civ===active&&b.type==='barracks'&&b.hp>0);
+const spawnX=barracks?barracks.x:c.x;
+const spawnY=barracks?barracks.y+55:c.y+85;
+addUnit(active,'spearman',spawnX+(Math.random()-.5)*40,spawnY+(Math.random()-.5)*20);sfx('build');updateUI()}
+function trainSwordsman(){const c=CIV[active],has=buildings.some(b=>b.civ===active&&b.type==='barracks'&&b.hp>0);if(c.age<2||!has||c.food<70||c.gold<40||c.pop>=c.cap)return;c.food-=70;c.gold-=40;const barracks=buildings.find(b=>b.civ===active&&b.type==='barracks'&&b.hp>0);
+const spawnX=barracks?barracks.x:c.x;
+const spawnY=barracks?barracks.y+55:c.y+85;
+addUnit(active,'swordsman',spawnX+(Math.random()-.5)*40,spawnY+(Math.random()-.5)*20);sfx('build');updateUI()}
+function repair(){const c=CIV[active],tc=buildings.find(b=>b.civ===active&&b.type==='tc');if(!tc||tc.hp>=tc.maxHP||c.wood<40)return;c.wood-=40;tc.hp=Math.min(tc.maxHP,tc.hp+180);sfx('build');updateUI()}
+function setActive(k){cancelPlacement();active=k;selected=null;sfx('select');updateUI()}
+function setReady(el,ready,reason=''){el.disabled=!ready;el.dataset.ready=ready?'true':'false';el.title=ready?'Available now':reason}
+function updateButtons(){const c=CIV[active],neo=c.age>=1,bronze=c.age>=2,hasBarracks=buildings.some(b=>b.civ===active&&b.type==='barracks'&&b.hp>0),tc=buildings.find(b=>b.civ===active&&b.type==='tc');if(c.age===0){setReady(q('age'),c.food>=120&&c.wood>=80,'Needs 120 food and 80 wood');q('age').innerHTML='Advance to Neolithic<small>120 food · 80 wood</small>'}else if(c.age===1){setReady(q('age'),c.food>=220&&c.wood>=150&&c.stoneR>=80&&c.gold>=40,'Needs 220 food, 150 wood, 80 stone, 40 gold');q('age').innerHTML='Advance to Bronze Age<small>220 food · 150 wood · 80 stone · 40 gold</small>'}else{setReady(q('age'),false,'Already Bronze Age');q('age').textContent='Bronze Age reached'}for(const[type,d]of Object.entries(BUILD)){const el=q(type);setReady(el,c.age>=d.age&&canAfford(c,d.cost),c.age<d.age?'Requires '+AGE[d.age]:'Needs more resources');el.dataset.placing=pending&&pending.type===type?'true':'false'}setReady(q('villager'),neo&&c.food>=35&&c.pop<c.cap,'Requires resources/population space');setReady(q('spearman'),neo&&hasBarracks&&c.food>=50&&c.gold>=25&&c.pop<c.cap,!hasBarracks?'Build Barracks first':'Needs resources/population space');const hasArchery=buildings.some(b=>b.civ===active&&b.type==='archery'&&b.hp>0);setReady(q('archer'),bronze&&hasArchery&&c.food>=55&&c.wood>=35&&c.pop<c.cap,!bronze?'Requires Bronze Age':!hasArchery?'Build Archery Range first':'Needs resources/population space');setReady(q('swordsman'),bronze&&hasBarracks&&c.food>=70&&c.gold>=40&&c.pop<c.cap,!hasBarracks?'Build Barracks first':!bronze?'Requires Bronze Age':'Needs resources/population space');setReady(q('repair'),tc&&tc.hp<tc.maxHP&&c.wood>=40,'Town Center undamaged or insufficient wood')}
+function nextGuide(){if(pending)return'Place your '+BUILD[pending.type].label+' somewhere strategically useful.';const c=CIV[active];if(!selected)return'Select one of '+c.name+'’s villagers.';if(c.age===0)return c.food>=120&&c.wood>=80?'Advance to the Neolithic Age.':'Gather 120 food and 80 wood.';if(c.age===1)return'Build farms, houses and storehouses, then gather resources for the Bronze Age.';const f=features(active);if(!f.rel)return'Build a Temple or begin developing your military.';if(!f.gov)return'Build a Government Hall.';if(!f.write)return'Build a Scribal School.';if(!f.art)return'Build a Monument.';return'Expand your civilization or launch an attack.'}
+function update(dt){if(paused||ended){if(ended)updateDeaths(dt);return;}buildings.forEach(b=>{if(b.buildProgress!==undefined && b.buildProgress<100){b.buildProgress+=dt*18;if(b.buildProgress>100)b.buildProgress=100}});units.forEach(u=>{if(u.hp>0){u.type==='villager'?updateVillager(u,dt):updateFighter(u,dt)}});updateDeaths(dt);for(const k of ['A','B']){const c=CIV[k],farms=buildings.filter(b=>b.civ===k&&b.type==='farm'&&b.hp>0).length;c.farmTick+=dt;if(farms&&c.farmTick>=1){const n=Math.floor(c.farmTick);c.farmTick-=n;c.food+=farms*n*1.2}c.pop=units.filter(u=>u.civ===k&&u.hp>0).length}particles.forEach(p=>{p.y-=25*dt;p.life-=dt});particles=particles.filter(p=>p.life>0);checkWins();updateUI()}
+function drawTerrain(t){const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#b9bd7c');g.addColorStop(.55,'#a9ad68');g.addColorStop(1,'#8c884d');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);ctx.fillStyle='rgba(76,65,34,.10)';for(let i=0;i<320;i++){const x=(i*173)%W,y=(i*97)%H;ctx.beginPath();ctx.arc(x,y,1+(i%3),0,Math.PI*2);ctx.fill()}ctx.fillStyle='rgba(201,183,117,.22)';ctx.beginPath();ctx.ellipse(250,520,230,120,-.1,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.ellipse(1250,520,230,120,.1,0,Math.PI*2);ctx.fill();const river=ctx.createLinearGradient(720,0,780,0);river.addColorStop(0,'#3c6e79');river.addColorStop(.5,'#72a6ae');river.addColorStop(1,'#3c6e79');ctx.fillStyle=river;ctx.fillRect(720,0,60,H);ctx.strokeStyle='rgba(230,250,245,.4)';for(let y=12;y<H;y+=24){ctx.beginPath();ctx.moveTo(724,y);ctx.quadraticCurveTo(750+Math.sin(t*.003+y*.08)*14,y+7,776,y);ctx.stroke()}}
+function drawRes(r,t){if(r.type==='deer'&&r.hunted){g=ctx;drawDeerBody(r);return}if(r.amount<=0)return;ctx.save();if(r.type==='tree'){ctx.fillStyle='rgba(0,0,0,.15)';ctx.beginPath();ctx.ellipse(r.x+5,r.y+25,23,8,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#61442b';ctx.fillRect(r.x-5,r.y,10,29);ctx.fillStyle='#3d673d';ctx.beginPath();ctx.arc(r.x,r.y-7,22,0,Math.PI*2);ctx.arc(r.x-16,r.y+3,15,0,Math.PI*2);ctx.arc(r.x+16,r.y+4,16,0,Math.PI*2);ctx.fill()}else if(r.type==='deer'){const bob=Math.sin(t*.003+r.phase)*2;ctx.fillStyle='#875a37';ctx.beginPath();ctx.ellipse(r.x,r.y+bob,19,11,0,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(r.x+17,r.y-11+bob,7,0,Math.PI*2);ctx.fill()}else if(r.type==='berries'){ctx.fillStyle='#46663d';ctx.beginPath();ctx.arc(r.x,r.y,21,0,Math.PI*2);ctx.fill();ctx.fillStyle='#944c5e';for(let i=0;i<9;i++){const a=i*Math.PI*2/9;ctx.beginPath();ctx.arc(r.x+Math.cos(a)*12,r.y+Math.sin(a)*10,3,0,Math.PI*2);ctx.fill()}}else{ctx.fillStyle=r.type==='gold'?'#c7a442':'#777d78';ctx.beginPath();ctx.moveTo(r.x-24,r.y+14);ctx.lineTo(r.x-14,r.y-15);ctx.lineTo(r.x+2,r.y-23);ctx.lineTo(r.x+24,r.y+10);ctx.lineTo(r.x+11,r.y+19);ctx.closePath();ctx.fill()}ctx.fillStyle='rgba(20,17,12,.48)';ctx.fillRect(r.x-24,r.y+34,48,5);ctx.fillStyle='#f0dda0';ctx.fillRect(r.x-24,r.y+34,48*r.amount/r.max,5);ctx.restore()}
+function shadow(w,h){ctx.fillStyle='rgba(40,28,16,.18)';ctx.beginPath();ctx.ellipse(8,h*.36,w*.55,h*.22,0,0,Math.PI*2);ctx.fill()}
+function drawHouse(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#e0d0af';ctx.fillRect(-w/2,-h/2+7,w,h-7);ctx.fillStyle='#a64f35';ctx.beginPath();ctx.moveTo(-w/2-6,-h/2+7);ctx.lineTo(0,-h/2-25);ctx.lineTo(w/2+6,-h/2+7);ctx.closePath();ctx.fill();ctx.fillStyle='#67462e';ctx.fillRect(-8,h/2-24,16,24);ctx.fillStyle='#315b78';ctx.fillRect(-w/2+10,-8,10,13)}else{ctx.fillStyle='#b98552';ctx.fillRect(-w/2,-h/2,w,h);ctx.fillStyle='#9c683d';ctx.fillRect(-w/2-3,-h/2-9,w+6,11);ctx.fillStyle='#674429';ctx.fillRect(-8,h/2-25,16,25);ctx.fillStyle='#2e838d';ctx.fillRect(w/2-19,-7,9,16)}}
+function drawStore(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#c9b58f';ctx.fillRect(-w/2,-h/2+8,w,h-8);ctx.fillStyle='#815737';ctx.beginPath();ctx.moveTo(-w/2-4,-h/2+8);ctx.lineTo(0,-h/2-18);ctx.lineTo(w/2+4,-h/2+8);ctx.closePath();ctx.fill();ctx.strokeStyle='#755438';ctx.lineWidth=4;for(let x=-w/2+12;x<w/2;x+=18){ctx.beginPath();ctx.moveTo(x,-h/2+10);ctx.lineTo(x,h/2);ctx.stroke()}}else{ctx.fillStyle='#ae7749';ctx.fillRect(-w/2,-h/2,w,h);ctx.fillStyle='#85552f';ctx.fillRect(-w/2-4,-h/2-10,w+8,12);ctx.fillStyle='#d2a95f';for(let i=0;i<4;i++){ctx.beginPath();ctx.arc(-28+i*19,h/2-10,8,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#2c828b';ctx.fillRect(-6,-h/2+7,12,h-7)}}
+function drawFarm(A,w,h){shadow(w,h);ctx.fillStyle=A?'#967448':'#876641';ctx.fillRect(-w/2,-h/2,w,h);ctx.strokeStyle='#d8c26e';ctx.lineWidth=2;for(let x=-w/2+8;x<w/2;x+=11){ctx.beginPath();ctx.moveTo(x,-h/2+5);ctx.lineTo(x,h/2-5);ctx.stroke()}}
+function drawBarracks(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#d5c29e';ctx.fillRect(-w/2,-h/2+8,w,h-8);ctx.fillStyle='#9f4d35';ctx.beginPath();ctx.moveTo(-w/2-5,-h/2+8);ctx.lineTo(0,-h/2-20);ctx.lineTo(w/2+5,-h/2+8);ctx.closePath();ctx.fill();ctx.fillStyle='#315b78';for(let x=-w/2+15;x<w/2;x+=23)ctx.fillRect(x,-h/2+18,6,h-24);ctx.strokeStyle='#65452d';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-18,5);ctx.lineTo(7,-24);ctx.moveTo(18,5);ctx.lineTo(-7,-24);ctx.stroke()}else{ctx.fillStyle='#b47b49';ctx.fillRect(-w/2,-h/2,w,h);ctx.fillStyle='#8d5c34';ctx.fillRect(-w/2-4,-h/2-10,w+8,12);for(let x=-w/2+5;x<w/2;x+=18)ctx.fillRect(x,-h/2-19,11,11);ctx.fillStyle='#2d838d';ctx.fillRect(-w/2+8,-h/2+12,w-16,9)}}
+function drawTemple(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#d9ccb0';ctx.fillRect(-w/2+5,-h/2+5,w-10,h-5);ctx.beginPath();ctx.moveTo(-w/2,-h/2+5);ctx.lineTo(0,-h/2-30);ctx.lineTo(w/2,-h/2+5);ctx.closePath();ctx.fill();ctx.fillStyle='#315b78';for(let x=-w/2+17;x<w/2;x+=18)ctx.fillRect(x,-h/2+14,6,h-21)}else{ctx.fillStyle='#a96f43';ctx.fillRect(-w/2,-h/2+15,w,h-15);ctx.fillStyle='#986038';ctx.fillRect(-w/2+9,-h/2,w-18,h-5);ctx.fillStyle='#2c858f';ctx.fillRect(-w/2+10,-h/2+12,w-20,10);ctx.fillStyle='#d6a84e';ctx.beginPath();ctx.moveTo(0,-h/2-25);ctx.lineTo(-11,-h/2+2);ctx.lineTo(11,-h/2+2);ctx.closePath();ctx.fill()}}
+function drawGov(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#d9ceb6';ctx.fillRect(-w/2,-h/2+15,w,h-15);ctx.fillStyle='#9f5038';ctx.beginPath();ctx.moveTo(-w/2-4,-h/2+15);ctx.lineTo(0,-h/2-18);ctx.lineTo(w/2+4,-h/2+15);ctx.closePath();ctx.fill();ctx.fillStyle='#315b78';for(let x=-w/2+16;x<w/2;x+=20)ctx.fillRect(x,-h/2+22,6,h-28)}else{ctx.fillStyle='#b27a4b';ctx.fillRect(-w/2,-h/2+7,w,h-7);ctx.fillStyle='#8e5934';for(let x=-w/2+4;x<w/2;x+=19)ctx.fillRect(x,-h/2-13,12,20);ctx.fillStyle='#2c858f';ctx.fillRect(-w/2+8,-h/2+18,w-16,12)}}
+function drawScribe(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#d9c9aa';ctx.fillRect(-w/2,-h/2+6,w,h-6);ctx.fillStyle='#a75439';ctx.beginPath();ctx.moveTo(-w/2-4,-h/2+6);ctx.lineTo(0,-h/2-20);ctx.lineTo(w/2+4,-h/2+6);ctx.closePath();ctx.fill();ctx.fillStyle='#f0e2bf';ctx.fillRect(4,-12,25,18);ctx.strokeStyle='#6d4c31';for(let y=-8;y<3;y+=5){ctx.beginPath();ctx.moveTo(8,y);ctx.lineTo(25,y);ctx.stroke()}}else{ctx.fillStyle='#ad7445';ctx.fillRect(-w/2,-h/2,w,h);ctx.fillStyle='#925c34';ctx.fillRect(-w/2-3,-h/2-9,w+6,11);ctx.fillStyle='#2c858f';ctx.fillRect(-w/2+8,-h/2+10,w-16,8);ctx.fillStyle='#d0b17a';ctx.fillRect(4,-9,28,21)}}
+function drawMonument(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#cfc7b3';ctx.fillRect(-12,-h/2+5,24,h-20);ctx.beginPath();ctx.moveTo(-12,-h/2+5);ctx.lineTo(0,-h/2-20);ctx.lineTo(12,-h/2+5);ctx.closePath();ctx.fill();ctx.fillStyle='#315b78';ctx.fillRect(-5,-7,10,28);ctx.fillStyle='#b7a98f';ctx.fillRect(-w/2,h/2-15,w,15)}else{ctx.fillStyle='#a97146';ctx.fillRect(-w/2+8,-h/2+6,w-16,h-16);ctx.fillStyle='#8b5937';ctx.beginPath();ctx.moveTo(-w/2+8,-h/2+6);ctx.lineTo(0,-h/2-18);ctx.lineTo(w/2-8,-h/2+6);ctx.closePath();ctx.fill();ctx.fillStyle='#2c858f';ctx.fillRect(-w/2+13,-8,w-26,10);ctx.fillStyle='#8b5937';ctx.fillRect(-w/2,h/2-15,w,15)}}
+function drawTC(A,w,h){shadow(w,h);if(A){ctx.fillStyle='#ddd0b3';ctx.fillRect(-w/2,-h/2+10,w,h-10);ctx.fillStyle='#a55238';ctx.beginPath();ctx.moveTo(-w/2-7,-h/2+10);ctx.lineTo(0,-h/2-38);ctx.lineTo(w/2+7,-h/2+10);ctx.closePath();ctx.fill();ctx.fillStyle='#315b78';for(let x=-42;x<=42;x+=28)ctx.fillRect(x-5,-h/2+22,10,h-30)}else{ctx.fillStyle='#b67d4c';ctx.fillRect(-w/2,-h/2,w,h);ctx.fillStyle='#945f36';ctx.fillRect(-w/2-5,-h/2-13,w+10,15);for(let x=-w/2+6;x<w/2;x+=21)ctx.fillRect(x,-h/2-28,13,17);ctx.fillStyle='#2d838d';ctx.fillRect(-11,-h/2+9,22,h-9)}}
+function drawStructure(type,civ,x,y,w,h,alpha=1){ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);const A=civ==='A';if(type==='tc')drawTC(A,w,h);else if(type==='house')drawHouse(A,w,h);else if(type==='store')drawStore(A,w,h);else if(type==='farm')drawFarm(A,w,h);else if(type==='barracks')drawBarracks(A,w,h);else if(type==='temple')drawTemple(A,w,h);else if(type==='gov')drawGov(A,w,h);else if(type==='scribe')drawScribe(A,w,h);else if(type==='monument')drawMonument(A,w,h);ctx.restore()}
+function drawBuilding(b){if(b.hp<=0)return;
+if(b.type==='bridge'){
+ctx.fillStyle='#80613d';
+ctx.fillRect(b.x-b.w/2,b.y-b.h/2,b.w,b.h);
+ctx.strokeStyle='#4a321c';
+for(let i=0;i<5;i++){ctx.beginPath();ctx.moveTo(b.x-b.w/2+i*28,b.y-b.h/2);ctx.lineTo(b.x-b.w/2+i*28,b.y+b.h/2);ctx.stroke();}
+return;
+}const p=b.buildProgress===undefined?100:b.buildProgress;if(p<100){ctx.save();ctx.strokeStyle='#b08a55';ctx.lineWidth=3;ctx.setLineDash([6,5]);ctx.strokeRect(b.x-b.w/2,b.y-b.h/2,b.w,b.h);ctx.setLineDash([]);ctx.fillStyle='rgba(180,140,80,.35)';ctx.fillRect(b.x-b.w/2,b.y-b.h/2,b.w*p/100,b.h);ctx.restore();ctx.fillStyle='#fff';ctx.font='12px sans-serif';ctx.textAlign='center';ctx.fillText('Building '+Math.floor(p)+'%',b.x,b.y-b.h/2-16)}else{drawStructure(b.type,b.civ,b.x,b.y,b.w,b.h,1)}ctx.fillStyle='rgba(0,0,0,.48)';ctx.fillRect(b.x-b.w/2,b.y-b.h/2-11,b.w,5);ctx.fillStyle=b.hp/b.maxHP>.4?'#77a966':'#b44e3c';ctx.fillRect(b.x-b.w/2,b.y-b.h/2-11,b.w*b.hp/b.maxHP,5)}
+function drawUnit(u,t){if(u.hp<=0){g=ctx;drawFallenUnit(u);return}if(u.type==='villager'&&u.target&&u.target.kind==='resource'&&resources.some(r=>r.id===u.target.id&&r.type==='deer')){g=ctx;animatedVillager(u,t);return}const A=u.civ==='A',bob=Math.sin(t*.006+u.phase)*1.4;if(selected&&selected.id===u.id){ctx.strokeStyle='#fff1a0';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(u.x,u.y+16,20,8,0,0,Math.PI*2);ctx.stroke()}ctx.fillStyle='rgba(0,0,0,.16)';ctx.beginPath();ctx.ellipse(u.x+3,u.y+19,15,5,0,0,Math.PI*2);ctx.fill();ctx.save();ctx.translate(u.x,u.y+bob);ctx.fillStyle=CIV[u.civ].main;ctx.beginPath();ctx.moveTo(-8,-8);ctx.lineTo(8,-8);ctx.lineTo(11,16);ctx.lineTo(-11,16);ctx.closePath();ctx.fill();ctx.fillStyle='#b9845e';ctx.beginPath();ctx.arc(0,-15,7,0,Math.PI*2);ctx.fill();if(u.type==='spearman'){
+ctx.strokeStyle='#503725';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(9,-8);ctx.lineTo(20,25);ctx.stroke();
+ctx.fillStyle=A?'#d6ccb6':'#b78f60';
+if(A){ctx.beginPath();ctx.arc(-12,1,9,0,Math.PI*2);ctx.fill()}else ctx.fillRect(-20,-9,14,20)
+}
+if(u.type==='swordsman'){
+ctx.fillStyle=A?'#9aa1a8':'#6b5848';
+ctx.fillRect(-10,-7,20,20);
+ctx.strokeStyle='#50555a';ctx.lineWidth=3;
+ctx.beginPath();ctx.moveTo(10,-4);ctx.lineTo(20,10);ctx.stroke();
+ctx.strokeStyle='#bfc7ce';ctx.lineWidth=2.2;
+ctx.beginPath();ctx.moveTo(19,9);ctx.lineTo(24,-10);ctx.stroke();
+ctx.strokeStyle='#74512f';ctx.lineWidth=2.2;
+ctx.beginPath();ctx.moveTo(15,12);ctx.lineTo(24,12);ctx.stroke();
+ctx.fillStyle=A?'#c4b07b':'#8d744b';
+ctx.beginPath();ctx.arc(-13,2,10,0,Math.PI*2);ctx.fill();
+ctx.strokeStyle='#6f552d';ctx.lineWidth=2;
+ctx.beginPath();ctx.arc(-13,2,10,0,Math.PI*2);ctx.stroke();
+}ctx.restore();ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(u.x-15,u.y-32,30,4);ctx.fillStyle=u.hp/u.maxHP>.4?'#73a65f':'#b14a3b';ctx.fillRect(u.x-15,u.y-32,30*u.hp/u.maxHP,4);if(u.carry>0){ctx.fillStyle='#fff1ce';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText(u.carry,u.x,u.y+43)}}
+function drawPlacement(){if(!pending)return;const d=BUILD[pending.type],reason=placementReason(pending.type,hover.x,hover.y),valid=!reason;ctx.save();ctx.fillStyle=valid?'rgba(69,155,88,.24)':'rgba(188,62,52,.27)';ctx.strokeStyle=valid?'rgba(88,200,108,.95)':'rgba(230,80,68,.95)';ctx.lineWidth=4;ctx.fillRect(hover.x-d.w/2-6,hover.y-d.h/2-6,d.w+12,d.h+12);ctx.strokeRect(hover.x-d.w/2-6,hover.y-d.h/2-6,d.w+12,d.h+12);drawStructure(pending.type,active,hover.x,hover.y,d.w,d.h,.65);ctx.fillStyle='rgba(0,0,0,.75)';ctx.fillRect(hover.x-95,hover.y+d.h/2+14,190,26);ctx.fillStyle='#fff';ctx.font='13px sans-serif';ctx.textAlign='center';ctx.fillText(valid?'Click to build':reason,hover.x,hover.y+d.h/2+32);ctx.restore()}
+function render(t){drawTerrain(t);resources.forEach(r=>drawRes(r,t));buildings.forEach(drawBuilding);units.forEach(u=>drawUnit(u,t));particles.forEach(p=>{ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.kind==='damage'?'#ffd0c7':'#fff0ba';ctx.font='bold 14px sans-serif';ctx.textAlign='center';ctx.fillText(p.text,p.x,p.y);ctx.globalAlpha=1});drawPlacement()}
+function updateUI(){for(const k of ['A','B']){const c=CIV[k];q('food'+k).textContent=Math.floor(c.food);q('wood'+k).textContent=Math.floor(c.wood);q('stone'+k).textContent=Math.floor(c.stoneR);q('gold'+k).textContent=Math.floor(c.gold);q('pop'+k).textContent=c.pop+'/'+c.cap;q('age'+k).textContent=AGE[c.age]}q('cardA').classList.toggle('active',active==='A');q('cardB').classList.toggle('active',active==='B');q('active').textContent=CIV[active].name+' · '+CIV[active].style;q('selected').textContent=pending?'Placing '+BUILD[pending.type].label:selected?((selected.type==='spearman'?'Spearman ':selected.type==='swordsman'?'Swordsman ':selected.type==='archer'?'Archer ':'Villager ')+selected.id):'No unit selected';const f=features(active);q('fc').textContent=f.city?'✓':'—';q('fg').textContent=f.gov?'✓':'—';q('fr').textContent=f.rel?'✓':'—';q('fs').textContent=f.social?'✓':'—';q('fw').textContent=f.write?'✓':'—';q('fart').textContent=f.art?'✓':'—';q('guideText').textContent=nextGuide();updateButtons()}
+function loop(now){const dt=Math.min(.04,(now-last)/1000);last=now;update(dt);render(now);requestAnimationFrame(loop)}
+q('age').addEventListener('click',advance);['farm','house','store','barracks','archery','temple','gov','scribe','monument','bridge'].forEach(t=>q(t).addEventListener('click',()=>beginPlacement(t)));q('villager').addEventListener('click',trainVillager);q('spearman').addEventListener('click',trainSpearman);q('swordsman').addEventListener('click',trainSwordsman);q('archer').addEventListener('click',trainArcher);q('repair').addEventListener('click',repair);q('cardA').addEventListener('click',()=>setActive('A'));q('cardB').addEventListener('click',()=>setActive('B'));q('start').addEventListener('click',()=>{q('tutorial').classList.add('hidden');q('app').focus()});q('help').addEventListener('click',()=>q('tutorial').classList.remove('hidden'));q('sound').addEventListener('click',()=>{unlockAudio();soundOn=!soundOn;q('sound').textContent=soundOn?'🔊 Sound on':'🔇 Sound off'});q('pause').addEventListener('click',()=>{paused=!paused;q('pause').textContent=paused?'Resume':'Pause'});q('reset').addEventListener('click',reset);q('again').addEventListener('click',reset);q('app').addEventListener('keydown',e=>{if(e.key==='Escape'){cancelPlacement();e.preventDefault()}if(e.key==='1'){setActive('A');e.preventDefault()}if(e.key==='2'){setActive('B');e.preventDefault()}if(e.key===' '){paused=!paused;q('pause').textContent=paused?'Resume':'Pause';e.preventDefault()}});
+// Enhanced rendering is isolated from the original simulation.
+const classicRender=render;
+let enhanced=true, artTime=0, g=ctx;
+const artCache=new Map(), poses=new Map();
+const graphicsButton=document.createElement('button');
+graphicsButton.className='btn';graphicsButton.id='graphics';graphicsButton.textContent='Graphics: Enhanced';graphicsButton.setAttribute('aria-pressed','true');
+q('help').before(graphicsButton);
+graphicsButton.addEventListener('click',()=>{enhanced=!enhanced;graphicsButton.textContent='Graphics: '+(enhanced?'Enhanced':'Classic');graphicsButton.setAttribute('aria-pressed',String(enhanced));document.body.classList.toggle('classic-view',!enhanced)});
+function randSeed(n){let s=n>>>0;return()=>{s=(Math.imul(1664525,s)+1013904223)>>>0;return s/4294967296}}
+function poly(points,color,stroke){g.beginPath();points.forEach((p,i)=>i?g.lineTo(...p):g.moveTo(...p));g.closePath();g.fillStyle=color;g.fill();if(stroke){g.strokeStyle=stroke;g.lineWidth=.7;g.stroke()}}
+function ellipse(x,y,rx,ry,color){g.beginPath();g.ellipse(x,y,Math.max(.1,rx),Math.max(.1,ry),0,0,Math.PI*2);g.fillStyle=color;g.fill()}
+function line(x1,y1,x2,y2,color,width=1){g.strokeStyle=color;g.lineWidth=width;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke()}
+function rect(x,y,w,h,color){g.fillStyle=color;g.fillRect(x,y,w,h)}
+function glow(x,y,r,color){const a=g.createRadialGradient(x,y,0,x,y,r);a.addColorStop(0,color);a.addColorStop(1,'rgba(0,0,0,0)');ellipse(x,y,r,r,a)}
+function asset(key,w,h,paint){if(!artCache.has(key)){const c=document.createElement('canvas');c.width=w*2;c.height=h*2;const old=g;g=c.getContext('2d');g.scale(2,2);g.translate(w/2,h/2);try{paint()}finally{g=old}artCache.set(key,c)}return artCache.get(key)}
+function stamp(key,x,y,w,h,paint){const a=asset(key,w,h,paint);g.drawImage(a,x-w/2,y-h/2,w,h)}
+function groundShadow(w,h){for(let i=5;i>0;i--)ellipse(12+i,15+i,w*.54+i,h*.15+i,'rgba(24,33,21,.035)')}
+function masonry(x,y,w,h,A){rect(x,y,w,h,A?'#cfbd93':'#bd945e');const r=randSeed(Math.floor(w*29+h));for(let yy=y+4;yy<y+h;yy+=7){line(x,yy,x+w,yy,A?'rgba(109,85,53,.23)':'rgba(114,72,34,.25)',.6);for(let xx=x+(Math.floor((yy-y)/7)%2)*9;xx<x+w;xx+=17){line(xx,yy,xx,Math.min(y+h,yy+7),'rgba(103,78,44,.22)',.7);if(r()>.6)rect(xx+2,yy+2,Math.min(8,x+w-xx),2,'rgba(255,239,192,.1)')}}}
+function box(x,y,w,h,d,A){poly([[x+w,y],[x+w+d,y-d*.6],[x+w+d,y+h-d*.6],[x+w,y+h]],A?'#998661':'#8e633b');masonry(x,y,w,h,A);poly([[x,y],[x+d,y-d*.6],[x+w+d,y-d*.6],[x+w,y]],A?'#e4d6b2':'#d7b57a');line(x,y,x,y+h,'#f0dfb6',1.2);line(x,y+h,x+w,y+h,'#776442',1)}
+function door(x,y,w,h){rect(x-w/2,y-h,w,h,'#493729');ellipse(x,y-h,w/2,w*.33,'#493729');rect(x-w/2+2,y-h,w-4,h,'#62482f');for(let k=-w/2+4;k<w/2-1;k+=4)line(x+k,y-h,x+k,y,'#392e22',.7);line(x-w/2+2,y-5,x+w/2-2,y-5,'#b18a51',1);ellipse(x+w*.22,y-h*.45,1.3,1.3,'#ddc477')}
+function windowArt(x,y,A){rect(x-4,y,9,13,A?'#746d57':'#786345');rect(x-3,y+1,6,10,'#252c2a');line(x-6,y+13,x+6,y+13,'#ead7ad',2);line(x,y+1,x,y+11,A?'#b5a37c':'#ac8654',1)}
+function pitchedRoof(x,y,w,d,rise,A,thatch=false){const ridge=x+w*.5;poly([[x-5,y],[ridge,y-rise],[ridge+d,y-rise-d*.6],[x+d-5,y-d*.6]],thatch?'#ae9560':A?'#ba7253':'#b78c54');poly([[ridge,y-rise],[x+w+6,y],[x+w+d+6,y-d*.6],[ridge+d,y-rise-d*.6]],thatch?'#8b7447':A?'#864834':'#947144');poly([[x-5,y],[ridge,y-rise],[x+w+6,y]],thatch?'#b09a64':A?'#c58b62':'#c4a36a');for(let i=1;i<8;i++){let f=i/8;line(x-5+(w*.5+5)*f,y-rise*f,x+w+6-(w*.5+6)*f,y-rise*f,thatch?'#877344':'#8d573a',.65)}for(let i=0;i<10;i++){const f=i/10;line(ridge+(w*.5+6)*f,y-rise+rise*f,ridge+d+(w*.5+6)*f,y-rise-d*.6+rise*f,thatch?'#b7a170':'#b97550',.65)}line(ridge,y-rise,ridge+d,y-rise-d*.6,'#dfb388',2);line(x-5,y,x+w+6,y,'#62472f',2)}
+function bannerArt(x,y,A,h=22){const c=A?'#3f7994':'#a44f42';line(x,y-6,x,y+h+2,'#d4b374',1.3);poly([[x,y],[x+11,y+1],[x+11,y+h],[x+5,y+h-4],[x,y+h]],c);line(x+4,y+3,x+4,y+h-7,'#e5c87f',1);ellipse(x,y-7,2,2,'#e2c68a')}
+function urn(x,y,s=1){ellipse(x,y+2,6*s,2*s,'rgba(28,22,12,.25)');ellipse(x,y-4*s,5*s,7*s,'#a96842');ellipse(x-1*s,y-5*s,3*s,5*s,'#cd9461');rect(x-3*s,y-12*s,6*s,3*s,'#986139');ellipse(x,y-12*s,3*s,1.5*s,'#493628')}
+function structureArt(type,civ,w,h,age){const A=civ==='A',x=-w*.38,y=-h*.16,bw=w*.70,bh=h*.49,d=w*.13;
+groundShadow(w,h);poly([[-w*.5,h*.36],[-w*.43,-h*.22],[w*.48,-h*.30],[w*.6,h*.26],[w*.4,h*.48]],'rgba(204,181,128,.65)');
+if(type==='farm'){poly([[-w*.47,-h*.35],[w*.43,-h*.42],[w*.49,h*.34],[-w*.48,h*.44]],'#665638');for(let row=0;row<7;row++){const yy=-h*.27+row*h*.095;line(-w*.39,yy,w*.4,yy-4,'#403c29',4);for(let k=0;k<17;k++){const xx=-w*.38+k*w*.046;line(xx,yy,xx+2,yy-8,'#b8ad60',1.4);line(xx+2,yy-8,xx-1,yy-11,'#e2cc7c',1.4);line(xx+2,yy-8,xx+5,yy-11,'#c7b16c',1.4)}}for(let xx=-w*.48;xx<w*.5;xx+=w*.2){line(xx,h*.45,xx,h*.45-13,'#796039',2)}line(-w*.48,h*.39,w*.48,h*.39,'#b2965e',2);return}
+if(type==='bridge'){poly([[-w/2,-h/2],[w/2,-h/2],[w/2,h/2],[-w/2,h/2]],'#977a4d');for(let xx=-w/2;xx<w/2;xx+=7){line(xx,-h/2,xx,h/2,'#564631',1.2);line(xx+2,-h/2,xx+2,h/2,'#c1a775',.6)}for(const yy of [-h/2,h/2]){for(let xx=-w/2;xx<=w/2;xx+=w/6){rect(xx-2,yy-15,4,17,'#634b31');rect(xx-2,yy-16,4,2,'#d1b17b')}line(-w/2,yy-11,w/2,yy-11,'#a88957',3)}return}
+if(type==='monument'){for(let n=0;n<3;n++){const ww=w*(.9-n*.17);box(-ww/2,h*.35-n*7,ww,7,8,A)}if(A){box(-9,-h*.44,18,h*.67,7,true);poly([[-9,-h*.44],[0,-h*.68],[9,-h*.44]],'#e6d7b5');for(let k=0;k<5;k++)line(-4,-h*.31+k*10,4,-h*.31+k*10,'#907b52',1);ellipse(0,-h*.18,4,5,'#c3a455')}else{box(-w*.22,-h*.3,w*.44,h*.55,10,false);poly([[-w*.26,-h*.3],[0,-h*.6],[w*.28,-h*.3]],'#c7a86c');rect(-w*.23,-h*.1,w*.46,9,'#3c8585');ellipse(0,-h*.17,7,7,'#d8b46a');ellipse(0,-h*.17,3,3,'#856139')}return}
+box(x,y,bw,bh,d,A);
+const flat=!A&&age>0;
+if(flat){box(x-4,y-8,bw+8,8,d,false);for(let xx=x;xx<x+bw;xx+=14)box(xx,y-16,7,8,3,false);rect(x+3,y+3,bw-6,5,'#438c8b');line(x+3,y+9,x+bw-3,y+9,'#d7bf85',1)}else pitchedRoof(x,y,bw,d,type==='tc'?h*.34:h*.29,A,age===0);
+door(x+bw*.52,y+bh,15,type==='tc'?31:24);
+if(type!=='house'){windowArt(x+bw*.18,y+bh*.22,A);windowArt(x+bw*.83,y+bh*.22,A)}else windowArt(x+bw*.2,y+bh*.24,A);
+// Side openings give the facade a consistent oblique perspective.
+poly([[x+bw+3,y+bh*.3],[x+bw+d-3,y+bh*.3-d*.5],[x+bw+d-3,y+bh*.65-d*.5],[x+bw+3,y+bh*.65]],'#4c4633');
+if(type==='tc'||type==='gov'||type==='temple'){const px=x+4,py=y+bh*.28;for(let k=0;k<4;k++){const xx=px+k*(bw-8)/3;rect(xx-3,py,6,bh*.73,'#e1d4b0');rect(xx-5,py-2,10,4,'#eedfba');rect(xx-5,y+bh-2,10,4,'#ab9470');line(xx+1,py+4,xx+1,y+bh-3,'#b0a080',1)}rect(x-6,y+bh+3,bw+15,4,'#d4c39c');rect(x-10,y+bh+7,bw+23,4,'#9f8f6a');bannerArt(x-8,y+5,A,25);bannerArt(x+bw+12,y+2,A,25)}
+if(type==='temple'){ellipse(0,y-20,7,7,'#d3b768');ellipse(0,y-20,3.5,3.5,'#8a6839');urn(x-12,y+bh,.8);urn(x+bw+17,y+bh,.8)}
+if(type==='barracks'){bannerArt(x-9,y+8,A,28);for(let k=0;k<4;k++){let xx=x+bw+15+k*5;line(xx,y+bh,xx-4,y+bh-30,'#6c4f30',1.5);poly([[xx-6,y+bh-28],[xx-4,y+bh-36],[xx-2,y+bh-28]],'#cdc4a3')}for(let k=0;k<3;k++){ellipse(x+10+k*12,y+bh+4,6,8,A?'#63899a':'#b56d50');ellipse(x+10+k*12,y+bh+4,2,2,'#dbbf7c')}}
+if(type==='store'){for(let k=0;k<4;k++)urn(x+6+k*12,y+bh+10,.9);box(x+bw+7,y+bh-9,13,16,5,false);line(x+bw+7,y+bh-6,x+bw+20,y+bh+4,'#684d2c',1.5)}
+if(type==='scribe'){rect(x+4,y+bh*.3,19,11,'#e8d7a8');for(let k=0;k<3;k++)line(x+7,y+bh*.3+3+k*3,x+19,y+bh*.3+3+k*3,'#8d7550',.7);box(x+bw+8,y+bh-5,16,10,5,true);rect(x+bw+10,y+bh-8,11,3,'#eee0bb')}
+if(type==='house'){urn(x+bw+17,y+bh,.8);line(x-7,y+bh,x-7,y+bh-17,'#816344',2);line(x-7,y+bh-16,x+10,y+bh-16,'#816344',2);poly([[x-8,y+bh-17],[x+12,y+bh-17],[x+17,y+bh-6],[x-12,y+bh-6]],A?'#777e56':'#b18359')}
+}
+function enhancedStructure(type,civ,x,y,w,h,alpha=1){g.save();g.globalAlpha*=alpha;const age=CIV[civ].age;stamp('b:'+type+civ+w+':'+age,x,y,Math.ceil(w+110),Math.ceil(h+110),()=>structureArt(type,civ,w,h,age));g.restore()}
+const terrain=document.createElement('canvas');terrain.width=W;terrain.height=H;
+function buildTerrain(){const old=g;g=terrain.getContext('2d');const rng=randSeed(48321);const grad=g.createLinearGradient(0,0,W,H);grad.addColorStop(0,'#637852');grad.addColorStop(.35,'#899069');grad.addColorStop(.65,'#a5a078');grad.addColorStop(1,'#777e55');rect(0,0,W,H,grad);
+for(let i=0;i<470;i++){const x=rng()*W,y=rng()*H,r=20+rng()*110;const gg=g.createRadialGradient(x,y,0,x,y,r);gg.addColorStop(0,i%3===0?'rgba(202,185,133,.17)':'rgba(38,68,36,.13)');gg.addColorStop(1,'rgba(75,85,45,0)');ellipse(x,y,r,r*.6,gg)}
+for(const cx of [185,1315]){for(let j=5;j>=0;j--)ellipse(cx,480,108+j*11,68+j*9,'rgba(188,165,113,.08)');g.strokeStyle='rgba(196,173,120,.19)';g.lineWidth=14;g.beginPath();g.moveTo(cx,505);g.bezierCurveTo(cx+35,560,cx+(cx<750?80:-80),590,cx+(cx<750?120:-120),690);g.stroke()}
+for(let i=0;i<32000;i++){const x=rng()*W,y=rng()*H,c=rng();rect(x,y,.5+rng()*2,.4+rng(),c<.4?'rgba(238,221,162,.16)':c<.8?'rgba(30,54,25,.16)':'rgba(162,161,102,.26)');if(i%5===0){line(x,y,x-1-rng()*2,y-2-rng()*3,'rgba(63,83,40,.25)',.7)}}
+// Banks stay outside the original 720–780 river collision bounds.
+for(const x of [716,784]){line(x,0,x,H,'rgba(48,65,43,.4)',16);line(x,0,x,H,'#a99e75',7);line(x+(x<750?3:-3),0,x+(x<750?3:-3),H,'#d1c49a',2);for(let i=0;i<220;i++){let yy=rng()*H,xx=x+(x<750?-1:1)*rng()*15;ellipse(xx,yy,1+rng()*4,1+rng()*2,i%2?'#79805c':'#b0a786');if(i%4===0){for(let j=0;j<3;j++)line(xx+j,yy,xx+j-2,yy-7-rng()*9,'#586b43',1)}}}
+for(let i=0;i<110;i++){let x=rng()*W,y=rng()*H;if(x>690&&x<810)continue;ellipse(x,y,2+rng()*3,1+rng(),'#b6ae85');line(x,y-1,x+2,y-1,'#d6c69d',.8)}
+const vignette=g.createRadialGradient(W/2,H*.48,330,W/2,H*.48,900);vignette.addColorStop(0,'rgba(18,32,19,0)');vignette.addColorStop(1,'rgba(18,32,19,.32)');rect(0,0,W,H,vignette);g=old}
+buildTerrain();
+function enhancedTerrain(t){g.drawImage(terrain,0,0);const water=g.createLinearGradient(720,0,780,0);water.addColorStop(0,'#467f7d');water.addColorStop(.18,'#346c72');water.addColorStop(.5,'#284f60');water.addColorStop(.85,'#376e76');water.addColorStop(1,'#669694');rect(720,0,60,H,water);g.save();g.beginPath();g.rect(721,0,58,H);g.clip();for(let i=0;i<150;i++){const y=(i*41+t*.012)%H,x=722+(i*23)%51,l=3+(i%9);line(x,y,x+l,y-2,'rgba(178,220,210,'+(.08+.12*Math.sin(t*.001+i)**2)+')',.7)}for(let i=0;i<22;i++){const yy=(i*47+t*.008)%H;g.strokeStyle='rgba(203,227,205,.17)';g.lineWidth=.7;g.beginPath();g.moveTo(722,yy);g.quadraticCurveTo(747,yy+7,778,yy+1);g.stroke()}g.restore()}
+function treeArt(seed){const rng=randSeed(seed);groundShadow(53,58);poly([[-5,25],[-3,-14],[4,-17],[6,26]],'#514b32');line(-1,21,0,-17,'#a28b59',2);line(1,-2,-16,-19,'#645739',3);line(2,-7,18,-24,'#645739',3);
+const palette=['#334d35','#405c3b','#526d42','#67814d','#7d9158','#94a166'];for(let i=0;i<17;i++){const a=i*2.3999,r=Math.sqrt(i/17)*26,x=Math.cos(a)*r,y=-15+Math.sin(a)*r*.7;ellipse(x+4,y+5,14,11,'rgba(26,43,28,.2)');const c=g.createRadialGradient(x-5,y-5,1,x,y,17);c.addColorStop(0,palette[3+i%3]);c.addColorStop(1,palette[i%2]);ellipse(x,y,13+rng()*5,10+rng()*4,c)}for(let i=0;i<190;i++){let x=(rng()-.5)*66,y=(rng()-.5)*51-16;if(x*x/(33*33)+(y+16)**2/(25*25)>1)continue;ellipse(x,y,1+rng()*3,.8+rng()*1.5,palette[Math.floor(rng()*6)])}}
+function mineralArt(type,seed){const rng=randSeed(seed);groundShadow(43,32);for(let i=0;i<5;i++){const x=(i-2)*9,y=(i%2)*7,r=9+rng()*8;poly([[x-r,y+9],[x-r*.8,y-6],[x,y-r],[x+r,y-4],[x+r*.8,y+10]],'#626f6c');poly([[x-r*.8,y-6],[x,y-r],[x+3,y+1],[x-r,y+9]],'#98a39a');poly([[x,y-r],[x+r,y-4],[x+3,y+1]],'#b2b7a4');poly([[x+3,y+1],[x+r,y-4],[x+r*.8,y+10]],'#4e5c5c');if(type==='gold'){for(let k=0;k<5;k++){const xx=x+(rng()-.5)*r,yy=y+(rng()-.5)*r;poly([[xx-2,yy],[xx,yy-4],[xx+4,yy-2],[xx+2,yy+3]],k%2?'#dbbd64':'#ac863f');line(xx-1,yy,xx+1,yy-2,'#f5de8a',1)}}}}
+function berryArt(seed){const rng=randSeed(seed);groundShadow(40,30);for(let i=0;i<22;i++){const a=i*2.4,r=Math.sqrt(i/22)*19;ellipse(Math.cos(a)*r,Math.sin(a)*r*.65,8,7,i%3?'#4e673e':'#74864b')}for(let i=0;i<19;i++){const x=(rng()-.5)*32,y=(rng()-.5)*21;ellipse(x,y,2,2,'#9c5260');ellipse(x-.5,y-.7,.7,.7,'#d49b9c')}}
+function deerArt(r,t){g.save();g.translate(r.x,r.y);const f=r.x>750?-1:1;g.scale(f,1);groundShadow(37,25);const shift=Math.sin(t*.002+r.phase)*.6;for(let i=0;i<4;i++){const x=-13+i*8;line(x,2,x+(i%2?2:-2),18,'#67533c',2);line(x+(i%2?2:-2),18,x+(i%2?5:-4),19,'#343d30',2)}ellipse(-1,0,19,10,'#936e45');ellipse(-4,-4,14,6,'#b18c5b');ellipse(5,3,9,4,'#c2ac7e');poly([[9,-3],[17,-20+shift],[23,-18+shift],[18,6]],'#aa8452');ellipse(22,-20+shift,8,4,'#b79565');ellipse(28,-20+shift,2,2,'#3b3b2b');ellipse(22,-22+shift,1,1,'#242c26');poly([[16,-23],[13,-29],[20,-26]],'#aa8656');line(18,-24,16,-35,'#625638',1.2);line(16,-31,12,-33,'#625638',1);line(16,-32,20,-36,'#625638',1);line(-18,-3,-23,-8,'#c8b58b',3);g.restore()}
+function gauge(x,y,w,value,color){rect(x-w/2-1,y-1,w+2,5,'rgba(21,29,24,.75)');rect(x-w/2,y,w*Math.max(0,Math.min(1,value)),3,color)}
+function enhancedResource(r,t){if(r.type==='deer'&&r.hunted){drawDeerBody(r);if(r.amount>0&&dist(hover,r)<r.r+8)gauge(r.x,r.y+36,38,r.amount/r.max,'#dfc586');return}if(r.amount<=0){if(r.type==='tree'){ellipse(r.x,r.y+12,7,3,'#64563a');rect(r.x-5,r.y+5,10,7,'#776243');ellipse(r.x,r.y+5,5,2,'#b9a16d')}return}if(r.type==='deer')deerArt(r,t);else stamp('r:'+r.type+':'+r.id,r.x,r.y,110,120,()=>r.type==='tree'?treeArt(r.x*19+r.y):r.type==='berries'?berryArt(r.x+r.y):mineralArt(r.type,r.x+r.y));if(dist(hover,r)<r.r+8)gauge(r.x,r.y+36,38,r.amount/r.max,'#dfc586')}
+function enhancedBuilding(b,t){if(b.hp<=0)return;const p=b.buildProgress===undefined?100:b.buildProgress;enhancedStructure(b.type,b.civ,b.x,b.y,b.w,b.h,p<100?.4+.6*p/100:1);if(p<100){g.save();g.translate(b.x,b.y);for(let x=-b.w*.45;x<=b.w*.45;x+=b.w*.22){line(x,b.h*.4,x,-b.h*.5,'#73563b',3);line(x-1,b.h*.4,x-1,-b.h*.5,'#c3a774',.8)}for(let y=-b.h*.3;y<b.h*.4;y+=17)line(-b.w*.46,y,b.w*.48,y,'#aa8954',2);line(-b.w*.44,b.h*.4,b.w*.43,-b.h*.4,'#84633f',2);g.restore();gauge(b.x,b.y+b.h*.55,b.w*.8,p/100,'#dfc38a')}else if(b.type==='house'||b.type==='tc'){for(let i=0;i<5;i++){const v=(t*.00009+i*.2)%1;ellipse(b.x+b.w*.24+Math.sin(v*4+i)*4,b.y-b.h*.43-v*33,2+v*5,3+v*5,'rgba(217,216,194,'+((1-v)*.13)+')')}}if(b.hp<b.maxHP||Math.abs(hover.x-b.x)<b.w/2&&Math.abs(hover.y-b.y)<b.h/2){gauge(b.x,b.y-b.h*.78,Math.min(65,b.w*.7),b.hp/b.maxHP,b.hp/b.maxHP>.4?'#9cbd7d':'#db8164')}if(b.hp<b.maxHP*.45){for(let i=0;i<4;i++){const x=b.x-20+i*13,y=b.y+8;glow(x,y,13,'rgba(239,140,37,.2)');poly([[x-4,y],[x+Math.sin(t*.009+i)*4,y-9-Math.sin(t*.013+i)*5],[x+5,y]],'#d99a48')}}}
+// Villager presentation reads existing orders, positions and gathering progress only.
+// Deaths use simulation time: pausing freezes a fall; restarting clears bodies.
+function updateDeaths(dt){
+  for(const a of projectiles)updateArrow(a,dt);projectiles=projectiles.filter(a=>!a.done);for(const a of stuckArrows)a.life-=dt;stuckArrows=stuckArrows.filter(a=>a.life>0);
+  for(const u of units){u.hitFlash=Math.max(0,(u.hitFlash||0)-dt);u.strikeFlash=Math.max(0,(u.strikeFlash||0)-dt)}
+  for(const r of resources)if(r.type==='deer'&&r.hunted)r.deathAge=Math.min(.6,(r.deathAge||0)+dt);
+  for(const u of units)if(u.hp<=0){
+    if(u.deathAge===undefined){u.deathAge=0;const pose=poses.get(u.id);u.deathFace=pose?pose.face:(u.civ==='A'?1:-1);u.target=null;if(selected&&selected.id===u.id)selected=null}
+    else u.deathAge=Math.min(.7,u.deathAge+dt);
+  }
+}
+function drawDeerBody(r){
+  const n=Math.max(0,Math.min(1,(r.deathAge||0)/.5)),e=n*n*(3-2*n);
+  g.save();g.translate(r.x,r.y);g.scale(r.x>750?-1:1,1);
+  ellipse(5,17,25,5,'rgba(27,33,21,.22)');
+  if(r.amount<=0)g.globalAlpha*=.67;
+  g.translate(0,e*9);g.rotate(e*.13);
+  for(let i=0;i<4;i++){
+    const x=-13+i*8,kx=x+e*(i%2?6:-5),ky=9-e*5,fx=x+e*(i%2?13:-9),fy=18-e*14;
+    line(x,2,kx,ky,'#756047',2);line(kx,ky,fx,fy,'#67533c',2);line(fx,fy,fx+3,fy,'#353c2f',2);
+  }
+  ellipse(-1,0,19,10-e*2,'#94734e');ellipse(-4,-4,14,6,'#ae8c5f');ellipse(5,3,9,4,'#bfa880');
+  const hx=22+e*5,hy=-20+e*19;
+  poly([[9,-3],[hx-5,hy],[hx+1,hy+2],[18,6]],'#aa8757');ellipse(hx,hy,8,4,'#b59467');ellipse(hx+6,hy,2,2,'#414130');
+  line(hx-1,hy-1,hx+2,hy,'#574e35',.8);
+  poly([[hx-6,hy-3],[hx-9,hy-9],[hx-2,hy-6]],'#a58860');
+  line(hx-4,hy-4,hx-6,hy-15,'#706044',1.2);line(hx-6,hy-11,hx-10,hy-13,'#706044',1);line(hx-6,hy-12,hx-2,hy-16,'#706044',1);
+  line(-18,-3,-23,-8+e*7,'#c0ab85',3);g.restore();
+}
+function drawFallenUnit(u){
+  const n=Math.max(0,Math.min(1,(u.deathAge||0)/.65)),e=n*n*(3-2*n),A=u.civ==='A',soldier=u.type!=='villager',sword=u.type==='swordsman';
+  const face=u.deathFace|| (A?1:-1);
+  g.save();g.translate(u.x,u.y+17);
+  ellipse(face*e*12,1,13+e*11,4,'rgba(24,31,23,.23)');
+  g.save();g.rotate(face*e*Math.PI*.48);g.scale(face,1);
+  // The body settles on its side, retaining clothing and equipment identity.
+  line(-4,-11,-5-e*3,-5,'#aa895f',3);line(-5-e*3,-5,-6-e*5,0,'#b99568',2.5);
+  line(4,-11,4+e*4,-5,'#a2825c',3);line(4+e*4,-5,5+e*6,0,'#b99568',2.5);
+  line(-6-e*5,0,-3-e*5,0,'#494632',2.5);line(5+e*6,0,8+e*6,0,'#494632',2.5);
+  poly([[-6,-26],[5,-26],[7,-12],[-7,-10]],A?'#497689':'#9f6451');poly([[-6,-26],[-2,-24],[-2,-12],[-7,-10]],A?'#324f5c':'#734a3e');
+  if(sword){rect(-5,-25,10,10,'#a39572');for(let j=0;j<4;j++)line(-4,-23+j*2,4,-23+j*2,'#c5b58b',.6)}
+  line(-6,-16,6,-16,'#b59a66',1.5);
+  line(-5,-24,-9-e*2,-17,'#b59366',3);line(-9-e*2,-17,-7+e*6,-11,'#c0a075',2.5);
+  line(5,-24,9+e*2,-19,'#c0a075',3);line(9+e*2,-19,13+e*3,-16,'#c0a075',2.5);
+  ellipse(0,-32,5.5,6,'#b8996d');line(2,-33,4,-33,'#625c43',.8);
+  ellipse(0,-36,5.5,3,soldier?'#ab9a72':A?'#5e5039':'#c2af88');
+  if(sword)poly([[-3,-38],[-1,-43],[3,-42],[5,-38]],A?'#a6654b':'#517a77');
+  g.restore();
+  if(soldier){
+    ellipse(-face*(9+e*4),-3,7,4+3*(1-e),'#77603e');ellipse(-face*(9+e*4),-4,6,3+3*(1-e),A?'#62818b':'#a17451');ellipse(-face*(9+e*4),-4,2,1.5,'#d0b881');
+    const x=face*8,y=-5;
+    if(sword){line(x,y,x+face*(4+e*15),y-15+e*11,'#c9c3a7',2.5);line(x-face*3,y+1,x+face*4,y-1,'#b59860',2)}
+    else{line(x-face*10,y+6,x+face*(10+e*23),y-30+e*26,'#aa8e5b',1.8);poly([[x+face*(10+e*23),y-30+e*26],[x+face*(9+e*27),y-38+e*35],[x+face*(13+e*22),y-31+e*26]],'#b8b99d')}
+  }g.restore();
+}
+
+function workerVisualState(u,t){
+  let p=poses.get(u.id);if(!p){p={x:u.x,y:u.y,face:u.civ==='A'?1:-1,time:t,moving:false};poses.set(u.id,p)}
+  const dx=u.x-p.x,dy=u.y-p.y;
+  if(!paused){p.moving=Math.hypot(dx,dy)>.025;p.time=t}
+  if(Math.abs(dx)>.01)p.face=Math.sign(dx);
+  p.x=u.x;p.y=u.y;
+  const r=u.target&&u.target.kind==='resource'?resources.find(r=>r.id===u.target.id):null;
+  const working=!!(r&&r.amount>0&&u.carry<10&&dist(u,r)<=r.r+17.1&&!(r.type==='deer'&&r.hunted&&(r.deathAge||0)<.5));
+  if(working&&Math.abs(r.x-u.x)>1)p.face=Math.sign(r.x-u.x);
+  const phase=Math.max(0,Math.min(1,u.gather/.42));
+  return{p,r,working,phase,time:p.time===undefined?t:p.time,hunting:working&&r.type==='deer'&&!r.hunted,food:working&&(r.type==='berries'||(r.type==='deer'&&r.hunted))};
+}
+function workerLoad(kind,amount,x,y,source){
+  if(amount<=0)return;g.save();g.translate(x,y);
+  const fullness=.65+.35*Math.min(1,amount/10);g.scale(fullness,fullness);
+  if(kind==='wood'){
+    for(let i=0;i<3;i++){line(-8,-4+i*4,8,-7+i*4,'#725139',4);line(-7,-5+i*4,7,-8+i*4,'#b7965e',1);ellipse(8,-7+i*4,2,2,'#d8b780')}
+    line(-2,-8,0,6,'#d2b98a',1.5);
+  }else{
+    poly([[-8,-3],[8,-3],[6,9],[-6,9]],'#a68a52');
+    for(let j=0;j<3;j++)line(-6,1+j*3,6,1+j*3,'#d0b77d',.8);
+    for(let i=-4;i<=4;i+=4)line(i,-2,i,8,'#705b37',.7);
+    if(kind==='food'&&source==='deer'){for(let i=0;i<3;i++){ellipse(-4+i*4,-4-(i%2)*2,3,2.5,'#ab7964');line(-5+i*4,-5-(i%2)*2,-3+i*4,-5-(i%2)*2,'#d0ac90',.8)}}else if(kind==='food'){
+      for(let i=0;i<6;i++)ellipse(-5+i*2,-4-(i%2)*2,2.3,2.3,i%2?'#a76c52':'#bea76a');
+      line(0,-4,3,-9,'#8b9a5a',1.5);line(1,-6,-3,-9,'#96a45e',1.5);
+    }else for(let i=0;i<3;i++){
+      const xx=-5+i*5;poly([[xx-2,-3],[xx-1,-9],[xx+3,-8],[xx+5,-3]],kind==='gold'?(i%2?'#ccae54':'#9e8952'):(i%2?'#b4b5a1':'#818e85'));
+      line(xx,-8,xx+2,-7,kind==='gold'?'#f1d782':'#d2d0b7',1);
+    }
+    line(-8,-3,8,-3,'#dfc591',1.4);
+  }g.restore();
+}
+function animatedVillager(u,t){
+  if(u.hp<=0)return;
+  const v=workerVisualState(u,t),{p,r,working,phase,time,food,hunting}=v;
+  const A=u.civ==='A',selectedNow=selected&&selected.id===u.id;
+  const walk=p.moving&&!working?Math.sin(time*.012+u.phase):0;
+  const reach=food?Math.sin(phase*Math.PI):0;
+  const mining=working&&(r.type==='stone'||r.type==='gold');
+  const swing=working&&!food?(-1.65+2.25*Math.pow(phase,.65)):0;
+  if(selectedNow){g.strokeStyle='#efd99c';g.lineWidth=2;g.beginPath();g.ellipse(u.x,u.y+16,19,8,0,0,Math.PI*2);g.stroke();ellipse(u.x,u.y+16,17,6,'rgba(224,209,139,.1)')}
+  g.save();g.translate(u.x,u.y);ellipse(5,18,14,4,'rgba(25,34,24,.28)');g.scale(p.face,1);
+  // Legs remain planted while the torso bends to reach food.
+  for(const side of [-1,1]){const knee=side*4+walk*side*3,foot=side*4+walk*side*5;line(side*4,6,knee,12,'#ab895f',3);line(knee,12,foot,18,'#c3a171',2.4);line(foot,18,foot+3,18,'#4b4531',2.6)}
+  if(working&&u.carry>0)workerLoad(u.carryKind,u.carry,-15,12,u.carrySource);
+  g.save();g.translate(0,Math.abs(walk)*-1.5);g.translate(0,5);g.rotate(food?reach*.5:working?Math.sin(phase*Math.PI)*.08:0);g.translate(0,-5);
+  const cloth=A?'#477b91':'#a75f4c',dark=A?'#294c61':'#704233';
+  poly([[-6,-9],[5,-9],[7,5],[9,10],[-8,10],[-6,2]],cloth);poly([[-6,-9],[-2,-8],[-2,8],[-8,10]],dark);line(2,-5,4,6,A?'#7eacb9':'#cd8f70',1);rect(-7,1,14,2,'#715336');rect(0,1,2,2,'#ddc27e');
+  const idle=!working&&!p.moving&&!u.carry;
+  g.save();g.translate(0,idle?Math.sin(time*.002+u.phase)*.35:0);
+  rect(-2,-13,5,5,'#b89465');ellipse(1,-16,5.5,6,'#c5a171');ellipse(4,-16,3,3,'#d4b080');ellipse(6,-16,.7,.7,'#29352d');
+  ellipse(0,-20,5,3,'#564934');if(!A){ellipse(0,-20,6,3,'#cfbd96');line(-4,-18,6,-18,'#a99776',1)}else line(-5,-19,5,-19,'#c7b27d',1);g.restore();
+  if(hunting){
+    const thrust=Math.sin(Math.min(1,(u.huntTime||0)/.6)*Math.PI/2)*13;
+    line(-5,-7,2,-1,'#b58e60',3);line(2,-1,9+thrust,-3,'#c9a472',2.5);
+    line(5,-7,12,-6,'#bd9668',3);line(12,-6,16+thrust,-4,'#d1ae79',2.5);
+    line(-6+thrust,-2,29+thrust,-6,'#8e6f43',2);
+    line(-5+thrust,-3,28+thrust,-7,'#c3a574',.6);
+    poly([[28+thrust,-9],[36+thrust,-7],[28+thrust,-4]],'#c1c1a4');
+  }else if(working&&!food){
+    // Axe has a wedge head; pick has a wide curved metal crosspiece.
+    g.save();g.translate(5,-7);g.rotate(swing);
+    line(0,0,5,6,'#bd9668',3);line(5,6,10,2,'#d1ae79',2.5);
+    line(9,10,10,-16,'#82603c',2.2);line(9,8,9,-14,'#c6a978',.7);
+    if(mining){poly([[0,-12],[5,-17],[13,-18],[20,-13],[12,-15],[6,-14]],'#a7afa5');line(5,-17,13,-18,'#e0d9bd',1)}
+    else{poly([[10,-16],[18,-18],[21,-12],[18,-7],[10,-9]],'#969f91');line(20,-14,18,-8,'#dedbc1',1.3)}
+    line(-9,1,-2,5,'#b58e60',3);line(-2,5,8,3,'#c9a472',2.4);g.restore();
+  }else if(food){
+    const hand=10+reach*8;
+    line(5,-7,10,0,'#bd9668',3);line(10,0,hand,3+reach*3,'#d1ae79',2.5);
+    line(-5,-6,-7,1,'#b58e60',3);line(-7,1,4,6,'#c9a472',2.3);
+    if(phase>.7)ellipse(hand,5,2,2,r.type==='berries'?'#ad6471':'#c4aa77');
+  }else if(u.carry>0){
+    line(-5,-6,-3,4,'#b58e60',3);line(-3,4,7,5,'#c9a472',2.5);
+    workerLoad(u.carryKind,u.carry,9,3,u.carrySource);
+    line(5,-7,13,-1,'#bd9668',3);line(13,-1,15,6,'#d1ae79',2.5);
+  }else{
+    line(-5,-7,-8,walk*2,'#bc986a',3);line(-8,walk*2,-6,6+walk*3,'#caaa77',2.3);
+    line(5,-7,8,-walk*2,'#bc986a',3);line(8,-walk*2,9,6-walk*3,'#caaa77',2.3);
+  }
+  g.restore();g.restore();
+  // Brief contact effects, placed on the side facing the actual resource.
+  if(working&&!food&&!hunting&&phase>.72){
+    const f=(phase-.72)/.28;
+    for(let i=0;i<4;i++){
+      const x=u.x+p.face*(15+f*(5+i*2)),y=u.y-5-f*(8+i*3)+f*f*14;
+      if(mining){ellipse(x,y,1+f*2,1+f*1.5,'rgba(206,200,171,'+((1-f)*.5)+')')}
+      else{g.save();g.translate(x,y);g.rotate(i+f*3);rect(-2,-.7,4,1.5,'#d4b579');g.restore()}
+    }
+  }
+  if(selectedNow||u.hp<u.maxHP)gauge(u.x,u.y-38,29,u.hp/u.maxHP,u.hp/u.maxHP>.4?'#abd28d':'#e38c71');
+  if(u.carry>0&&selectedNow){g.fillStyle='#f4e5b9';g.font='bold 11px Arial';g.textAlign='center';g.fillText(u.carry,u.x,u.y+32)}
+}
+
+function enhancedUnit(u,t){if(u.hp<=0){drawFallenUnit(u);return}if(u.type==='villager'){animatedVillager(u,t);return}if(u.hp<=0)return;let pose=poses.get(u.id);if(!pose){pose={x:u.x,y:u.y,face:u.civ==='A'?1:-1,walk:0};poses.set(u.id,pose)}const moving=Math.hypot(u.x-pose.x,u.y-pose.y)>.03;if(Math.abs(u.x-pose.x)>.01)pose.face=Math.sign(u.x-pose.x);pose.x=u.x;pose.y=u.y;const walk=moving?Math.sin(t*.012+u.phase):0;
+if(u.inCombat&&Math.abs(u.faceTarget-u.x)>1)pose.face=Math.sign(u.faceTarget-u.x);
+const A=u.civ==='A',fighter=u.type!=='villager',sword=u.type==='swordsman',sel=selected&&selected.id===u.id;
+if(sel){g.strokeStyle='#efd99c';g.lineWidth=2;g.beginPath();g.ellipse(u.x,u.y+15,19,8,0,0,Math.PI*2);g.stroke();ellipse(u.x,u.y+15,17,6,'rgba(224,209,139,.1)')}
+g.save();g.translate(u.x,u.y);ellipse(5,17,13,4,'rgba(25,34,24,.28)');g.scale(pose.face,1);g.translate(0,moving?Math.abs(walk)*-1.7:Math.sin(t*.002+u.phase)*.25);
+const cloth=A?'#477b91':'#a75f4c',dark=A?'#294c61':'#704233';
+// Feet, jointed legs, tunic, belt and a turned head.
+line(-4,6,-5+walk*3,12,'#a08057',3);line(-5+walk*3,12,-5+walk*5,18,'#c49d70',2.4);line(-5+walk*5,18,-2+walk*5,18,'#4e4532',2.5);line(4,6,4-walk*3,12,'#977650',3);line(4-walk*3,12,4-walk*5,17,'#ba9366',2.4);line(4-walk*5,17,7-walk*5,17,'#4e4532',2.5);
+if(sword)poly([[-7,-9],[-10,10],[5,13],[6,-7]],dark);
+poly([[-6,-9],[5,-9],[7,5],[9,10],[-8,10],[-6,2]],cloth);poly([[-6,-9],[-2,-8],[-2,8],[-8,10]],dark);line(2,-5,4,6,A?'#7eacb9':'#cd8f70',1);rect(-7,1,14,2,'#715336');rect(0,1,2,2,'#ddc27e');
+if(sword){poly([[-6,-9],[5,-9],[6,0],[-6,0]],'#aa9871');for(let i=0;i<4;i++)line(-5,-7+i*2,5,-7+i*2,'#d2bd86',.65);for(let i=-5;i<=5;i+=3)line(i,3,i,8,'#ae9c73',2)}
+rect(-2,-13,5,5,'#b89465');ellipse(1,-16,5.5,6,'#c5a171');ellipse(4,-16,3,3,'#d4b080');ellipse(6,-16,.7,.7,'#29352d');
+if(fighter){ellipse(0,-20,6,4,sword?'#b3a276':'#a39062');rect(-6,-20,3,8,'#8b784f');line(-5,-21,5,-21,'#dec891',1);if(sword){poly([[-4,-23],[-2,-29],[3,-29],[6,-23]],A?'#b15f43':'#466d71');line(-3,-26,3,-26,'#d49569',1)}}else{ellipse(0,-20,5,3,'#564934');if(!A){ellipse(0,-20,6,3,'#cfbd96');line(-4,-18,6,-18,'#a99776',1)}else line(-5,-19,5,-19,'#c7b27d',1)}
+let work=u.target&&u.target.kind==='resource'&&!moving,attack=fighter&&u.inCombat;
+const attackPhase=Math.min(1,u.attack/(sword?.8:.7));
+let swing=attack?(sword?(-.9+2.1*attackPhase):1.45):walk*.12;
+g.save();g.translate(6+(attack&&!sword?attackPhase*9:0),-7);g.rotate(swing);line(0,0,4,7,'#c3a071',3);line(4,7,8,3,'#d1ae79',2.5);
+if(fighter){if(sword){line(8,6,12,-14,'#d4c9aa',3);line(8,5,13,-13,'#f0dfb6',.8);line(5,3,13,5,'#b99a5d',2.2);line(8,4,7,9,'#635038',2)}else{line(8,16,9,-28,'#896d41',2);line(8,16,8,-28,'#c3aa72',.7);poly([[6,-26],[9,-35],[12,-26],[9,-23]],'#c2c1a2')}}else if(work){line(8,10,8,-13,'#7e6340',2);poly([[8,-13],[17,-15],[17,-8],[8,-9]],'#9ba18d')}else if(u.carry>0){ellipse(8,5,6,8,'#bca773');line(6,-2,11,-2,'#786342',1)}g.restore();
+g.save();if(attack)g.translate(0,-2*(1-attackPhase));
+if(fighter){line(-5,-7,-8,2,'#ba9364',3);ellipse(-8,1,sword?8:7,sword?10:9,'#6e5c3a');ellipse(-8,0,sword?7:6,sword?9:8,A?'#668996':'#a9714c');g.strokeStyle='#ceb57a';g.lineWidth=1.5;g.beginPath();g.ellipse(-8,0,sword?7:6,sword?9:8,0,0,Math.PI*2);g.stroke();ellipse(-8,0,2.5,2.8,'#d2bc80');line(-8,-7,-8,7,'rgba(231,211,157,.3)',1)}else{line(-5,-7,-8,0+walk*2,'#bc986a',3);line(-8,walk*2,-6,6+walk*3,'#caaa77',2.3)}
+g.restore();g.restore();if(sel||u.hp<u.maxHP)gauge(u.x,u.y-38,29,u.hp/u.maxHP,u.hp/u.maxHP>.4?'#abd28d':'#e38c71');if(u.carry>0&&sel){g.fillStyle='#f4e5b9';g.font='bold 11px Arial';g.textAlign='center';g.fillText(u.carry,u.x,u.y+32)}if(work){for(let i=0;i<3;i++){const v=(t*.002+i*.3)%1;ellipse(u.x+12+v*9,u.y+4-v*12,1,1,'rgba(226,199,129,'+(1-v)+')')}}if(u.strikeFlash>0){line(u.x+pose.face*12,u.y-9,u.x+pose.face*23,u.y-14,'rgba(249,225,168,.7)',1.5)}}
+function enhancedPlacement(){if(!pending)return;const d=BUILD[pending.type],valid=!placementReason(pending.type,hover.x,hover.y);g.save();g.fillStyle=valid?'rgba(163,208,127,.18)':'rgba(220,104,76,.2)';g.strokeStyle=valid?'#c6deaa':'#e99379';g.lineWidth=2;g.fillRect(hover.x-d.w/2-6,hover.y-d.h/2-6,d.w+12,d.h+12);g.strokeRect(hover.x-d.w/2-6,hover.y-d.h/2-6,d.w+12,d.h+12);enhancedStructure(pending.type,active,hover.x,hover.y,d.w,d.h,.7);g.restore()}
+render=function(t){if(!enhanced){classicRender(t);g=ctx;for(const a of stuckArrows)drawStuckArrow(a);for(const a of projectiles)drawArrow(a);return}artTime=t;g=ctx;enhancedTerrain(t);buildings.filter(b=>b.type==='farm'||b.type==='bridge').forEach(b=>enhancedBuilding(b,t));const objects=[...resources.map(o=>({o,y:o.y+18,kind:'r'})),...buildings.filter(b=>b.type!=='farm'&&b.type!=='bridge').map(o=>({o,y:o.y+o.h*.4,kind:'b'})),...units.map(o=>({o,y:o.y+17,kind:'u'}))];objects.sort((a,b)=>a.y-b.y);for(const {o,kind}of objects){if(kind==='r')enhancedResource(o,t);else if(kind==='b')enhancedBuilding(o,t);else enhancedUnit(o,t)}for(const a of stuckArrows)drawStuckArrow(a);for(const a of projectiles)drawArrow(a);for(const p of particles){g.save();g.globalAlpha=Math.max(0,p.life);g.font='bold 13px Arial';g.textAlign='center';g.lineWidth=3;g.strokeStyle='rgba(26,31,23,.65)';g.strokeText(p.text,p.x,p.y);g.fillStyle=p.kind==='damage'?'#ffc6a1':'#f3dfa4';g.fillText(p.text,p.x,p.y);g.restore()}enhancedPlacement()};
+// Refresh only visual caches on restart, keeping the original reset behavior.
+q('reset').addEventListener('click',()=>{poses.clear();q('pause').textContent='Pause'});
+q('again').addEventListener('click',()=>{poses.clear();q('pause').textContent='Pause'});
+
+// Visual-only settlement evolution. No simulation data is written here.
+const previousStructureArt=structureArt;
+function timberWall(x,y,w,h){rect(x,y,w,h,'#ab9566');for(let yy=y+4;yy<y+h;yy+=5)line(x,yy,x+w,yy,'#796d48',.65);for(let xx=x;xx<=x+w;xx+=w/4){rect(xx-1.5,y,3,h,'#68533b');line(xx,y,xx,y+h,'#bda477',.7)}}
+function shelter(x,y,w,h,A){
+  ellipse(x+5,y+9,w*.62,9,'rgba(30,35,20,.2)');
+  poly([[x-w*.52,y+8],[x-w*.18,y-h],[x+w*.2,y-h-5],[x+w*.56,y+1]],A?'#b9a378':'#b29265');
+  poly([[x-w*.52,y+8],[x-w*.18,y-h],[x+w*.12,y+11]],A?'#d0ba8c':'#cfaf7c');
+  poly([[x-w*.25,y+8],[x-w*.15,y-h*.65],[x-w*.02,y+10]],'#493f2d');
+  line(x-w*.18,y-h-7,x+w*.13,y+15,'#725638',2);
+  line(x-w*.2,y-h-7,x-w*.54,y+12,'#725638',2);
+  for(let i=0;i<4;i++){const xx=x-w*.12+i*w*.13;line(xx,y-h+3,xx+w*.29,y+3,'rgba(100,74,40,.3)',.8)}
+}
+function campArt(w,h,A){
+  groundShadow(w,h);ellipse(0,13,w*.48,h*.33,'rgba(186,164,109,.35)');
+  shelter(-w*.2,1,w*.48,h*.38,A);shelter(w*.28,3,w*.33,h*.28,A);
+  const fx=w*.08,fy=h*.3;
+  for(let i=0;i<8;i++){const a=i*Math.PI/4;ellipse(fx+Math.cos(a)*10,fy+Math.sin(a)*5,3,2,'#858573')}
+  line(fx-7,fy+3,fx+6,fy-3,'#65452b',3);line(fx-7,fy-3,fx+7,fy+3,'#6a4a2d',3);
+  poly([[fx-5,fy],[fx-2,fy-10],[fx+1,fy-5],[fx+4,fy-13],[fx+6,fy]],'#c18746');
+  poly([[fx-2,fy],[fx+1,fy-8],[fx+3,fy]],'#e8c16c');
+  for(let i=0;i<3;i++)line(-w*.4+i*4,h*.35,-w*.25+i*3,h*.28,'#856c45',3);
+  line(w*.38,h*.34,w*.38,-h*.12,'#795b39',2);line(w*.25,h*.28,w*.25,-h*.1,'#795b39',2);
+  line(w*.25,-h*.1,w*.38,-h*.12,'#957342',2);poly([[w*.26,-h*.07],[w*.36,-h*.08],[w*.36,h*.1],[w*.28,h*.11]],'#c4ae83');
+}
+function neoArt(type,w,h,A){
+  const x=-w*.37,y=-h*.09,bw=w*.64,bh=h*.43,d=w*.12;
+  groundShadow(w,h);ellipse(0,h*.2,w*.49,h*.3,'rgba(184,158,102,.4)');
+  if(type==='barracks'){
+    // Open training enclosure and a compact timber shelter.
+    poly([[-w*.45,-h*.2],[w*.46,-h*.26],[w*.47,h*.4],[-w*.44,h*.44]],'#aa9564');
+    for(let xx=-w*.43;xx<w*.45;xx+=8){line(xx,-h*.2,xx,-h*.42,'#89704a',4);line(xx,-h*.42,xx,-h*.46,'#b49a66',2)}
+    timberWall(-w*.34,-h*.12,w*.39,h*.31);pitchedRoof(-w*.34,-h*.12,w*.39,10,h*.24,A,true);
+    for(const xx of [w*.18,w*.34]){line(xx,h*.32,xx,-h*.03,'#735a37',2);ellipse(xx,-h*.02,7,9,'#bca77a');ellipse(xx,-h*.02,4,5,A?'#6c8590':'#a26e52');ellipse(xx,-h*.02,1.5,2,'#d9c38d')}
+    for(let k=0;k<3;k++)line(-w*.37+k*6,h*.44,-w*.34+k*6,h*.08,'#79603c',1.5);
+    bannerArt(-w*.44,-h*.1,A,18);return;
+  }
+  if(A){timberWall(x,y,bw,bh);poly([[x+bw,y],[x+bw+d,y-d*.6],[x+bw+d,y+bh-d*.6],[x+bw,y+bh]],'#7c724f');pitchedRoof(x,y,bw,d,h*.3,true,true)}
+  else{box(x,y,bw,bh,d,false);rect(x-2,y-5,bw+4,5,'#c7a574');for(let k=0;k<6;k++)rect(x+4+k*bw/6,y-7,3,5,'#70593b');poly([[x,y-5],[x+d,y-5-d*.6],[x+bw+d,y-5-d*.6],[x+bw,y-5]],'#d6ba87');}
+  door(x+bw*.5,y+bh,12,21);
+  if(type==='tc'){
+    // Shared hall, storage baskets and a meeting awning.
+    line(x-9,y+bh+7,x-9,y+2,'#755b38',2);line(x+bw+8,y+bh+7,x+bw+8,y+2,'#755b38',2);
+    poly([[x-9,y+2],[x+bw+8,y+2],[x+bw+13,y+15],[x-14,y+15]],A?'#9d9b6c':'#b99765');
+    for(let k=0;k<3;k++)urn(x+bw+15-k*7,y+bh+5,.75);bannerArt(x-16,y+bh-7,A,13);
+  }else if(type==='store'){
+    // Raised grain bins distinguish storage from living space.
+    for(let k=0;k<3;k++){const xx=-w*.3+k*w*.25;line(xx-4,h*.38,xx-4,h*.48,'#6b5736',2);line(xx+4,h*.38,xx+4,h*.48,'#6b5736',2);ellipse(xx,h*.27,8,11,'#b39459');for(let j=0;j<4;j++)line(xx-6,h*.19+j*4,xx+6,h*.19+j*4,'#806940',.7);ellipse(xx,h*.14,8,3,'#d0b479')}
+  }else{urn(x+bw+13,y+bh,.8);ellipse(x-4,y+bh+8,10,4,'#a8905d');for(let k=0;k<5;k++)line(x-12+k*4,y+bh+5,x-12+k*4,y+bh+10,'#dac38c',1)}
+}
+function palaceArt(w,h,A){
+  groundShadow(w,h);const y=-h*.1;
+  // Two wings and a taller central administrative hall.
+  for(const x of [-w*.44,w*.2]){box(x,y,w*.25,h*.45,10,A);if(A)pitchedRoof(x,y,w*.25,10,h*.18,true);else box(x-2,y-6,w*.25+4,6,10,false);windowArt(x+w*.12,y+10,A)}
+  box(-w*.2,-h*.32,w*.4,h*.67,12,A);
+  if(A)pitchedRoof(-w*.2,-h*.32,w*.4,12,h*.21,true);else{box(-w*.22,-h*.39,w*.44,h*.09,12,false);for(let k=0;k<4;k++)box(-w*.2+k*w*.12,-h*.46,w*.06,h*.08,3,false);rect(-w*.18,-h*.23,w*.36,5,'#398384')}
+  door(0,h*.35,18,30);for(const x of [-w*.14,w*.14]){rect(x-3,-h*.15,6,h*.5,'#e1cda4');rect(x-5,-h*.16,10,4,'#f0ddb2')}
+  for(let k=0;k<3;k++)box(-w*.24-k*3,h*.36+k*4,w*.48+k*6,4,8,A);
+  bannerArt(-w*.33,y+13,A,24);bannerArt(w*.35,y+13,A,24);
+}
+function templeArt(w,h,A){
+  groundShadow(w,h);
+  if(A){
+    for(let k=0;k<3;k++)box(-w*.44+k*3,h*.35-k*5,w*.88-k*6,5,12,true);
+    box(-w*.28,-h*.22,w*.57,h*.48,17,true);door(1,h*.27,14,29);
+    for(let k=0;k<5;k++){const x=-w*.38+k*w*.18;rect(x-3,-h*.25,6,h*.51,'#e4d7b6');line(x+1,-h*.2,x+1,h*.23,'#b6a482',1);rect(x-5,-h*.27,10,4,'#f2e1bc');rect(x-5,h*.24,10,4,'#c4ae86')}
+    pitchedRoof(-w*.45,-h*.3,w*.87,16,h*.26,true);ellipse(0,-h*.42,5,4,'#dbc38b');urn(-w*.43,h*.35,.8);urn(w*.46,h*.35,.8);
+  }else{
+    // Stepped sanctuary with a conspicuous central staircase.
+    for(let k=0;k<3;k++){const ww=w*(.92-k*.2);box(-ww/2,h*.21-k*h*.16,ww,h*.17,12,false);rect(-ww/2,h*.21-k*h*.16+3,ww,3,k%2?'#3d8284':'#d4b67e')}
+    box(-w*.18,-h*.38,w*.36,h*.27,10,false);box(-w*.2,-h*.43,w*.4,5,10,false);door(0,-h*.11,10,18);
+    poly([[-8,-h*.1],[8,-h*.1],[17,h*.38],[-17,h*.38]],'#d3b783');for(let k=0;k<10;k++){const f=k/10;line(-8-f*9,-h*.1+f*h*.48,8+f*9,-h*.1+f*h*.48,'#8e714a',1)}
+    ellipse(2,-h*.33,3,3,'#dfc173');
+  }
+}
+structureArt=function(type,civ,w,h,age){
+  const A=civ==='A';
+  if(type==='tc'&&age===0){campArt(w,h,A);return}
+  if(age===1&&['tc','house','store','barracks'].includes(type)){neoArt(type,w,h,A);return}
+  if(type==='temple'){templeArt(w,h,A);return}
+  if(type==='gov'){palaceArt(w,h,A);return}
+  if(type==='tc'&&age===2){palaceArt(w,h,A);bannerArt(-w*.48,-h*.12,A,31);return}
+  if(type==='barracks'&&age===2){
+    // Guard block and fenced drill yard share the original footprint.
+    g.save();g.translate(-w*.16,-h*.13);previousStructureArt(type,civ,w*.67,h*.79,age);g.restore();
+    poly([[-w*.36,h*.27],[w*.44,h*.2],[w*.45,h*.45],[-w*.38,h*.47]],'#b19b6a');
+    for(let xx=-w*.35;xx<w*.46;xx+=w*.14){line(xx,h*.46,xx,h*.29,'#8b7248',2)}line(-w*.35,h*.34,w*.45,h*.34,'#c5a56b',2);
+    for(const xx of [w*.19,w*.34]){line(xx,h*.21,xx,-h*.06,'#7a623d',2);ellipse(xx,-h*.01,7,9,'#d0b57b');ellipse(xx,-h*.01,4,6,A?'#507f93':'#a36749')}
+    return;
+  }
+  if(type==='scribe'){
+    g.save();g.translate(-w*.12,-h*.08);previousStructureArt(type,civ,w*.79,h*.9,age);g.restore();
+    // Shaded writing courtyard with a bench and scroll/tablet bundles.
+    const xx=w*.25,yy=h*.28;box(xx-9,yy-8,24,12,7,A);rect(xx-7,yy-10,20,3,'#dbc794');for(let k=0;k<3;k++){rect(xx-5+k*6,yy-14,4,5,A?'#ece0b9':'#bd905c');line(xx-4+k*6,yy-13,xx-4+k*6,yy-10,'#8f754f',.6)}
+    for(const x of [xx-14,xx+20])line(x,yy+7,x,yy-30,'#84643e',2);
+    poly([[xx-17,yy-30],[xx+17,yy-34],[xx+24,yy-20],[xx-14,yy-16]],A?'#77918e':'#58918b');return;
+  }
+  previousStructureArt(type,civ,w,h,age);
+};
+
+// Inspect age evolution without advancing, paying resources or changing the game.
+const evolutionButton=document.createElement('button');evolutionButton.className='btn';evolutionButton.id='evolution';evolutionButton.textContent='Age progression';graphicsButton.after(evolutionButton);
+const evolutionDialog=document.createElement('dialog');evolutionDialog.id='evolutionDialog';evolutionDialog.innerHTML='<div class="gallery-head"><div><strong>From camp to civilization</strong><p>Visual progression only · buildings keep their gameplay footprints</p></div><button class="btn" id="closeEvolution">Close</button></div><canvas id="evolutionCanvas" width="1200" height="660" aria-label="Hunter-gatherer, Neolithic and Bronze Age settlement architecture for both civilizations"></canvas>';document.body.append(evolutionDialog);
+let evolutionWasPaused=false;
+evolutionButton.addEventListener('click',()=>{
+  evolutionWasPaused=paused;paused=true;evolutionDialog.showModal();const old=g;g=q('evolutionCanvas').getContext('2d');
+  try{
+    rect(0,0,1200,660,'#818762');
+    const rng=randSeed(947);for(let i=0;i<9000;i++)rect(rng()*1200,rng()*660,1.5,1,i%2?'rgba(242,226,181,.12)':'rgba(33,51,29,.12)');
+    for(let age=0;age<3;age++){
+      const x=200+age*400;g.fillStyle='#f2e4bc';g.font='23px Georgia';g.textAlign='center';g.fillText(AGE[age],x,42);
+      g.font='12px Arial';g.fillText(['Shelters, hearth and drying rack','Permanent homes and shared storage','Monumental civic architecture'][age],x,65);
+      for(let row=0;row<2;row++){
+        const civ=row?'B':'A',y=180+row*285;g.save();g.translate(x,y);g.scale(1.65,1.65);structureArt('tc',civ,132,100,age);g.restore();
+        g.font='14px Arial';g.fillStyle='#f4e7c3';g.fillText((row?'Eastern':'Mediterranean')+' · '+['Camp','Village hall','Town Center'][age],x,y+110);
+      }
+      if(age<2)line(x+200,90,x+200,630,'rgba(234,217,165,.22)',1);
+    }
+  }finally{g=old}
+});
+q('closeEvolution').addEventListener('click',()=>evolutionDialog.close());
+evolutionDialog.addEventListener('close',()=>{paused=evolutionWasPaused;q('pause').textContent=paused?'Resume':'Pause'});
+
+const galleryButton=document.createElement('button');galleryButton.className='btn';galleryButton.id='gallery';galleryButton.textContent='Building gallery';graphicsButton.after(galleryButton);
+const gallery=document.createElement('dialog');gallery.id='artGallery';gallery.innerHTML='<div class="gallery-head"><div><strong>Architecture & armies</strong><p>The enhanced artwork · close to return to your game</p></div><button class="btn" id="closeGallery">Close gallery</button></div><canvas id="galleryCanvas" width="1440" height="720" aria-label="Mediterranean and Eastern buildings, villagers, spearmen and swordsmen"></canvas>';document.body.append(gallery);
+let galleryWasPaused=false;
+galleryButton.addEventListener('click',()=>{galleryWasPaused=paused;paused=true;gallery.showModal();const old=g;g=q('galleryCanvas').getContext('2d');try{const bg=g.createLinearGradient(0,0,1440,720);bg.addColorStop(0,'#6c7c57');bg.addColorStop(1,'#9a976c');rect(0,0,1440,720,bg);const rng=randSeed(6743);for(let i=0;i<15000;i++)rect(rng()*1440,rng()*720,1.5,1,rng()>.5?'rgba(236,220,158,.15)':'rgba(29,47,22,.12)');const types=['tc','house','store','farm','barracks','archery','temple','gov','scribe','monument'];for(const [index,civ]of ['A','B'].entries()){const yy=index*240;g.fillStyle='#f3e4bd';g.font='24px Georgia';g.textAlign='left';g.fillText(civ==='A'?'Mediterranean settlement':'Eastern settlement',30,yy+40);g.font='12px Arial';g.fillStyle='#e0d4ae';g.fillText('BRONZE AGE',1160,yy+38);for(let i=0;i<types.length;i++){const type=types[i],d=type==='tc'?{w:132,h:100,label:'Town Center'}:BUILD[type],xx=62+i*140;g.save();g.translate(xx,yy+140);structureArt(type,civ,d.w,d.h,2);g.restore();g.fillStyle='#f6e8bf';g.font='13px Arial';g.textAlign='center';g.fillText(d.label,xx,yy+218)}}line(30,490,1410,490,'rgba(240,222,170,.3)',1);g.textAlign='left';g.font='24px Georgia';g.fillStyle='#f3e4bd';g.fillText('People & military',30,535);const names=['Villager','Spearman','Swordsman','Archer'];for(let i=0;i<8;i++){const xx=105+i*175;g.save();g.translate(xx,612);g.scale(2,2);const civ=i<4?'A':'B',type=['villager','spearman','swordsman','archer'][i%4];enhancedUnit({id:'gallery'+i,civ,type,x:0,y:0,hp:100,maxHP:100,phase:0,carry:0,target:null},0);g.restore();g.fillStyle='#f6e8bf';g.font='14px Arial';g.textAlign='center';g.fillText(names[i%4]+' · '+(i<4?'A':'B'),xx,686)}}finally{g=old}});
+q('closeGallery').addEventListener('click',()=>gallery.close());gallery.addEventListener('close',()=>{paused=galleryWasPaused;q('pause').textContent=paused?'Resume':'Pause'});
+
+// World coordinates remain fixed; the viewport adapts to the available screen.
+const camera={x:W/2,y:H/2,zoom:1};
+const cameraTools=document.createElement('div');cameraTools.className='maptools';cameraTools.innerHTML='<button type="button" id="zoomOut" aria-label="Zoom out">−</button><span id="zoomLabel">100%</span><button type="button" id="zoomIn" aria-label="Zoom in">+</button><button type="button" id="zoomFit">Fit map</button>';canvas.parentElement.append(cameraTools);
+const panHint=document.createElement('div');panHint.className='pan-hint';panHint.textContent='Pinch to zoom · drag to pan · mouse: Shift + drag';canvas.parentElement.append(panHint);
+function clampCamera(){
+  const hw=canvas.width/(2*camera.zoom),hh=canvas.height/(2*camera.zoom);
+  camera.x=hw>=W/2?W/2:Math.max(hw,Math.min(W-hw,camera.x));
+  camera.y=hh>=H/2?H/2:Math.max(hh,Math.min(H-hh,camera.y));
+  q('zoomLabel').textContent=Math.round(camera.zoom*100)+'%';
+}
+function screenPoint(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}}
+point=function(e){const p=screenPoint(e);return{x:(p.x-canvas.width/2)/camera.zoom+camera.x,y:(p.y-canvas.height/2)/camera.zoom+camera.y}};
+function zoomCamera(z,p={x:canvas.width/2,y:canvas.height/2}){
+  const before={x:(p.x-canvas.width/2)/camera.zoom+camera.x,y:(p.y-canvas.height/2)/camera.zoom+camera.y};
+  camera.zoom=Math.max(1,Math.min(6,z));
+  camera.x=before.x-(p.x-canvas.width/2)/camera.zoom;camera.y=before.y-(p.y-canvas.height/2)/camera.zoom;clampCamera();
+}
+q('zoomIn').addEventListener('click',()=>zoomCamera(camera.zoom*1.25));q('zoomOut').addEventListener('click',()=>zoomCamera(camera.zoom/1.25));q('zoomFit').addEventListener('click',()=>zoomCamera(1));
+canvas.addEventListener('wheel',e=>{e.preventDefault();zoomCamera(camera.zoom*Math.exp(-e.deltaY*.0015),screenPoint(e));hover=point(e)},{passive:false});
+const touches=new Map();let touchGesture=false,mouseDrag=null;
+function gesturePair(){const a=[...touches.values()];return{clientX:(a[0].x+a[1].x)/2,clientY:(a[0].y+a[1].y)/2,d:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}}
+canvas.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='touch'){
+    e.preventDefault();touches.set(e.pointerId,{x:e.clientX,y:e.clientY,sx:e.clientX,sy:e.clientY});
+    if(touches.size===1)touchGesture=false;else touchGesture=true;
+    canvas.setPointerCapture(e.pointerId);return;
+  }
+  if(e.button===1||(e.button===0&&e.shiftKey)){e.preventDefault();mouseDrag={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);return}
+  if(e.button===0)handleMapCommand(e);
+});
+canvas.addEventListener('pointermove',e=>{
+  if(touches.has(e.pointerId)){
+    e.preventDefault();const old=touches.get(e.pointerId),before=touches.size>=2?gesturePair():null;
+    if(Math.hypot(e.clientX-old.sx,e.clientY-old.sy)>8)touchGesture=true;
+    const r=canvas.getBoundingClientRect();
+    if(before){
+      const anchor=point(before);touches.set(e.pointerId,{...old,x:e.clientX,y:e.clientY});const after=gesturePair(),p=screenPoint(after);
+      camera.zoom=Math.max(1,Math.min(6,camera.zoom*after.d/Math.max(1,before.d)));
+      camera.x=anchor.x-(p.x-canvas.width/2)/camera.zoom;camera.y=anchor.y-(p.y-canvas.height/2)/camera.zoom;clampCamera();
+    }else{
+      if(touchGesture){camera.x-=(e.clientX-old.x)*canvas.width/r.width/camera.zoom;camera.y-=(e.clientY-old.y)*canvas.height/r.height/camera.zoom;clampCamera()}
+      touches.set(e.pointerId,{...old,x:e.clientX,y:e.clientY});
+    }
+  }else if(mouseDrag){
+    const r=canvas.getBoundingClientRect();camera.x-=(e.clientX-mouseDrag.x)*canvas.width/r.width/camera.zoom;camera.y-=(e.clientY-mouseDrag.y)*canvas.height/r.height/camera.zoom;mouseDrag={x:e.clientX,y:e.clientY};clampCamera();
+  }
+  hover=point(e);
+});
+canvas.addEventListener('pointerup',e=>{
+  if(touches.has(e.pointerId)){
+    const start=touches.get(e.pointerId),tap=touches.size===1&&!touchGesture&&Math.hypot(e.clientX-start.sx,e.clientY-start.sy)<=8;
+    touches.delete(e.pointerId);if(tap)handleMapCommand(e);
+  }
+  mouseDrag=null;
+});
+function cancelGesture(e){touches.delete(e.pointerId);touchGesture=true;mouseDrag=null}
+canvas.addEventListener('pointercancel',cancelGesture);canvas.addEventListener('lostpointercapture',cancelGesture);
+window.addEventListener('blur',()=>{touches.clear();touchGesture=true;mouseDrag=null});
+const sceneRender=render;render=function(t){
+  ctx.clearRect(0,0,canvas.width,canvas.height);ctx.save();ctx.translate(canvas.width/2,canvas.height/2);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-camera.x,-camera.y);
+  try{sceneRender(t)}finally{ctx.restore()}
+};
+q('reset').addEventListener('click',()=>zoomCamera(1));q('again').addEventListener('click',()=>zoomCamera(1));
+
+
+const stancePanel=document.createElement('div');stancePanel.className='stance-panel';
+stancePanel.innerHTML='<span id="stanceUnit">Select a soldier to set its stance.</span><div class="stance-buttons"><button class="btn" id="stanceAggressive" type="button">Aggressive</button><button class="btn" id="stanceDefensive" type="button">Defensive</button><button class="btn" id="stanceHold" type="button">Hold Position</button></div><span id="stanceHelp">New soldiers defend themselves and nearby allies.</span>';
+canvas.parentElement.after(stancePanel);
+function setCombatStance(stance){
+  if(!military(selected)||selected.civ!==active)return;
+  const u=selected;if(u.combat){endAutomaticCombat(u);if(stance==='hold'&&u.target&&u.target.returning)u.target=null}
+  u.stance=stance;u.inCombat=false;u.attack=0;updateStanceUI();
+}
+function updateStanceUI(){
+  const available=military(selected)&&selected.civ===active;
+  const stance=available?stanceOf(selected):'';
+  for(const [id,value]of [['stanceAggressive','aggressive'],['stanceDefensive','defensive'],['stanceHold','hold']]){
+    const b=q(id);b.disabled=!available;b.setAttribute('aria-pressed',String(stance===value));
+  }
+  q('stanceUnit').textContent=available?(selected.type==='spearman'?'Spearman':selected.type==='swordsman'?'Swordsman':'Archer')+' · '+selected.id:'Select a soldier to set its stance.';
+  q('stanceHelp').textContent=!available?'New soldiers defend themselves and nearby allies.':stance==='aggressive'?'Engage nearby enemies; pursue a limited distance.':stance==='hold'?'Fight within reach. Move only when you give a move order.':ranged(selected)?'Automatically shoot enemies within range; retaliate and return after a short pursuit.':'Retaliate and help nearby allies; return after a short pursuit.';
+}
+q('stanceAggressive').addEventListener('click',()=>setCombatStance('aggressive'));
+q('stanceDefensive').addEventListener('click',()=>setCombatStance('defensive'));
+q('stanceHold').addEventListener('click',()=>setCombatStance('hold'));
+const previousCombatUI=updateUI;updateUI=function(){previousCombatUI();updateStanceUI()};
+// A short visual recoil and contact flash without moving the simulation position.
+const beforeHitUnit=enhancedUnit;
+enhancedUnit=function(u,t){
+  if(u.hp<=0){beforeHitUnit(u,t);return}
+  g.save();if(u.hitFlash>0)g.translate((u.hitDirection||1)*u.hitFlash*9,0);
+  beforeHitUnit(u,t);g.restore();
+  if(u.hitFlash>0){g.save();g.globalAlpha=u.hitFlash/.18;line(u.x-4,u.y-7,u.x+4,u.y+1,'#f5d7a0',1.4);line(u.x+4,u.y-7,u.x-4,u.y+1,'#f5d7a0',1.4);g.restore()}
+};
+
+// Solo rules and computer opponent. All simulation remains inside this page.
+const SOLO_DIFFICULTY={
+  easy:{label:'Easy',think:3,workers:8,army:6,wave:4,raid:480,gap:180,civic:1200,farms:3},
+  standard:{label:'Standard',think:1.5,workers:12,army:12,wave:7,raid:360,gap:120,civic:960,farms:4},
+  hard:{label:'Hard',think:.8,workers:16,army:18,wave:8,raid:240,gap:80,civic:720,farms:5}
+};
+const solo={human:'A',ai:'B',difficulty:'standard',victory:'both',started:false,time:0,think:0,nextRaid:360,goal:null,phase:'Gathering',busy:false,raids:0};
+const aliveBuildings=(k,type)=>buildings.filter(b=>b.hp>0&&b.civ===k&&(!type||b.type===type));
+const readyBridges=()=>buildings.filter(b=>b.type==='bridge'&&b.hp>0&&(b.buildProgress===undefined||b.buildProgress>=100)&&b.x-b.w/2<=720&&b.x+b.w/2>=780);
+const riverBank=x=>x<=720?-1:x>=780?1:0;
+
+// Route around the river via an intact, finished bridge. Each short step is
+// checked again, so a bridge destroyed during a march immediately closes.
+move=function(u,t,s,dt,stop){
+  if(!t||!Number.isFinite(t.x)||!Number.isFinite(t.y))return;
+  const origin=riverBank(u.x),destination=riverBank(t.x),bridges=readyBridges();
+  if(origin)u.lastBank=origin;
+  let p={x:Math.max(10,Math.min(W-10,t.x)),y:Math.max(15,Math.min(H-15,t.y))},near=stop;
+  if(!origin){
+    const bridge=bridges.find(b=>Math.abs(u.y-b.y)<=b.h/2+2);
+    if(!bridge){p={x:(u.lastBank|| (u.x<750?-1:1))<0?708:792,y:u.y};near=1}
+    else{p={x:(destination||u.lastBank||-1)<0?708:792,y:bridge.y};near=1}
+  }else if(destination&&origin!==destination){
+    const bridge=bridges.slice().sort((a,b)=>dist(u,a)+dist(a,t)-dist(u,b)-dist(b,t))[0];
+    if(!bridge)return;
+    p=Math.abs(u.y-bridge.y)>3?{x:origin<0?700:800,y:bridge.y}:{x:origin<0?792:708,y:bridge.y};near=1;
+  }else if(!destination){p={x:origin<0?708:792,y:t.y};near=3}
+  const dx=p.x-u.x,dy=p.y-u.y,d=Math.hypot(dx,dy);
+  if(d<=near){if(p.x===t.x&&p.y===t.y&&u.target?.kind==='move')u.target=null;return}
+  const step=Math.min(s*dt,d-Math.max(0,near-.25)),nx=u.x+dx/d*step,ny=u.y+dy/d*step;
+  if(origin&&nx>720&&nx<780&&!bridges.some(b=>Math.abs(ny-b.y)<=b.h/2))return;
+  u.x=nx;u.y=ny;
+};
+combatPath=function(a,b){return riverBank(a.x)&&riverBank(a.x)===riverBank(b.x)||readyBridges().length>0};
+const originalPlacementReason=placementReason;
+placementReason=function(type,x,y){
+  if(type==='bridge'&&(x-BUILD.bridge.w/2>720||x+BUILD.bridge.w/2<780))return'Bridge must span both riverbanks';
+  return originalPlacementReason(type,x,y);
+};
+const originalAddUnit=addUnit;
+addUnit=function(...args){originalAddUnit(...args);const k=args[0];CIV[k].pop=units.filter(u=>u.civ===k&&u.hp>0).length};
+const originalTrainVillager=trainVillager;
+trainVillager=function(){if(aliveBuildings(active,'tc').length)originalTrainVillager()};
+const originalRepair=repair;
+repair=function(){if(aliveBuildings(active,'tc').length)originalRepair()};
+const originalSetActive=setActive;
+setActive=function(k){if(k===solo.human)originalSetActive(k)};
+const originalSfx=sfx;sfx=function(k){if(!solo.busy)originalSfx(k)};
+const originalSoloUI=updateUI;
+updateUI=function(){
+  if(solo.busy)return;
+  originalSoloUI();
+  for(const k of ['A','B'])q('role'+k).textContent=k===solo.human?'YOU':'COMPUTER';
+  q('soloStatus').textContent=solo.started?SOLO_DIFFICULTY[solo.difficulty].label+' · '+Math.floor(solo.time/60)+':'+String(Math.floor(solo.time%60)).padStart(2,'0')+' · '+(paused?'Paused':'Computer: '+solo.phase):'Choose your civilization to begin';
+  q('pause').textContent=paused?'Resume':'Pause';
+  if(!aliveBuildings(solo.human,'tc').length){setReady(q('villager'),false,'Town Center destroyed');setReady(q('repair'),false,'Town Center destroyed')}
+};
+function withAI(fn){
+  const prior={active,selected,pending,banner:q('banner').textContent,effect:q('effect').textContent,status:q('status').textContent};
+  solo.busy=true;active=solo.ai;selected=null;pending=null;
+  try{return fn()}finally{active=prior.active;selected=prior.selected;pending=prior.pending;solo.busy=false;for(const id of ['banner','effect','status'])q(id).textContent=prior[id]}
+}
+function aiPlace(type){
+  const d=BUILD[type],c=CIV[solo.ai];if(c.age<d.age||!canAfford(c,d.cost))return false;
+  const base=aliveBuildings(solo.ai,'tc')[0]||{x:c.x,y:c.y},candidates=[];
+  if(type==='bridge'){for(const y of [455,570,340,650,220,800])candidates.push({x:750,y})}
+  else{
+    for(let y=130;y<810;y+=65)for(let localX=85;localX<640;localX+=65){const p={x:solo.ai==='A'?localX:W-localX,y};candidates.push(p)}
+    const goal=type==='store'?{x:solo.ai==='A'?465:1035,y:560}:base;
+    candidates.sort((a,b)=>dist(a,goal)-dist(b,goal));
+  }
+  const p=candidates.find(p=>!placementReason(type,p.x,p.y));if(!p)return false;
+  pay(c,d.cost);buildings.push({id:'b'+(++bseq),civ:solo.ai,type,...p,w:d.w,h:d.h,hp:d.hp,maxHP:d.hp,buildProgress:0,complete:false});if(type==='house')c.cap+=5;
+  return true;
+}
+function aiEconomicGoal(){
+  const k=solo.ai,c=CIV[k],cfg=SOLO_DIFFICULTY[solo.difficulty],mine=units.filter(u=>u.civ===k&&u.hp>0),workers=mine.filter(u=>u.type==='villager'),army=mine.filter(military),count=t=>aliveBuildings(k,t).length,tc=aliveBuildings(k,'tc')[0];
+  const build=type=>({cost:BUILD[type].cost,run:()=>aiPlace(type),label:'Building '+BUILD[type].label});
+  const train=type=>({cost:type==='villager'?{food:35}:type==='archer'?{food:55,wood:35}:type==='swordsman'?{food:70,gold:40}:{food:50,gold:25},run:()=>({villager:trainVillager,archer:trainArcher,swordsman:trainSwordsman,spearman:trainSpearman})[type](),label:'Training '+type+'s'});
+  if(c.age===0)return{cost:{food:120,wood:80},run:advance,label:'Advancing to Neolithic'};
+  if(tc&&tc.hp<tc.maxHP*.45&&c.wood>=40)return {cost:{wood:40},run:repair,label:'Repairing Town Center'};
+  if(mine.length+1>=c.cap&&(workers.length<cfg.workers||army.length<cfg.army))return build('house');
+  if(workers.length<6&&tc)return train('villager');
+  if(count('farm')<2)return build('farm');
+  if(!count('store'))return build('store');
+  if(!count('barracks'))return build('barracks');
+  if(army.length<2)return train('spearman');
+  if(c.age===1)return{cost:{food:220,wood:150,stone:80,gold:40},run:advance,label:'Advancing to Bronze'};
+  if(workers.length<cfg.workers&&tc)return train('villager');
+  if(count('farm')<cfg.farms)return build('farm');
+  if(!count('archery'))return build('archery');
+  if(solo.time>=cfg.raid-30&&!buildings.some(b=>b.type==='bridge'&&b.hp>0))return build('bridge');
+  if(solo.victory==='both'&&solo.time>=cfg.civic&&army.length>=3){
+    if(count('house')<2)return build('house');
+    for(const type of ['temple','gov','scribe','monument'])if(!count(type))return build(type);
+  }
+  if(army.length<cfg.army){
+    const archers=army.filter(u=>u.type==='archer').length;
+    if(archers<Math.ceil((army.length+1)/3)&&resources.some(r=>resourceKind(r.type)==='wood'&&r.amount>0&&riverBank(r.x)===(k==='A'?-1:1)))return train('archer');
+    return train(army.length%2?'swordsman':'spearman');
+  }
+  return{cost:{food:150,wood:120,stone:100,gold:120},run:()=>{},label:'Maintaining settlement'};
+}
+function aiWorkers(goal){
+  const k=solo.ai,c=CIV[k],side=k==='A'?-1:1,workers=units.filter(u=>u.civ===k&&u.type==='villager'&&u.hp>0),deposits=aliveBuildings(k).filter(b=>['tc','store'].includes(b.type)),farm=aliveBuildings(k,'farm').length;
+  const desired={food:Math.max(farm?30:100,goal.cost.food||0),wood:Math.max(100,goal.cost.wood||0),stoneR:goal.cost.stone||0,gold:Math.max(c.age?35:0,goal.cost.gold||0)};
+  const nodes=resources.filter(r=>r.amount>0&&riverBank(r.x)===side);
+  const jobs={food:0,wood:0,stoneR:0,gold:0};
+  for(const u of workers){
+    if(u.aiFleeUntil>solo.time)continue;
+    // Finish deliveries before assigning new work, preserving partial baskets.
+    if(u.target?.kind==='drop')continue;
+    const nearThreat=units.find(e=>military(e)&&e.civ!==k&&dist(u,e)<125);
+    if(nearThreat&&deposits.length){const d=deposits.slice().sort((a,b)=>dist(u,a)-dist(u,b))[0];u.target={kind:'move',x:d.x+(side*65),y:d.y};u.aiFleeUntil=solo.time+6;continue}
+    const scores=Object.keys(jobs).map(kind=>({kind,score:Math.max(0,desired[kind]-c[kind])/(jobs[kind]+1)})).filter(x=>nodes.some(r=>resourceKind(r.type)===x.kind)).sort((a,b)=>b.score-a.score);
+    const kind=scores[0]?.kind;if(!kind){if(u.carry>0)u.target={kind:'drop'};continue}
+    jobs[kind]++;
+    const previous=resources.find(r=>r.id===u.target?.id&&r.amount>0);
+    if(previous&&resourceKind(previous.type)===kind)continue;
+    const r=nodes.filter(r=>resourceKind(r.type)===kind).sort((a,b)=>{
+      const cost=r=>dist(u,r)+Math.min(...deposits.map(d=>dist(r,d)),1000)*.5+workers.filter(v=>v.target?.id===r.id).length*24;
+      return cost(a)-cost(b);
+    })[0];
+    if(r){u.target=u.carry>0?{kind:'drop',resourceId:r.id}:{kind:'resource',id:r.id};u.gather=0}
+  }
+}
+function aiArmy(){
+  const k=solo.ai,c=CIV[k],cfg=SOLO_DIFFICULTY[solo.difficulty],army=units.filter(u=>u.civ===k&&military(u)),home={x:c.x,y:c.y};
+  const enemies=units.filter(u=>u.civ===solo.human&&u.hp>0);
+  const invaders=enemies.filter(e=>military(e)&&dist(e,home)<440);
+  const wave=army.filter(u=>u.aiRaid);
+  if(!invaders.length&&solo.time>=solo.nextRaid&&army.length>=cfg.wave&&army.some(u=>!u.aiRaid)&&readyBridges().length){
+    army.forEach(u=>u.aiRaid=true);solo.nextRaid=solo.time+cfg.gap;solo.raids++;q('banner').textContent='Scouts report an enemy army marching toward your settlement.';
+  }
+  for(const u of army){
+    u.stance='defensive';
+    const nearby=enemies.filter(e=>dist(u,e)<(u.type==='archer'?185:125)).sort((a,b)=>(military(b)?1:0)-(military(a)?1:0)||dist(u,a)-dist(u,b))[0];
+    const target=nearby||invaders.slice().sort((a,b)=>dist(u,a)-dist(u,b))[0];
+    if(target){if(u.target?.id!==target.id)issueCombatOrder(u,{kind:'attackUnit',id:target.id});continue}
+    if(u.aiRaid){
+      const enemyBuilding=aliveBuildings(solo.human).filter(b=>b.type!=='bridge').sort((a,b)=>dist(u,a)-dist(u,b))[0];
+      const next=enemies.slice().sort((a,b)=>dist(u,a)-dist(u,b))[0];
+      const objective=enemyBuilding||next;
+      if(objective&&u.target?.id!==objective.id)issueCombatOrder(u,{kind:enemyBuilding?'attackBuilding':'attackUnit',id:objective.id});
+    }else if(!u.target&&dist(u,home)>230){issueCombatOrder(u,{kind:'move',x:home.x+(k==='A'?150:-150),y:home.y+40})}
+  }
+  if(invaders.length)solo.phase='Defending settlement';else if(wave.length)solo.phase='Army on campaign';
+}
+function aiThink(){
+  if(!units.some(u=>u.civ===solo.ai&&u.hp>0)&&!aliveBuildings(solo.ai,'tc').length)return;
+  const goal=aiEconomicGoal();solo.goal=goal;solo.phase=goal.label;
+  const before=CIV[solo.ai].age;
+  withAI(()=>{if(canAfford(CIV[solo.ai],goal.cost))goal.run()});
+  if(CIV[solo.ai].age>before)q('banner').textContent='The computer reached the '+AGE[CIV[solo.ai].age]+'.';
+  aiWorkers(goal);aiArmy();
+}
+const soloBaseCheckWins=checkWins;
+checkWins=function(){if(solo.victory==='both')soloBaseCheckWins();checkDeathmatch()};
+const soloBaseFinish=finish;
+finish=function(k,title,message){if(ended)return;soloBaseFinish(k,title,message);q('endTitle').textContent=(k===solo.human?'Victory':'Defeat')+' — '+title;q('endText').textContent=message+' Match time: '+Math.floor(solo.time/60)+'m '+Math.floor(solo.time%60)+'s.'};
+const soloBaseUpdate=update;
+update=function(dt){
+  if(!solo.started||document.hidden||!pvp.ready||pvp.role!=='host')return;
+  if(ended){soloBaseUpdate(dt);return}
+  if(!paused){solo.time+=dt;soloBaseUpdate(dt)}
+};
+function startSolo(){
+  solo.human=q('soloCiv').value==='B'?'B':'A';solo.ai=enemy(solo.human);
+  solo.difficulty=Object.hasOwn(SOLO_DIFFICULTY,q('soloDifficulty').value)?q('soloDifficulty').value:'standard';
+  solo.victory=q('soloVictory').value==='conquest'?'conquest':'both';solo.time=0;solo.think=0;solo.raids=0;solo.goal=null;solo.phase='Gathering';solo.nextRaid=SOLO_DIFFICULTY[solo.difficulty].raid;
+  reset();poses.clear();active=solo.human;selected=null;pending=null;solo.started=true;paused=false;
+  camera.zoom=1.5;camera.x=CIV[active].x;camera.y=CIV[active].y;clampCamera();
+  q('soloSetup').classList.add('hidden');q('tutorial').classList.add('hidden');q('app').inert=false;
+  q('banner').textContent='You command Civilization '+solo.human+'. The computer controls Civilization '+solo.ai+'.';
+  q('victoryLabel').textContent=solo.victory==='conquest'?'⚔ Conquest only':'🏛 Civilization · ⚔ Conquest';
+  q('app').focus();unlockAudio();updateUI();
+}
+function openSoloSetup(){paused=true;q('soloSetup').classList.remove('hidden');q('app').inert=true;q('soloCancel').hidden=!solo.started||ended;q('soloCiv').focus()}
+function intercept(e){e.preventDefault();e.stopImmediatePropagation()}
+// Solo match setup is disabled on the dedicated PvP page.
+q('soloCancel').addEventListener('click',()=>{q('soloSetup').classList.add('hidden');q('app').inert=false;q('app').focus();updateUI()});
+// Room creator may restart the current PvP room.
+q('reset').textContent='New match';
+let helpWasPaused=false;
+q('help').addEventListener('click',()=>{helpWasPaused=paused;paused=true},true);
+q('start').addEventListener('click',()=>{paused=helpWasPaused;updateUI()},true);
+q('homeView').addEventListener('click',()=>{camera.zoom=1.5;camera.x=CIV[solo.human].x;camera.y=CIV[solo.human].y;clampCamera()});
+q('app').addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(e.target.tagName)){if(e.key===' ')e.stopImmediatePropagation();return}if(e.key==='1'||e.key==='2')intercept(e);if(e.key==='h'||e.key==='H')q('homeView').click()},true);
+for(const k of ['A','B']){q('card'+k).title=k===solo.human?'Your civilization':'Computer opponent';q('card'+k).addEventListener('click',e=>{intercept(e);if(k===solo.human)q('homeView').click()},true)}
+// A paused or unstarted match cannot accept orders or spend resources.
+for(const id of ['game','age','villager','spearman','swordsman','archer','repair',...Object.keys(BUILD)])q(id).addEventListener(id==='game'?'pointerdown':'click',e=>{if(!solo.started||paused||ended)intercept(e)},true);
+
+// Compact command menus use the original buttons and their existing rules.
+const app=q('app'),stage=canvas.parentElement,commandbar=document.createElement('nav');
+commandbar.className='commandbar';commandbar.setAttribute('aria-label','Game controls');
+commandbar.innerHTML='<button class="btn" id="buildMenu" aria-expanded="false" aria-controls="buildSheet">Build</button><button class="btn" id="trainMenu" aria-expanded="false" aria-controls="trainSheet">Train</button><button class="btn" id="moreMenu" aria-expanded="false" aria-controls="moreSheet">More</button><button class="btn" id="cancelOrder" hidden>Cancel</button><button class="btn" id="fullscreen">Full screen</button>';
+stage.after(commandbar);commandbar.insertBefore(q('pause'),q('fullscreen'));
+cameraTools.append(q('homeView'));q('homeView').textContent='Home';
+const sheets={};let openSheet=null;
+for(const [key,title]of [['build','Build your settlement'],['train','Train people & soldiers'],['more','Match & settings']]){
+  const sheet=document.createElement('section');sheet.className='command-sheet';sheet.id=key+'Sheet';sheet.hidden=true;
+  sheet.setAttribute('aria-label',title);
+  sheet.innerHTML='<div class="sheet-head"><strong>'+title+'</strong><button class="btn" aria-label="Close '+key+' menu">Close</button></div><div class="sheet-content"></div>';
+  app.append(sheet);sheets[key]=sheet;sheet.querySelector('button').addEventListener('click',()=>closeSheet(true));
+  q(key+'Menu').addEventListener('click',()=>{const already=openSheet===key;closeSheet();if(!already){openSheet=key;sheet.hidden=false;q(key+'Menu').setAttribute('aria-expanded','true');sheet.querySelector('button').focus()}});
+}
+function closeSheet(focus=false){if(!openSheet)return;const key=openSheet;sheets[key].hidden=true;q(key+'Menu').setAttribute('aria-expanded','false');openSheet=null;if(focus)q(key+'Menu').focus()}
+const buildGrid=document.createElement('div');buildGrid.className='actions';sheets.build.lastElementChild.append(buildGrid);
+for(const type of Object.keys(BUILD)){if(q(type))buildGrid.append(q(type))}
+const trainGrid=document.createElement('div');trainGrid.className='actions';sheets.train.lastElementChild.append(trainGrid);
+for(const id of ['villager','spearman','swordsman','archer'])trainGrid.append(q(id));
+const more=sheets.more.lastElementChild;
+more.append(q('age'),q('repair'),stancePanel,document.querySelector('.toolbar'),q('soloStatus'),document.querySelector('.guide'),document.querySelector('.info'),document.querySelector('.features'));
+for(const el of [...app.children])if(el.classList.contains('actions'))el.remove();
+document.querySelector('.legend').textContent='Tap a person, then a task · pinch to zoom · drag to pan · orders clear selection';
+const touchHelp=document.createElement('p');touchHelp.className='touch-help';touchHelp.textContent='Touch: tap a person, then a resource, enemy or destination. Selection clears after the order. Drag to explore; pinch to zoom. Build: choose a building, then tap its location. Cancel exits placement. Mouse: scroll to zoom; Shift + drag to pan.';more.append(touchHelp);
+for(const type of Object.keys(BUILD))if(q(type))q(type).addEventListener('click',()=>{if(pending){closeSheet();q('status').textContent='Tap the map to place '+BUILD[pending.type].label+'. Drag or pinch to adjust the view.'}});
+q('cancelOrder').addEventListener('click',()=>{cancelPlacement();selected=null;q('status').textContent='Selection cleared. Existing tasks continue.';updateUI()});
+q('app').addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet(true);selected=null;updateUI()}});
+q('help').addEventListener('click',()=>closeSheet());q('reset').addEventListener('click',()=>closeSheet(),true);
+let immersiveFallback=false;
+function fullscreenUI(){const on=!!document.fullscreenElement||immersiveFallback;app.classList.toggle('immersive',on);q('fullscreen').textContent=on?'Exit screen':'Full screen'}
+q('fullscreen').addEventListener('click',async()=>{
+  closeSheet();
+  if(document.fullscreenElement){await document.exitFullscreen();return}
+  if(immersiveFallback){immersiveFallback=false;fullscreenUI();return}
+  try{if(!document.documentElement.requestFullscreen)throw Error('unavailable');await document.documentElement.requestFullscreen()}
+  catch{immersiveFallback=true;fullscreenUI();q('status').textContent='Expanded view. On iPhone: Share → Add to Home Screen → Open as Web App for more space.'}
+});
+document.addEventListener('fullscreenchange',fullscreenUI);
+const mobileQuery=matchMedia('(max-width: 900px), (pointer: coarse)');
+function compactLayout(){app.classList.toggle('compact',mobileQuery.matches)}
+compactLayout();mobileQuery.addEventListener('change',compactLayout);
+function resizeMap(){const r=canvas.getBoundingClientRect();if(r.width<1||r.height<1)return;const height=Math.round(W*r.height/r.width);if(canvas.height!==height)canvas.height=height;clampCamera()}
+new ResizeObserver(resizeMap).observe(canvas);
+const beforeMobileUI=updateUI;updateUI=function(){beforeMobileUI();if(solo.busy)return;q('cancelOrder').hidden=!pending&&!selected;commandbar.classList.toggle('has-cancel',!!pending||!!selected);q('pause').textContent=paused?'Resume':'Pause'};
+function homeCamera(){camera.zoom=mobileQuery.matches&&innerHeight>innerWidth?3:1.5;camera.x=CIV[solo.human].x;camera.y=CIV[solo.human].y;clampCamera()}
+q('homeView').addEventListener('click',homeCamera);// The PvP room starts when two players are connected.
+q('status').setAttribute('role','status');q('status').setAttribute('aria-live','polite');
+
+// One browser simulates both civilizations. The second renders snapshots and submits orders.
+const pvp={ws:null,role:null,room:'',players:0,ready:false,server:'',lastState:0,serial:0};
+const params=new URLSearchParams(location.search);
+let savedServer='';try{savedServer=localStorage.getItem('roc-probe-server')||''}catch{}
+q('pvpServer').value=params.get('server')||savedServer;
+q('pvpCode').value=(params.get('room')||'').slice(0,6).toUpperCase();
+function pvpMessage(message){q('pvpMessage').textContent=message;q('soloStatus').textContent=message}
+function pvpSend(message){if(pvp.ws?.readyState===WebSocket.OPEN)pvp.ws.send(JSON.stringify(message))}
+function pvpStart(){
+  reset();poses.clear();solo.human=pvp.role==='host'?'A':'B';solo.ai=enemy(solo.human);
+  solo.victory='both';solo.time=0;solo.think=1e9;solo.started=true;paused=false;
+  active=solo.human;selected=null;pending=null;
+  camera.zoom=1.5;camera.x=CIV[active].x;camera.y=CIV[active].y;clampCamera();
+  q('soloSetup').classList.add('hidden');q('app').inert=false;q('tutorial').classList.add('hidden');
+  q('victoryLabel').textContent='🏛 Civilization · ⚔ Conquest';
+  q('banner').textContent='You command Civilization '+active+'. '+(pvp.role==='host'?'You are hosting.':'Your friend is hosting.');
+  q('reset').textContent=pvp.role==='host'?'Restart match':'Host can restart';
+  updateUI();resizeMap();homeCamera();
+}
+function pvpWorld(){return {civs:CIV,resources,units,buildings,projectiles,stuckArrows,ended,paused,time:solo.time,seq,bseq,endTitle:q('endTitle').textContent,endText:q('endText').textContent}}
+function pvpRead(world){
+  if(!world||!Array.isArray(world.units)||!Array.isArray(world.resources)||!Array.isArray(world.buildings)||world.units.length>700||world.buildings.length>500||world.resources.length>300)return;
+  const oldId=selected?.id;
+  for(const k of ['A','B'])if(world.civs?.[k])Object.assign(CIV[k],world.civs[k]);
+  resources=world.resources;units=world.units;buildings=world.buildings;
+  projectiles=world.projectiles||[];stuckArrows=world.stuckArrows||[];
+  ended=!!world.ended;paused=!!world.paused;solo.time=Number(world.time)||0;
+  selected=oldId?units.find(u=>u.id===oldId&&u.hp>0&&u.civ===active)||null:null;
+  if(ended){q('endTitle').textContent=world.endTitle||'Match ended';q('endText').textContent=world.endText||'';q('end').classList.remove('hidden')}
+  else q('end').classList.add('hidden');
+  updateUI();
+}
+function pvpOrder(unit,point){
+  if(!unit||unit.civ!=='B'||unit.hp<=0||!Number.isFinite(point?.x)||!Number.isFinite(point?.y)||point.x<0||point.x>W||point.y<0||point.y>H)return;
+  const p=point;
+  if(unit.type==='villager'){
+    const drop=buildings.find(b=>b.civ==='B'&&b.hp>0&&(b.type==='store'||b.type==='tc')&&Math.abs(p.x-b.x)<=b.w/2&&Math.abs(p.y-b.y)<=b.h/2);
+    if(drop&&unit.carry>0){unit.target={kind:'drop',dropId:drop.id};return}
+    const r=resources.slice().reverse().find(r=>r.amount>0&&hit(p,r,10));
+    unit.target=r?(unit.carry>0?{kind:'drop',resourceId:r.id}:{kind:'resource',id:r.id}):{kind:'move',x:p.x,y:p.y};
+  }else{
+    const enemyUnit=units.find(u=>u.civ==='A'&&u.hp>0&&hit(p,u,9));
+    const enemyBuilding=buildings.find(b=>b.civ==='A'&&b.hp>0&&Math.abs(p.x-b.x)<=b.w/2&&Math.abs(p.y-b.y)<=b.h/2);
+    issueCombatOrder(unit,enemyUnit?{kind:'attackUnit',id:enemyUnit.id}:enemyBuilding?{kind:'attackBuilding',id:enemyBuilding.id}:{kind:'move',x:p.x,y:p.y});
+  }
+}
+function pvpApply(m){
+  if(pvp.role!=='host'||!pvp.ready||!m||typeof m.action!=='string'||ended)return;
+  withAI(()=>{
+    if(m.action==='order'){const unit=units.find(u=>u.id===m.unit&&u.civ==='B'&&u.hp>0);pvpOrder(unit,m.point)}
+    else if(m.action==='place'&&Object.hasOwn(BUILD,m.build)&&Number.isFinite(m.x)&&Number.isFinite(m.y)&&m.x>=0&&m.x<=W&&m.y>=0&&m.y<=H){pending={type:m.build};placeAt(m.x,m.y);pending=null}
+    else if(m.action==='stance'){const unit=units.find(u=>u.id===m.unit&&u.civ==='B'&&u.hp>0&&u.type!=='villager');if(unit&&['aggressive','defensive','hold'].includes(m.stance)){selected=unit;setCombatStance(m.stance)}}
+    else if(['age','villager','spearman','archer','swordsman','repair'].includes(m.action))({age:advance,villager:trainVillager,spearman:trainSpearman,archer:trainArcher,swordsman:trainSwordsman,repair})[m.action]();
+  });
+}
+function pvpConnect(){
+  let u;try{u=new URL(q('pvpServer').value.trim());if(!['https:','http:'].includes(u.protocol)||u.username||u.password||u.pathname!=='/'||u.search||u.hash||u.protocol==='http:'&&!['localhost','127.0.0.1'].includes(u.hostname)||u.protocol==='https:'&&!u.hostname.endsWith('.workers.dev'))throw Error()}catch{pvpMessage('Enter the base HTTPS Cloudflare address, ending in workers.dev.');return}
+  pvp.ws?.close();pvp.ready=false;pvp.role=null;pvp.room='';pvp.players=0;pvp.server=u.origin;
+  try{localStorage.setItem('roc-probe-server',u.origin)}catch{}
+  u.pathname='/ws';u.protocol=u.protocol==='https:'?'wss:':'ws:';
+  pvpMessage('Connecting…');const ws=new WebSocket(u.href);pvp.ws=ws;
+  ws.onmessage=e=>{if(ws!==pvp.ws)return;let m;try{m=JSON.parse(e.data)}catch{return}
+    if(m.type==='hello'){if(m.service!=='roc-connection-probe-v1'){ws.close();pvpMessage('Wrong server address.');return}q('pvpCreate').disabled=false;q('pvpJoin').disabled=false;pvpMessage('Connected. Create a room or enter your friend’s code.');return}
+    if(m.type==='game-role'){pvp.role=m.role;return}
+    if(m.type==='room'){pvp.room=m.code;pvp.players=m.players;q('pvpCreate').disabled=true;q('pvpJoin').disabled=true;
+      if(m.players===2){if(!pvp.ready){pvp.ready=true;pvpStart()}pvpMessage('Two players connected · You command Civilization '+solo.human+'.')}
+      else{pvp.ready=false;solo.started=false;paused=true;q('soloSetup').classList.remove('hidden');q('app').inert=true;
+        q('pvpInvite').hidden=pvp.role!=='host';pvpMessage(pvp.role==='host'?'Room '+m.code+' · Waiting for your friend. Copy the invite link.':'The room creator disconnected. Start a new room.');}
+      return}
+    if(m.type==='game-state'&&pvp.role==='guest'&&pvp.ready)pvpRead(m.world);
+    if(m.type==='game-command'&&pvp.role==='host'&&pvp.ready)pvpApply(m);
+    if(m.type==='error')pvpMessage(m.message);
+  };
+  ws.onerror=()=>pvpMessage('Connection failed. Check the server address and network.');
+  ws.onclose=()=>{if(ws!==pvp.ws)return;pvp.ready=false;solo.started=false;paused=true;q('soloSetup').classList.remove('hidden');q('app').inert=true;q('pvpCreate').disabled=true;q('pvpJoin').disabled=true;pvpMessage('Connection lost. Reconnect and create or join a new room.')};
+}
+q('pvpConnect').addEventListener('click',pvpConnect);
+q('pvpCreate').addEventListener('click',()=>pvpSend({type:'create'}));
+q('pvpJoin').addEventListener('click',()=>{const code=q('pvpCode').value.trim().toUpperCase();if(!/^[A-Z2-9]{6}$/.test(code)){pvpMessage('Enter the six-character room code.');return}pvpSend({type:'join',code})});
+q('pvpInvite').addEventListener('click',async()=>{const u=new URL(location.href);u.search='';u.searchParams.set('server',pvp.server);u.searchParams.set('room',pvp.room);try{await navigator.clipboard.writeText(u.href);pvpMessage('Invite link copied. Send it to your friend.')}catch{pvpMessage('Room code: '+pvp.room+' · Share this code and the server address.')}});
+// The guest's map sends intent; only the host is allowed to change match state.
+const originalMapCommand=handleMapCommand;
+handleMapCommand=function(e){
+  if(!pvp.ready||pvp.role!=='guest'){if(pvp.ready)originalMapCommand(e);return}
+  const p=point(e);if(p.x<0||p.x>W||p.y<0||p.y>H)return;
+  if(pending){if(!placementReason(pending.type,p.x,p.y)){pvpSend({type:'game-command',action:'place',build:pending.type,x:p.x,y:p.y});pending=null;q('placeLabel').classList.add('hidden');updateUI()}return}
+  const own=units.slice().reverse().find(u=>u.civ==='B'&&u.hp>0&&hit(p,u,8));
+  if(own){selected=own;updateUI();return}
+  if(selected){pvpSend({type:'game-command',action:'order',unit:selected.id,point:p});selected=null;updateUI()}
+};
+for(const id of ['age','villager','spearman','archer','swordsman','repair'])q(id).addEventListener('click',e=>{if(!pvp.ready||pvp.role==='guest'){intercept(e);if(pvp.ready)pvpSend({type:'game-command',action:id})}},true);
+for(const id of Object.keys(BUILD))q(id).addEventListener('click',e=>{if(!pvp.ready||pvp.role==='guest'){intercept(e);if(pvp.ready)beginPlacement(id)}},true);
+for(const [id,stance]of [['stanceAggressive','aggressive'],['stanceDefensive','defensive'],['stanceHold','hold']])q(id).addEventListener('click',e=>{if(pvp.role==='guest'){intercept(e);if(pvp.ready&&selected)pvpSend({type:'game-command',action:'stance',unit:selected.id,stance})}},true);
+for(const id of ['reset','again'])q(id).addEventListener('click',e=>{intercept(e);if(pvp.ready&&pvp.role==='host'){pvpStart();pvpSend({type:'game-state',world:pvpWorld()})}},true);
+q('pause').addEventListener('click',e=>{intercept(e);q('status').textContent='Online matches run while both players are connected.'},true);
+q('app').addEventListener('keydown',e=>{if(e.key===' '){intercept(e)}},true);
+const pvpUI=updateUI;
+updateUI=function(){pvpUI();if(!pvp.ready)return;for(const k of ['A','B'])q('role'+k).textContent=k===solo.human?'YOU':'FRIEND';q('soloStatus').textContent='Online match · '+Math.floor(solo.time/60)+':'+String(Math.floor(solo.time%60)).padStart(2,'0')+' · Civilization '+solo.human;q('reset').disabled=pvp.role!=='host';q('pause').disabled=true};
+const pvpFinish=finish;
+finish=function(k,title,message){pvpFinish(k,title,message);if(pvp.ready&&pvp.role==='host')pvpSend({type:'game-state',world:pvpWorld()})};
+setInterval(()=>{if(pvp.ready&&pvp.role==='host'&&!document.hidden&&pvp.ws?.readyState===WebSocket.OPEN&&pvp.ws.bufferedAmount<180000)pvpSend({type:'game-state',world:pvpWorld()})},220);
+// The artwork is expensive on phones; keep the simulation clock accurate at a bounded frame rate.
+let pvpNextFrame=0;
+loop=function(now){
+  requestAnimationFrame(loop);
+  if(now<pvpNextFrame)return;
+  const dt=Math.min(.05,(now-last)/1000);last=now;
+  pvpNextFrame=now+(pvp.role==='guest'?42:33);
+  update(dt);render(now);
+};
+
+reset();q('app').inert=true;requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
