@@ -1,0 +1,7 @@
+{
+  "name": "rise-civ-connection-test-worker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"dev":"wrangler dev --local", "deploy":"wrangler deploy", "check":"wrangler deploy --dry-run --outdir ./dist"},
+  "devDependencies": {"wrangler":"^4.38.0"}
+}

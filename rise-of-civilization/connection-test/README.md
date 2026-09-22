@@ -1,8 +1,12 @@
 # Rise of Civilization: online connection test
 
-A standalone two-player test for an internet PvP relay. It measures server round-trip time and player-to-player round-trip time through the server. It does not yet synchronize the game.
+A standalone two-player test for an internet PvP relay. It measures server round-trip time and player-to-player round-trip time through the server. It does not yet synchronize the game. Either Cloudflare or Render can host the relay.
 
-## Activate the free server
+## No-card route: Cloudflare Workers Free
+
+Cloudflare offers Durable Objects on Workers Free without a credit card. The [Cloudflare deployment guide](cloudflare/README.md) explains how to connect this repository, set the root directory to `rise-of-civilization/connection-test/cloudflare`, and publish a `workers.dev` address. Paste that HTTPS address into the [connection test page](https://riachrobert-netizen.github.io/d-words-english/rise-of-civilization/connection-test/). This is now the recommended route if Render asks you for card details.
+
+## Optional: Render free server
 
 [Deploy to Render](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2Friachrobert-netizen%2Fd-words-english)
 
