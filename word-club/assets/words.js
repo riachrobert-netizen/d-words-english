@@ -7122,29 +7122,22 @@ window.WORD_CLUB_BANK = {
       [
         "each",
         "每一个",
-        "Each child has a book.",
-        "每个孩子都有一本书。",
-        "each"
-      ],
-      [
-        "ear",
-        "耳朵",
-        "I can hear with my ears.",
-        "我可以用耳朵听。",
-        "ears"
+        "Each student has a book.",
+        "每个学生都有一本书。",
+        "Each"
       ],
       [
         "early",
-        "早的；提早",
-        "We arrived early today.",
-        "我们今天到得很早。",
+        "早地",
+        "We woke up early today.",
+        "我们今天起得很早。",
         "early"
       ],
       [
         "earth",
         "地球",
-        "We live on Earth.",
-        "我们生活在地球上。",
+        "The Earth is round.",
+        "地球是圆的。",
         "Earth"
       ],
       [
@@ -7157,107 +7150,65 @@ window.WORD_CLUB_BANK = {
       [
         "easy",
         "容易的",
-        "This question is easy.",
-        "这道题很容易。",
+        "This test is easy.",
+        "这次测验很容易。",
         "easy"
       ],
       [
         "eat",
         "吃",
-        "I eat breakfast every morning.",
-        "我每天早上吃早餐。",
+        "I like to eat apples.",
+        "我喜欢吃苹果。",
         "eat"
       ],
       [
-        "egg",
-        "鸡蛋",
-        "There is an egg on my plate.",
-        "我的盘子里有一个鸡蛋。",
-        "egg"
-      ],
-      [
-        "eight",
-        "八",
-        "I have eight pencils.",
-        "我有八支铅笔。",
-        "eight"
-      ],
-      [
-        "elephant",
-        "大象",
-        "The elephant has a long trunk.",
-        "大象有一条长鼻子。",
-        "elephant"
-      ],
-      [
-        "else",
-        "其他；另外",
-        "What else do you need?",
-        "你还需要什么？",
-        "else"
-      ],
-      [
-        "end",
-        "结束；末尾",
-        "The story has a happy end.",
-        "这个故事有一个快乐的结局。",
-        "end"
-      ],
-      [
-        "enjoy",
-        "喜欢；享受",
-        "I enjoy reading books.",
-        "我喜欢读书。",
-        "enjoy"
+        "effort",
+        "努力",
+        "She made a big effort to win.",
+        "她为了获胜付出了很大努力。",
+        "effort"
       ],
       [
         "enough",
         "足够的",
-        "We have enough water.",
-        "我们有足够的水。",
+        "We have enough food.",
+        "我们有足够的食物。",
         "enough"
       ],
       [
-        "enter",
-        "进入",
-        "Please enter the classroom.",
-        "请走进教室。",
-        "enter"
-      ],
-      [
-        "even",
-        "甚至",
-        "Even my little brother can do it.",
-        "甚至我的弟弟也能做到。",
-        "Even"
-      ],
-      [
-        "evening",
-        "傍晚；晚上",
-        "We eat dinner in the evening.",
-        "我们在晚上吃晚饭。",
-        "evening"
-      ],
-      [
         "every",
-        "每个",
-        "I read every day.",
-        "我每天读书。",
-        "every"
+        "每一个",
+        "Every child has a toy.",
+        "每个孩子都有一个玩具。",
+        "Every"
       ],
       [
         "example",
         "例子",
-        "Can you give me an example?",
-        "你能给我举个例子吗？",
+        "This is an example of a good sentence.",
+        "这是一个好句子的例子。",
         "example"
       ],
       [
-        "excited",
-        "兴奋的",
-        "She is excited about the trip.",
-        "她对旅行感到兴奋。",
-        "excited"
+        "experience",
+        "经历；体验",
+        "I had a fun experience at the zoo.",
+        "我在动物园有一次有趣的体验。",
+        "experience"
+      ],
+      [
+        "explain",
+        "解释",
+        "Please explain the answer to me.",
+        "请向我解释答案。",
+        "explain"
+      ],
+      [
+        "eye",
+        "眼睛",
+        "I have two eyes.",
+        "我有两只眼睛。",
+        "eyes"
       ]
     ],
     "rounds": [
@@ -7266,29 +7217,22 @@ window.WORD_CLUB_BANK = {
           [
             "each",
             "每一个",
-            "Each child has a book.",
-            "每个孩子都有一本书。",
-            "each"
-          ],
-          [
-            "ear",
-            "耳朵",
-            "I can hear with my ears.",
-            "我可以用耳朵听。",
-            "ears"
+            "Each student has a book.",
+            "每个学生都有一本书。",
+            "Each"
           ],
           [
             "early",
-            "早的；提早",
-            "We arrived early today.",
-            "我们今天到得很早。",
+            "早地",
+            "We woke up early today.",
+            "我们今天起得很早。",
             "early"
           ],
           [
             "earth",
             "地球",
-            "We live on Earth.",
-            "我们生活在地球上。",
+            "The Earth is round.",
+            "地球是圆的。",
             "Earth"
           ],
           [
@@ -7301,28 +7245,35 @@ window.WORD_CLUB_BANK = {
           [
             "easy",
             "容易的",
-            "This question is easy.",
-            "这道题很容易。",
+            "This test is easy.",
+            "这次测验很容易。",
             "easy"
           ],
           [
             "eat",
             "吃",
-            "I eat breakfast every morning.",
-            "我每天早上吃早餐。",
+            "I like to eat apples.",
+            "我喜欢吃苹果。",
             "eat"
           ],
           [
-            "egg",
-            "鸡蛋",
-            "There is an egg on my plate.",
-            "我的盘子里有一个鸡蛋。",
-            "egg"
+            "effort",
+            "努力",
+            "She made a big effort to win.",
+            "她为了获胜付出了很大努力。",
+            "effort"
+          ],
+          [
+            "enough",
+            "足够的",
+            "We have enough food.",
+            "我们有足够的食物。",
+            "enough"
           ]
         ],
         "questions": [
           {
-            "id": "er0w0s",
+            "id": "e2r0w0s",
             "type": "spell",
             "word": "each",
             "meaning": "每一个",
@@ -7330,124 +7281,91 @@ window.WORD_CLUB_BANK = {
             "note": "each = 每一个"
           },
           {
-            "id": "er0w0t",
+            "id": "e2r0w0t",
             "type": "tiles",
             "word": "each",
-            "sentence": "Each child has a book.",
-            "translation": "每个孩子都有一本书。",
-            "answer": "Each child has a book.",
+            "sentence": "Each student has a book.",
+            "translation": "每个学生都有一本书。",
+            "answer": "Each student has a book.",
             "note": "each = 每一个",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er0w0c",
+            "id": "e2r0w0b",
+            "type": "blank",
+            "word": "each",
+            "sentence": "Each student has a book.",
+            "translation": "每个学生都有一本书。",
+            "answer": "Each",
+            "note": "each = 每一个",
+            "choices": [
+              "Each"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e2r0w0c",
             "type": "choice",
             "word": "each",
-            "sentence": "Each child has a book.",
-            "translation": "每个孩子都有一本书。",
+            "sentence": "Each student has a book.",
+            "translation": "每个学生都有一本书。",
             "answer": "每一个",
             "choices": [
               "每一个",
-              "八",
-              "每个"
+              "例子",
+              "努力"
             ],
             "note": "each = 每一个"
           },
           {
-            "id": "er0w1s",
+            "id": "e2r0w1s",
             "type": "spell",
-            "word": "ear",
-            "meaning": "耳朵",
-            "answer": "ear",
-            "note": "ear = 耳朵"
+            "word": "early",
+            "meaning": "早地",
+            "answer": "early",
+            "note": "early = 早地"
           },
           {
-            "id": "er0w1t",
+            "id": "e2r0w1t",
             "type": "tiles",
-            "word": "ear",
-            "sentence": "I can hear with my ears.",
-            "translation": "我可以用耳朵听。",
-            "answer": "I can hear with my ears.",
-            "note": "ear = 耳朵",
+            "word": "early",
+            "sentence": "We woke up early today.",
+            "translation": "我们今天起得很早。",
+            "answer": "We woke up early today.",
+            "note": "early = 早地",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er0w1b",
-            "type": "blank",
-            "word": "ear",
-            "sentence": "I can hear with my ears.",
-            "translation": "我可以用耳朵听。",
-            "answer": "ears",
-            "note": "ear = 耳朵",
-            "choices": [
-              "ears"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er0w1c",
-            "type": "choice",
-            "word": "ear",
-            "sentence": "I can hear with my ears.",
-            "translation": "我可以用耳朵听。",
-            "answer": "耳朵",
-            "choices": [
-              "耳朵",
-              "结束；末尾",
-              "每一个"
-            ],
-            "note": "ear = 耳朵"
-          },
-          {
-            "id": "er0w2s",
-            "type": "spell",
-            "word": "early",
-            "meaning": "早的；提早",
-            "answer": "early",
-            "note": "early = 早的；提早"
-          },
-          {
-            "id": "er0w2t",
-            "type": "tiles",
-            "word": "early",
-            "sentence": "We arrived early today.",
-            "translation": "我们今天到得很早。",
-            "answer": "We arrived early today.",
-            "note": "early = 早的；提早",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er0w2b",
+            "id": "e2r0w1b",
             "type": "blank",
             "word": "early",
-            "sentence": "We arrived early today.",
-            "translation": "我们今天到得很早。",
+            "sentence": "We woke up early today.",
+            "translation": "我们今天起得很早。",
             "answer": "early",
-            "note": "early = 早的；提早",
+            "note": "early = 早地",
             "choices": [
               "early"
             ],
             "alternatives": []
           },
           {
-            "id": "er0w2c",
+            "id": "e2r0w1c",
             "type": "choice",
             "word": "early",
-            "sentence": "We arrived early today.",
-            "translation": "我们今天到得很早。",
-            "answer": "早的；提早",
+            "sentence": "We woke up early today.",
+            "translation": "我们今天起得很早。",
+            "answer": "早地",
             "choices": [
-              "早的；提早",
-              "进入",
-              "东方"
+              "早地",
+              "眼睛",
+              "经历；体验"
             ],
-            "note": "early = 早的；提早"
+            "note": "early = 早地"
           },
           {
-            "id": "er0w3s",
+            "id": "e2r0w2s",
             "type": "spell",
             "word": "earth",
             "meaning": "地球",
@@ -7455,22 +7373,22 @@ window.WORD_CLUB_BANK = {
             "note": "earth = 地球"
           },
           {
-            "id": "er0w3t",
+            "id": "e2r0w2t",
             "type": "tiles",
             "word": "earth",
-            "sentence": "We live on Earth.",
-            "translation": "我们生活在地球上。",
-            "answer": "We live on Earth.",
+            "sentence": "The Earth is round.",
+            "translation": "地球是圆的。",
+            "answer": "The Earth is round.",
             "note": "earth = 地球",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er0w3b",
+            "id": "e2r0w2b",
             "type": "blank",
             "word": "earth",
-            "sentence": "We live on Earth.",
-            "translation": "我们生活在地球上。",
+            "sentence": "The Earth is round.",
+            "translation": "地球是圆的。",
             "answer": "Earth",
             "note": "earth = 地球",
             "choices": [
@@ -7479,21 +7397,59 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er0w3c",
+            "id": "e2r0w2c",
             "type": "choice",
             "word": "earth",
-            "sentence": "We live on Earth.",
-            "translation": "我们生活在地球上。",
+            "sentence": "The Earth is round.",
+            "translation": "地球是圆的。",
             "answer": "地球",
             "choices": [
               "地球",
-              "每个",
-              "鸡蛋"
+              "东方",
+              "每一个"
             ],
             "note": "earth = 地球"
           },
           {
-            "id": "er0w4s",
+            "id": "e2r0w2v0t",
+            "type": "tiles",
+            "word": "earth",
+            "sentence": "Plants grow in the earth.",
+            "translation": "植物生长在泥土里。",
+            "answer": "Plants grow in the earth.",
+            "note": "earth = 泥土",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "e2r0w2v0b",
+            "type": "blank",
+            "word": "earth",
+            "sentence": "Plants grow in the earth.",
+            "translation": "植物生长在泥土里。",
+            "answer": "earth",
+            "note": "earth = 泥土",
+            "choices": [
+              "earth"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e2r0w2v0c",
+            "type": "choice",
+            "word": "earth",
+            "sentence": "Plants grow in the earth.",
+            "translation": "植物生长在泥土里。",
+            "answer": "泥土",
+            "choices": [
+              "泥土",
+              "地球",
+              "东方"
+            ],
+            "note": "earth = 泥土"
+          },
+          {
+            "id": "e2r0w3s",
             "type": "spell",
             "word": "east",
             "meaning": "东方",
@@ -7501,7 +7457,7 @@ window.WORD_CLUB_BANK = {
             "note": "east = 东方"
           },
           {
-            "id": "er0w4t",
+            "id": "e2r0w3t",
             "type": "tiles",
             "word": "east",
             "sentence": "The sun rises in the east.",
@@ -7512,7 +7468,7 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er0w4b",
+            "id": "e2r0w3b",
             "type": "blank",
             "word": "east",
             "sentence": "The sun rises in the east.",
@@ -7525,7 +7481,7 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er0w4c",
+            "id": "e2r0w3c",
             "type": "choice",
             "word": "east",
             "sentence": "The sun rises in the east.",
@@ -7533,13 +7489,13 @@ window.WORD_CLUB_BANK = {
             "answer": "东方",
             "choices": [
               "东方",
-              "每一个",
-              "其他；另外"
+              "努力",
+              "容易的"
             ],
             "note": "east = 东方"
           },
           {
-            "id": "er0w5s",
+            "id": "e2r0w4s",
             "type": "spell",
             "word": "easy",
             "meaning": "容易的",
@@ -7547,22 +7503,22 @@ window.WORD_CLUB_BANK = {
             "note": "easy = 容易的"
           },
           {
-            "id": "er0w5t",
+            "id": "e2r0w4t",
             "type": "tiles",
             "word": "easy",
-            "sentence": "This question is easy.",
-            "translation": "这道题很容易。",
-            "answer": "This question is easy.",
+            "sentence": "This test is easy.",
+            "translation": "这次测验很容易。",
+            "answer": "This test is easy.",
             "note": "easy = 容易的",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er0w5b",
+            "id": "e2r0w4b",
             "type": "blank",
             "word": "easy",
-            "sentence": "This question is easy.",
-            "translation": "这道题很容易。",
+            "sentence": "This test is easy.",
+            "translation": "这次测验很容易。",
             "answer": "easy",
             "note": "easy = 容易的",
             "choices": [
@@ -7571,21 +7527,21 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er0w5c",
+            "id": "e2r0w4c",
             "type": "choice",
             "word": "easy",
-            "sentence": "This question is easy.",
-            "translation": "这道题很容易。",
+            "sentence": "This test is easy.",
+            "translation": "这次测验很容易。",
             "answer": "容易的",
             "choices": [
               "容易的",
-              "地球",
+              "经历；体验",
               "足够的"
             ],
             "note": "easy = 容易的"
           },
           {
-            "id": "er0w6s",
+            "id": "e2r0w5s",
             "type": "spell",
             "word": "eat",
             "meaning": "吃",
@@ -7593,22 +7549,22 @@ window.WORD_CLUB_BANK = {
             "note": "eat = 吃"
           },
           {
-            "id": "er0w6t",
+            "id": "e2r0w5t",
             "type": "tiles",
             "word": "eat",
-            "sentence": "I eat breakfast every morning.",
-            "translation": "我每天早上吃早餐。",
-            "answer": "I eat breakfast every morning.",
+            "sentence": "I like to eat apples.",
+            "translation": "我喜欢吃苹果。",
+            "answer": "I like to eat apples.",
             "note": "eat = 吃",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er0w6b",
+            "id": "e2r0w5b",
             "type": "blank",
             "word": "eat",
-            "sentence": "I eat breakfast every morning.",
-            "translation": "我每天早上吃早餐。",
+            "sentence": "I like to eat apples.",
+            "translation": "我喜欢吃苹果。",
             "answer": "eat",
             "note": "eat = 吃",
             "choices": [
@@ -7617,398 +7573,67 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er0w6c",
+            "id": "e2r0w5c",
             "type": "choice",
             "word": "eat",
-            "sentence": "I eat breakfast every morning.",
-            "translation": "我每天早上吃早餐。",
+            "sentence": "I like to eat apples.",
+            "translation": "我喜欢吃苹果。",
             "answer": "吃",
             "choices": [
               "吃",
-              "鸡蛋",
-              "傍晚；晚上"
+              "每一个",
+              "解释"
             ],
             "note": "eat = 吃"
           },
           {
-            "id": "er0w7s",
+            "id": "e2r0w6s",
             "type": "spell",
-            "word": "egg",
-            "meaning": "鸡蛋",
-            "answer": "egg",
-            "note": "egg = 鸡蛋"
+            "word": "effort",
+            "meaning": "努力",
+            "answer": "effort",
+            "note": "effort = 努力"
           },
           {
-            "id": "er0w7t",
+            "id": "e2r0w6t",
             "type": "tiles",
-            "word": "egg",
-            "sentence": "There is an egg on my plate.",
-            "translation": "我的盘子里有一个鸡蛋。",
-            "answer": "There is an egg on my plate.",
-            "note": "egg = 鸡蛋",
+            "word": "effort",
+            "sentence": "She made a big effort to win.",
+            "translation": "她为了获胜付出了很大努力。",
+            "answer": "She made a big effort to win.",
+            "note": "effort = 努力",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er0w7b",
+            "id": "e2r0w6b",
             "type": "blank",
-            "word": "egg",
-            "sentence": "There is an egg on my plate.",
-            "translation": "我的盘子里有一个鸡蛋。",
-            "answer": "egg",
-            "note": "egg = 鸡蛋",
+            "word": "effort",
+            "sentence": "She made a big effort to win.",
+            "translation": "她为了获胜付出了很大努力。",
+            "answer": "effort",
+            "note": "effort = 努力",
             "choices": [
-              "egg"
+              "effort"
             ],
             "alternatives": []
           },
           {
-            "id": "er0w7c",
+            "id": "e2r0w6c",
             "type": "choice",
-            "word": "egg",
-            "sentence": "There is an egg on my plate.",
-            "translation": "我的盘子里有一个鸡蛋。",
-            "answer": "鸡蛋",
+            "word": "effort",
+            "sentence": "She made a big effort to win.",
+            "translation": "她为了获胜付出了很大努力。",
+            "answer": "努力",
             "choices": [
-              "鸡蛋",
-              "其他；另外",
-              "兴奋的"
+              "努力",
+              "东方",
+              "早地"
             ],
-            "note": "egg = 鸡蛋"
+            "note": "effort = 努力"
           },
           {
-            "id": "er0m",
-            "type": "match",
-            "pairs": [
-              [
-                "each",
-                "每一个"
-              ],
-              [
-                "ear",
-                "耳朵"
-              ],
-              [
-                "early",
-                "早的；提早"
-              ],
-              [
-                "earth",
-                "地球"
-              ],
-              [
-                "east",
-                "东方"
-              ]
-            ],
-            "note": "All the pairs are connected! 五组词语配对完成！"
-          },
-          {
-            "id": "er0h",
-            "type": "chat",
-            "prompt": "Which sentence uses “ear” correctly?",
-            "choices": [
-              "I can hear with my ears.",
-              "Each child has a book.",
-              "We arrived early today."
-            ],
-            "answer": "I can hear with my ears.",
-            "note": "ear = 耳朵"
-          }
-        ]
-      },
-      {
-        "words": [
-          [
-            "eight",
-            "八",
-            "I have eight pencils.",
-            "我有八支铅笔。",
-            "eight"
-          ],
-          [
-            "elephant",
-            "大象",
-            "The elephant has a long trunk.",
-            "大象有一条长鼻子。",
-            "elephant"
-          ],
-          [
-            "else",
-            "其他；另外",
-            "What else do you need?",
-            "你还需要什么？",
-            "else"
-          ],
-          [
-            "end",
-            "结束；末尾",
-            "The story has a happy end.",
-            "这个故事有一个快乐的结局。",
-            "end"
-          ],
-          [
-            "enjoy",
-            "喜欢；享受",
-            "I enjoy reading books.",
-            "我喜欢读书。",
-            "enjoy"
-          ],
-          [
-            "enough",
-            "足够的",
-            "We have enough water.",
-            "我们有足够的水。",
-            "enough"
-          ],
-          [
-            "enter",
-            "进入",
-            "Please enter the classroom.",
-            "请走进教室。",
-            "enter"
-          ],
-          [
-            "even",
-            "甚至",
-            "Even my little brother can do it.",
-            "甚至我的弟弟也能做到。",
-            "Even"
-          ]
-        ],
-        "questions": [
-          {
-            "id": "er1w0s",
-            "type": "spell",
-            "word": "eight",
-            "meaning": "八",
-            "answer": "eight",
-            "note": "eight = 八"
-          },
-          {
-            "id": "er1w0t",
-            "type": "tiles",
-            "word": "eight",
-            "sentence": "I have eight pencils.",
-            "translation": "我有八支铅笔。",
-            "answer": "I have eight pencils.",
-            "note": "eight = 八",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w0b",
-            "type": "blank",
-            "word": "eight",
-            "sentence": "I have eight pencils.",
-            "translation": "我有八支铅笔。",
-            "answer": "eight",
-            "note": "eight = 八",
-            "choices": [
-              "eight"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w0c",
-            "type": "choice",
-            "word": "eight",
-            "sentence": "I have eight pencils.",
-            "translation": "我有八支铅笔。",
-            "answer": "八",
-            "choices": [
-              "八",
-              "傍晚；晚上",
-              "容易的"
-            ],
-            "note": "eight = 八"
-          },
-          {
-            "id": "er1w1s",
-            "type": "spell",
-            "word": "elephant",
-            "meaning": "大象",
-            "answer": "elephant",
-            "note": "elephant = 大象"
-          },
-          {
-            "id": "er1w1t",
-            "type": "tiles",
-            "word": "elephant",
-            "sentence": "The elephant has a long trunk.",
-            "translation": "大象有一条长鼻子。",
-            "answer": "The elephant has a long trunk.",
-            "note": "elephant = 大象",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w1b",
-            "type": "blank",
-            "word": "elephant",
-            "sentence": "The elephant has a long trunk.",
-            "translation": "大象有一条长鼻子。",
-            "answer": "elephant",
-            "note": "elephant = 大象",
-            "choices": [
-              "elephant"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w1c",
-            "type": "choice",
-            "word": "elephant",
-            "sentence": "The elephant has a long trunk.",
-            "translation": "大象有一条长鼻子。",
-            "answer": "大象",
-            "choices": [
-              "大象",
-              "兴奋的",
-              "八"
-            ],
-            "note": "elephant = 大象"
-          },
-          {
-            "id": "er1w2s",
-            "type": "spell",
-            "word": "else",
-            "meaning": "其他；另外",
-            "answer": "else",
-            "note": "else = 其他；另外"
-          },
-          {
-            "id": "er1w2t",
-            "type": "tiles",
-            "word": "else",
-            "sentence": "What else do you need?",
-            "translation": "你还需要什么？",
-            "answer": "What else do you need?",
-            "note": "else = 其他；另外",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w2b",
-            "type": "blank",
-            "word": "else",
-            "sentence": "What else do you need?",
-            "translation": "你还需要什么？",
-            "answer": "else",
-            "note": "else = 其他；另外",
-            "choices": [
-              "else"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w2c",
-            "type": "choice",
-            "word": "else",
-            "sentence": "What else do you need?",
-            "translation": "你还需要什么？",
-            "answer": "其他；另外",
-            "choices": [
-              "其他；另外",
-              "早的；提早",
-              "喜欢；享受"
-            ],
-            "note": "else = 其他；另外"
-          },
-          {
-            "id": "er1w3s",
-            "type": "spell",
-            "word": "end",
-            "meaning": "结束；末尾",
-            "answer": "end",
-            "note": "end = 结束；末尾"
-          },
-          {
-            "id": "er1w3t",
-            "type": "tiles",
-            "word": "end",
-            "sentence": "The story has a happy end.",
-            "translation": "这个故事有一个快乐的结局。",
-            "answer": "The story has a happy end.",
-            "note": "end = 结束；末尾",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w3b",
-            "type": "blank",
-            "word": "end",
-            "sentence": "The story has a happy end.",
-            "translation": "这个故事有一个快乐的结局。",
-            "answer": "end",
-            "note": "end = 结束；末尾",
-            "choices": [
-              "end"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w3c",
-            "type": "choice",
-            "word": "end",
-            "sentence": "The story has a happy end.",
-            "translation": "这个故事有一个快乐的结局。",
-            "answer": "结束；末尾",
-            "choices": [
-              "结束；末尾",
-              "容易的",
-              "甚至"
-            ],
-            "note": "end = 结束；末尾"
-          },
-          {
-            "id": "er1w4s",
-            "type": "spell",
-            "word": "enjoy",
-            "meaning": "喜欢；享受",
-            "answer": "enjoy",
-            "note": "enjoy = 喜欢；享受"
-          },
-          {
-            "id": "er1w4t",
-            "type": "tiles",
-            "word": "enjoy",
-            "sentence": "I enjoy reading books.",
-            "translation": "我喜欢读书。",
-            "answer": "I enjoy reading books.",
-            "note": "enjoy = 喜欢；享受",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w4b",
-            "type": "blank",
-            "word": "enjoy",
-            "sentence": "I enjoy reading books.",
-            "translation": "我喜欢读书。",
-            "answer": "enjoy",
-            "note": "enjoy = 喜欢；享受",
-            "choices": [
-              "enjoy"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w4c",
-            "type": "choice",
-            "word": "enjoy",
-            "sentence": "I enjoy reading books.",
-            "translation": "我喜欢读书。",
-            "answer": "喜欢；享受",
-            "choices": [
-              "喜欢；享受",
-              "八",
-              "例子"
-            ],
-            "note": "enjoy = 喜欢；享受"
-          },
-          {
-            "id": "er1w5s",
+            "id": "e2r0w7s",
             "type": "spell",
             "word": "enough",
             "meaning": "足够的",
@@ -8016,22 +7641,22 @@ window.WORD_CLUB_BANK = {
             "note": "enough = 足够的"
           },
           {
-            "id": "er1w5t",
+            "id": "e2r0w7t",
             "type": "tiles",
             "word": "enough",
-            "sentence": "We have enough water.",
-            "translation": "我们有足够的水。",
-            "answer": "We have enough water.",
+            "sentence": "We have enough food.",
+            "translation": "我们有足够的食物。",
+            "answer": "We have enough food.",
             "note": "enough = 足够的",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er1w5b",
+            "id": "e2r0w7b",
             "type": "blank",
             "word": "enough",
-            "sentence": "We have enough water.",
-            "translation": "我们有足够的水。",
+            "sentence": "We have enough food.",
+            "translation": "我们有足够的食物。",
             "answer": "enough",
             "note": "enough = 足够的",
             "choices": [
@@ -8040,278 +7665,147 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er1w5c",
+            "id": "e2r0w7c",
             "type": "choice",
             "word": "enough",
-            "sentence": "We have enough water.",
-            "translation": "我们有足够的水。",
+            "sentence": "We have enough food.",
+            "translation": "我们有足够的食物。",
             "answer": "足够的",
             "choices": [
               "足够的",
-              "结束；末尾",
-              "耳朵"
+              "努力",
+              "容易的"
             ],
             "note": "enough = 足够的"
           },
           {
-            "id": "er1w6s",
-            "type": "spell",
-            "word": "enter",
-            "meaning": "进入",
-            "answer": "enter",
-            "note": "enter = 进入"
-          },
-          {
-            "id": "er1w6t",
-            "type": "tiles",
-            "word": "enter",
-            "sentence": "Please enter the classroom.",
-            "translation": "请走进教室。",
-            "answer": "Please enter the classroom.",
-            "note": "enter = 进入",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w6b",
-            "type": "blank",
-            "word": "enter",
-            "sentence": "Please enter the classroom.",
-            "translation": "请走进教室。",
-            "answer": "enter",
-            "note": "enter = 进入",
-            "choices": [
-              "enter"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w6c",
-            "type": "choice",
-            "word": "enter",
-            "sentence": "Please enter the classroom.",
-            "translation": "请走进教室。",
-            "answer": "进入",
-            "choices": [
-              "进入",
-              "甚至",
-              "东方"
-            ],
-            "note": "enter = 进入"
-          },
-          {
-            "id": "er1w7s",
-            "type": "spell",
-            "word": "even",
-            "meaning": "甚至",
-            "answer": "even",
-            "note": "even = 甚至"
-          },
-          {
-            "id": "er1w7t",
-            "type": "tiles",
-            "word": "even",
-            "sentence": "Even my little brother can do it.",
-            "translation": "甚至我的弟弟也能做到。",
-            "answer": "Even my little brother can do it.",
-            "note": "even = 甚至",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er1w7b",
-            "type": "blank",
-            "word": "even",
-            "sentence": "Even my little brother can do it.",
-            "translation": "甚至我的弟弟也能做到。",
-            "answer": "Even",
-            "note": "even = 甚至",
-            "choices": [
-              "Even"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er1w7c",
-            "type": "choice",
-            "word": "even",
-            "sentence": "Even my little brother can do it.",
-            "translation": "甚至我的弟弟也能做到。",
-            "answer": "甚至",
-            "choices": [
-              "甚至",
-              "例子",
-              "鸡蛋"
-            ],
-            "note": "even = 甚至"
-          },
-          {
-            "id": "er1m",
+            "id": "e2r0m",
             "type": "match",
             "pairs": [
               [
-                "eight",
-                "八"
+                "each",
+                "每一个"
               ],
               [
-                "elephant",
-                "大象"
+                "early",
+                "早地"
               ],
               [
-                "else",
-                "其他；另外"
+                "earth",
+                "地球"
               ],
               [
-                "end",
-                "结束；末尾"
+                "east",
+                "东方"
               ],
               [
-                "enjoy",
-                "喜欢；享受"
+                "easy",
+                "容易的"
               ]
             ],
             "note": "All the pairs are connected! 五组词语配对完成！"
           },
           {
-            "id": "er1h",
+            "id": "e2r0h",
             "type": "chat",
-            "prompt": "Which sentence uses “eight” correctly?",
+            "prompt": "Which sentence uses “early” correctly?",
             "choices": [
-              "I have eight pencils.",
-              "The elephant has a long trunk.",
-              "What else do you need?"
+              "We woke up early today.",
+              "Each student has a book.",
+              "The Earth is round."
             ],
-            "answer": "I have eight pencils.",
-            "note": "eight = 八"
+            "answer": "We woke up early today.",
+            "note": "early = 早地"
           }
         ]
       },
       {
         "words": [
           [
-            "evening",
-            "傍晚；晚上",
-            "We eat dinner in the evening.",
-            "我们在晚上吃晚饭。",
-            "evening"
-          ],
-          [
             "every",
-            "每个",
-            "I read every day.",
-            "我每天读书。",
-            "every"
+            "每一个",
+            "Every child has a toy.",
+            "每个孩子都有一个玩具。",
+            "Every"
           ],
           [
             "example",
             "例子",
-            "Can you give me an example?",
-            "你能给我举个例子吗？",
+            "This is an example of a good sentence.",
+            "这是一个好句子的例子。",
             "example"
           ],
           [
-            "excited",
-            "兴奋的",
-            "She is excited about the trip.",
-            "她对旅行感到兴奋。",
-            "excited"
+            "experience",
+            "经历；体验",
+            "I had a fun experience at the zoo.",
+            "我在动物园有一次有趣的体验。",
+            "experience"
+          ],
+          [
+            "explain",
+            "解释",
+            "Please explain the answer to me.",
+            "请向我解释答案。",
+            "explain"
+          ],
+          [
+            "eye",
+            "眼睛",
+            "I have two eyes.",
+            "我有两只眼睛。",
+            "eyes"
           ]
         ],
         "questions": [
           {
-            "id": "er2w0s",
+            "id": "e2r1w0s",
             "type": "spell",
-            "word": "evening",
-            "meaning": "傍晚；晚上",
-            "answer": "evening",
-            "note": "evening = 傍晚；晚上"
+            "word": "every",
+            "meaning": "每一个",
+            "answer": "every",
+            "note": "every = 每一个"
           },
           {
-            "id": "er2w0t",
+            "id": "e2r1w0t",
             "type": "tiles",
-            "word": "evening",
-            "sentence": "We eat dinner in the evening.",
-            "translation": "我们在晚上吃晚饭。",
-            "answer": "We eat dinner in the evening.",
-            "note": "evening = 傍晚；晚上",
+            "word": "every",
+            "sentence": "Every child has a toy.",
+            "translation": "每个孩子都有一个玩具。",
+            "answer": "Every child has a toy.",
+            "note": "every = 每一个",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er2w0b",
-            "type": "blank",
-            "word": "evening",
-            "sentence": "We eat dinner in the evening.",
-            "translation": "我们在晚上吃晚饭。",
-            "answer": "evening",
-            "note": "evening = 傍晚；晚上",
-            "choices": [
-              "evening"
-            ],
-            "alternatives": []
-          },
-          {
-            "id": "er2w0c",
-            "type": "choice",
-            "word": "evening",
-            "sentence": "We eat dinner in the evening.",
-            "translation": "我们在晚上吃晚饭。",
-            "answer": "傍晚；晚上",
-            "choices": [
-              "傍晚；晚上",
-              "东方",
-              "足够的"
-            ],
-            "note": "evening = 傍晚；晚上"
-          },
-          {
-            "id": "er2w1s",
-            "type": "spell",
-            "word": "every",
-            "meaning": "每个",
-            "answer": "every",
-            "note": "every = 每个"
-          },
-          {
-            "id": "er2w1t",
-            "type": "tiles",
-            "word": "every",
-            "sentence": "I read every day.",
-            "translation": "我每天读书。",
-            "answer": "I read every day.",
-            "note": "every = 每个",
-            "choices": [],
-            "alternatives": []
-          },
-          {
-            "id": "er2w1b",
+            "id": "e2r1w0b",
             "type": "blank",
             "word": "every",
-            "sentence": "I read every day.",
-            "translation": "我每天读书。",
-            "answer": "every",
-            "note": "every = 每个",
+            "sentence": "Every child has a toy.",
+            "translation": "每个孩子都有一个玩具。",
+            "answer": "Every",
+            "note": "every = 每一个",
             "choices": [
-              "every"
+              "Every"
             ],
             "alternatives": []
           },
           {
-            "id": "er2w1c",
+            "id": "e2r1w0c",
             "type": "choice",
             "word": "every",
-            "sentence": "I read every day.",
-            "translation": "我每天读书。",
-            "answer": "每个",
+            "sentence": "Every child has a toy.",
+            "translation": "每个孩子都有一个玩具。",
+            "answer": "每一个",
             "choices": [
-              "每个",
-              "鸡蛋",
-              "傍晚；晚上"
+              "每一个",
+              "吃",
+              "东方"
             ],
-            "note": "every = 每个"
+            "note": "every = 每一个"
           },
           {
-            "id": "er2w2s",
+            "id": "e2r1w1s",
             "type": "spell",
             "word": "example",
             "meaning": "例子",
@@ -8319,22 +7813,22 @@ window.WORD_CLUB_BANK = {
             "note": "example = 例子"
           },
           {
-            "id": "er2w2t",
+            "id": "e2r1w1t",
             "type": "tiles",
             "word": "example",
-            "sentence": "Can you give me an example?",
-            "translation": "你能给我举个例子吗？",
-            "answer": "Can you give me an example?",
+            "sentence": "This is an example of a good sentence.",
+            "translation": "这是一个好句子的例子。",
+            "answer": "This is an example of a good sentence.",
             "note": "example = 例子",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er2w2b",
+            "id": "e2r1w1b",
             "type": "blank",
             "word": "example",
-            "sentence": "Can you give me an example?",
-            "translation": "你能给我举个例子吗？",
+            "sentence": "This is an example of a good sentence.",
+            "translation": "这是一个好句子的例子。",
             "answer": "example",
             "note": "example = 例子",
             "choices": [
@@ -8343,99 +7837,2109 @@ window.WORD_CLUB_BANK = {
             "alternatives": []
           },
           {
-            "id": "er2w2c",
+            "id": "e2r1w1c",
             "type": "choice",
             "word": "example",
-            "sentence": "Can you give me an example?",
-            "translation": "你能给我举个例子吗？",
+            "sentence": "This is an example of a good sentence.",
+            "translation": "这是一个好句子的例子。",
             "answer": "例子",
             "choices": [
               "例子",
-              "其他；另外",
-              "每一个"
+              "足够的",
+              "吃"
             ],
             "note": "example = 例子"
           },
           {
-            "id": "er2w3s",
+            "id": "e2r1w2s",
             "type": "spell",
-            "word": "excited",
-            "meaning": "兴奋的",
-            "answer": "excited",
-            "note": "excited = 兴奋的"
+            "word": "experience",
+            "meaning": "经历；体验",
+            "answer": "experience",
+            "note": "experience = 经历；体验"
           },
           {
-            "id": "er2w3t",
+            "id": "e2r1w2t",
             "type": "tiles",
-            "word": "excited",
-            "sentence": "She is excited about the trip.",
-            "translation": "她对旅行感到兴奋。",
-            "answer": "She is excited about the trip.",
-            "note": "excited = 兴奋的",
+            "word": "experience",
+            "sentence": "I had a fun experience at the zoo.",
+            "translation": "我在动物园有一次有趣的体验。",
+            "answer": "I had a fun experience at the zoo.",
+            "note": "experience = 经历；体验",
             "choices": [],
             "alternatives": []
           },
           {
-            "id": "er2w3b",
+            "id": "e2r1w2b",
             "type": "blank",
-            "word": "excited",
-            "sentence": "She is excited about the trip.",
-            "translation": "她对旅行感到兴奋。",
-            "answer": "excited",
-            "note": "excited = 兴奋的",
+            "word": "experience",
+            "sentence": "I had a fun experience at the zoo.",
+            "translation": "我在动物园有一次有趣的体验。",
+            "answer": "experience",
+            "note": "experience = 经历；体验",
             "choices": [
-              "excited"
+              "experience"
             ],
             "alternatives": []
           },
           {
-            "id": "er2w3c",
+            "id": "e2r1w2c",
             "type": "choice",
-            "word": "excited",
-            "sentence": "She is excited about the trip.",
-            "translation": "她对旅行感到兴奋。",
-            "answer": "兴奋的",
+            "word": "experience",
+            "sentence": "I had a fun experience at the zoo.",
+            "translation": "我在动物园有一次有趣的体验。",
+            "answer": "经历；体验",
             "choices": [
-              "兴奋的",
-              "足够的",
-              "地球"
+              "经历；体验",
+              "眼睛",
+              "例子"
             ],
-            "note": "excited = 兴奋的"
+            "note": "experience = 经历；体验"
           },
           {
-            "id": "er2m",
+            "id": "e2r1w3s",
+            "type": "spell",
+            "word": "explain",
+            "meaning": "解释",
+            "answer": "explain",
+            "note": "explain = 解释"
+          },
+          {
+            "id": "e2r1w3t",
+            "type": "tiles",
+            "word": "explain",
+            "sentence": "Please explain the answer to me.",
+            "translation": "请向我解释答案。",
+            "answer": "Please explain the answer to me.",
+            "note": "explain = 解释",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "e2r1w3b",
+            "type": "blank",
+            "word": "explain",
+            "sentence": "Please explain the answer to me.",
+            "translation": "请向我解释答案。",
+            "answer": "explain",
+            "note": "explain = 解释",
+            "choices": [
+              "explain"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e2r1w3c",
+            "type": "choice",
+            "word": "explain",
+            "sentence": "Please explain the answer to me.",
+            "translation": "请向我解释答案。",
+            "answer": "解释",
+            "choices": [
+              "解释",
+              "地球",
+              "每一个"
+            ],
+            "note": "explain = 解释"
+          },
+          {
+            "id": "e2r1w4s",
+            "type": "spell",
+            "word": "eye",
+            "meaning": "眼睛",
+            "answer": "eye",
+            "note": "eye = 眼睛"
+          },
+          {
+            "id": "e2r1w4t",
+            "type": "tiles",
+            "word": "eye",
+            "sentence": "I have two eyes.",
+            "translation": "我有两只眼睛。",
+            "answer": "I have two eyes.",
+            "note": "eye = 眼睛",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "e2r1w4b",
+            "type": "blank",
+            "word": "eye",
+            "sentence": "I have two eyes.",
+            "translation": "我有两只眼睛。",
+            "answer": "eyes",
+            "note": "eye = 眼睛",
+            "choices": [
+              "eyes"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "e2r1w4c",
+            "type": "choice",
+            "word": "eye",
+            "sentence": "I have two eyes.",
+            "translation": "我有两只眼睛。",
+            "answer": "眼睛",
+            "choices": [
+              "眼睛",
+              "吃",
+              "东方"
+            ],
+            "note": "eye = 眼睛"
+          },
+          {
+            "id": "e2r1m",
             "type": "match",
             "pairs": [
               [
-                "evening",
-                "傍晚；晚上"
-              ],
-              [
                 "every",
-                "每个"
+                "每一个"
               ],
               [
                 "example",
                 "例子"
               ],
               [
-                "excited",
-                "兴奋的"
+                "experience",
+                "经历；体验"
+              ],
+              [
+                "explain",
+                "解释"
+              ],
+              [
+                "eye",
+                "眼睛"
               ]
             ],
             "note": "All the pairs are connected! 五组词语配对完成！"
           },
           {
-            "id": "er2h",
+            "id": "e2r1h",
             "type": "chat",
-            "prompt": "Which sentence uses “evening” correctly?",
+            "prompt": "Which sentence uses “experience” correctly?",
             "choices": [
-              "We eat dinner in the evening.",
-              "I read every day.",
-              "Can you give me an example?"
+              "I had a fun experience at the zoo.",
+              "Every child has a toy.",
+              "This is an example of a good sentence."
             ],
-            "answer": "We eat dinner in the evening.",
-            "note": "evening = 傍晚；晚上"
+            "answer": "I had a fun experience at the zoo.",
+            "note": "experience = 经历；体验"
+          }
+        ]
+      }
+    ]
+  },
+  "f": {
+    "id": "f",
+    "label": "F",
+    "words": [
+      [
+        "face",
+        "脸",
+        "She has a smile on her face.",
+        "她脸上带着微笑。",
+        "face"
+      ],
+      [
+        "fact",
+        "事实",
+        "It is a fact that the sky is blue.",
+        "天空是蓝色的，这是事实。",
+        "fact"
+      ],
+      [
+        "false",
+        "错误的",
+        "His answer was false.",
+        "他的答案是错误的。",
+        "false"
+      ],
+      [
+        "family",
+        "家庭；家人",
+        "I love my family.",
+        "我爱我的家人。",
+        "family"
+      ],
+      [
+        "far",
+        "远的",
+        "My school is far from my house.",
+        "我的学校离家很远。",
+        "far"
+      ],
+      [
+        "farm",
+        "农场",
+        "There are many animals on the farm.",
+        "农场里有许多动物。",
+        "farm"
+      ],
+      [
+        "fast",
+        "快的",
+        "The car is very fast.",
+        "这辆车开得很快。",
+        "fast"
+      ],
+      [
+        "father",
+        "父亲",
+        "My father is kind.",
+        "我的父亲很和善。",
+        "father"
+      ],
+      [
+        "feel",
+        "感觉",
+        "I feel happy today.",
+        "我今天感觉很开心。",
+        "feel"
+      ],
+      [
+        "feet",
+        "脚（复数）",
+        "I have two feet.",
+        "我有两只脚。",
+        "feet"
+      ],
+      [
+        "few",
+        "少数；几个",
+        "I have a few candies left.",
+        "我还剩几颗糖。",
+        "few"
+      ],
+      [
+        "field",
+        "田地；场地",
+        "The cows are in the field.",
+        "奶牛在田野里。",
+        "field"
+      ],
+      [
+        "find",
+        "找到",
+        "I can find my book.",
+        "我能找到我的书。",
+        "find"
+      ],
+      [
+        "fire",
+        "火",
+        "The fire is hot.",
+        "火很热。",
+        "fire"
+      ],
+      [
+        "first",
+        "第一",
+        "She won first place.",
+        "她赢得了第一名。",
+        "first"
+      ],
+      [
+        "fish",
+        "鱼",
+        "The fish is swimming.",
+        "鱼正在游泳。",
+        "fish"
+      ],
+      [
+        "five",
+        "五",
+        "I have five apples.",
+        "我有五个苹果。",
+        "five"
+      ],
+      [
+        "fly",
+        "飞",
+        "Birds fly in the sky.",
+        "鸟儿在天空中飞翔。",
+        "fly"
+      ],
+      [
+        "follow",
+        "跟随",
+        "Please follow me.",
+        "请跟着我。",
+        "follow"
+      ],
+      [
+        "food",
+        "食物",
+        "I like to eat food.",
+        "我喜欢吃食物。",
+        "food"
+      ],
+      [
+        "form",
+        "形成",
+        "Ice can form from water.",
+        "水可以形成冰。",
+        "form"
+      ],
+      [
+        "found",
+        "找到了（find 的过去式）",
+        "I found my lost toy.",
+        "我找到了丢失的玩具。",
+        "found"
+      ],
+      [
+        "four",
+        "四",
+        "I have four books.",
+        "我有四本书。",
+        "four"
+      ],
+      [
+        "friend",
+        "朋友",
+        "My friend is very nice.",
+        "我的朋友很友好。",
+        "friend"
+      ],
+      [
+        "from",
+        "来自",
+        "I am from Canada.",
+        "我来自加拿大。",
+        "from"
+      ],
+      [
+        "front",
+        "前面",
+        "The dog is in the front of the house.",
+        "狗在房子的前部。",
+        "front"
+      ],
+      [
+        "full",
+        "满的",
+        "My cup is full of water.",
+        "我的杯子装满了水。",
+        "full"
+      ]
+    ],
+    "rounds": [
+      {
+        "words": [
+          [
+            "face",
+            "脸",
+            "She has a smile on her face.",
+            "她脸上带着微笑。",
+            "face"
+          ],
+          [
+            "fact",
+            "事实",
+            "It is a fact that the sky is blue.",
+            "天空是蓝色的，这是事实。",
+            "fact"
+          ],
+          [
+            "false",
+            "错误的",
+            "His answer was false.",
+            "他的答案是错误的。",
+            "false"
+          ],
+          [
+            "family",
+            "家庭；家人",
+            "I love my family.",
+            "我爱我的家人。",
+            "family"
+          ],
+          [
+            "far",
+            "远的",
+            "My school is far from my house.",
+            "我的学校离家很远。",
+            "far"
+          ],
+          [
+            "farm",
+            "农场",
+            "There are many animals on the farm.",
+            "农场里有许多动物。",
+            "farm"
+          ],
+          [
+            "fast",
+            "快的",
+            "The car is very fast.",
+            "这辆车开得很快。",
+            "fast"
+          ],
+          [
+            "father",
+            "父亲",
+            "My father is kind.",
+            "我的父亲很和善。",
+            "father"
+          ]
+        ],
+        "questions": [
+          {
+            "id": "fr0w0s",
+            "type": "spell",
+            "word": "face",
+            "meaning": "脸",
+            "answer": "face",
+            "note": "face = 脸"
+          },
+          {
+            "id": "fr0w0t",
+            "type": "tiles",
+            "word": "face",
+            "sentence": "She has a smile on her face.",
+            "translation": "她脸上带着微笑。",
+            "answer": "She has a smile on her face.",
+            "note": "face = 脸",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w0b",
+            "type": "blank",
+            "word": "face",
+            "sentence": "She has a smile on her face.",
+            "translation": "她脸上带着微笑。",
+            "answer": "face",
+            "note": "face = 脸",
+            "choices": [
+              "face"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w0c",
+            "type": "choice",
+            "word": "face",
+            "sentence": "She has a smile on her face.",
+            "translation": "她脸上带着微笑。",
+            "answer": "脸",
+            "choices": [
+              "脸",
+              "感觉",
+              "飞"
+            ],
+            "note": "face = 脸"
+          },
+          {
+            "id": "fr0w0v0t",
+            "type": "tiles",
+            "word": "face",
+            "sentence": "Please face the board.",
+            "translation": "请面向黑板。",
+            "answer": "Please face the board.",
+            "note": "face = 面向",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w0v0b",
+            "type": "blank",
+            "word": "face",
+            "sentence": "Please face the board.",
+            "translation": "请面向黑板。",
+            "answer": "face",
+            "note": "face = 面向",
+            "choices": [
+              "face"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w0v0c",
+            "type": "choice",
+            "word": "face",
+            "sentence": "Please face the board.",
+            "translation": "请面向黑板。",
+            "answer": "面向",
+            "choices": [
+              "面向",
+              "脸",
+              "感觉"
+            ],
+            "note": "face = 面向"
+          },
+          {
+            "id": "fr0w1s",
+            "type": "spell",
+            "word": "fact",
+            "meaning": "事实",
+            "answer": "fact",
+            "note": "fact = 事实"
+          },
+          {
+            "id": "fr0w1t",
+            "type": "tiles",
+            "word": "fact",
+            "sentence": "It is a fact that the sky is blue.",
+            "translation": "天空是蓝色的，这是事实。",
+            "answer": "It is a fact that the sky is blue.",
+            "note": "fact = 事实",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w1b",
+            "type": "blank",
+            "word": "fact",
+            "sentence": "It is a fact that the sky is blue.",
+            "translation": "天空是蓝色的，这是事实。",
+            "answer": "fact",
+            "note": "fact = 事实",
+            "choices": [
+              "fact"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w1c",
+            "type": "choice",
+            "word": "fact",
+            "sentence": "It is a fact that the sky is blue.",
+            "translation": "天空是蓝色的，这是事实。",
+            "answer": "事实",
+            "choices": [
+              "事实",
+              "田地；场地",
+              "形成"
+            ],
+            "note": "fact = 事实"
+          },
+          {
+            "id": "fr0w2s",
+            "type": "spell",
+            "word": "false",
+            "meaning": "错误的",
+            "answer": "false",
+            "note": "false = 错误的"
+          },
+          {
+            "id": "fr0w2t",
+            "type": "tiles",
+            "word": "false",
+            "sentence": "His answer was false.",
+            "translation": "他的答案是错误的。",
+            "answer": "His answer was false.",
+            "note": "false = 错误的",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w2b",
+            "type": "blank",
+            "word": "false",
+            "sentence": "His answer was false.",
+            "translation": "他的答案是错误的。",
+            "answer": "false",
+            "note": "false = 错误的",
+            "choices": [
+              "false"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w2c",
+            "type": "choice",
+            "word": "false",
+            "sentence": "His answer was false.",
+            "translation": "他的答案是错误的。",
+            "answer": "错误的",
+            "choices": [
+              "错误的",
+              "第一",
+              "朋友"
+            ],
+            "note": "false = 错误的"
+          },
+          {
+            "id": "fr0w3s",
+            "type": "spell",
+            "word": "family",
+            "meaning": "家庭；家人",
+            "answer": "family",
+            "note": "family = 家庭；家人"
+          },
+          {
+            "id": "fr0w3t",
+            "type": "tiles",
+            "word": "family",
+            "sentence": "I love my family.",
+            "translation": "我爱我的家人。",
+            "answer": "I love my family.",
+            "note": "family = 家庭；家人",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w3b",
+            "type": "blank",
+            "word": "family",
+            "sentence": "I love my family.",
+            "translation": "我爱我的家人。",
+            "answer": "family",
+            "note": "family = 家庭；家人",
+            "choices": [
+              "family"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w3c",
+            "type": "choice",
+            "word": "family",
+            "sentence": "I love my family.",
+            "translation": "我爱我的家人。",
+            "answer": "家庭；家人",
+            "choices": [
+              "家庭；家人",
+              "飞",
+              "满的"
+            ],
+            "note": "family = 家庭；家人"
+          },
+          {
+            "id": "fr0w4s",
+            "type": "spell",
+            "word": "far",
+            "meaning": "远的",
+            "answer": "far",
+            "note": "far = 远的"
+          },
+          {
+            "id": "fr0w4t",
+            "type": "tiles",
+            "word": "far",
+            "sentence": "My school is far from my house.",
+            "translation": "我的学校离家很远。",
+            "answer": "My school is far from my house.",
+            "note": "far = 远的",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w4b",
+            "type": "blank",
+            "word": "far",
+            "sentence": "My school is far from my house.",
+            "translation": "我的学校离家很远。",
+            "answer": "far",
+            "note": "far = 远的",
+            "choices": [
+              "far"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w4c",
+            "type": "choice",
+            "word": "far",
+            "sentence": "My school is far from my house.",
+            "translation": "我的学校离家很远。",
+            "answer": "远的",
+            "choices": [
+              "远的",
+              "形成",
+              "错误的"
+            ],
+            "note": "far = 远的"
+          },
+          {
+            "id": "fr0w5s",
+            "type": "spell",
+            "word": "farm",
+            "meaning": "农场",
+            "answer": "farm",
+            "note": "farm = 农场"
+          },
+          {
+            "id": "fr0w5t",
+            "type": "tiles",
+            "word": "farm",
+            "sentence": "There are many animals on the farm.",
+            "translation": "农场里有许多动物。",
+            "answer": "There are many animals on the farm.",
+            "note": "farm = 农场",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w5b",
+            "type": "blank",
+            "word": "farm",
+            "sentence": "There are many animals on the farm.",
+            "translation": "农场里有许多动物。",
+            "answer": "farm",
+            "note": "farm = 农场",
+            "choices": [
+              "farm"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w5c",
+            "type": "choice",
+            "word": "farm",
+            "sentence": "There are many animals on the farm.",
+            "translation": "农场里有许多动物。",
+            "answer": "农场",
+            "choices": [
+              "农场",
+              "朋友",
+              "快的"
+            ],
+            "note": "farm = 农场"
+          },
+          {
+            "id": "fr0w6s",
+            "type": "spell",
+            "word": "fast",
+            "meaning": "快的",
+            "answer": "fast",
+            "note": "fast = 快的"
+          },
+          {
+            "id": "fr0w6t",
+            "type": "tiles",
+            "word": "fast",
+            "sentence": "The car is very fast.",
+            "translation": "这辆车开得很快。",
+            "answer": "The car is very fast.",
+            "note": "fast = 快的",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w6b",
+            "type": "blank",
+            "word": "fast",
+            "sentence": "The car is very fast.",
+            "translation": "这辆车开得很快。",
+            "answer": "fast",
+            "note": "fast = 快的",
+            "choices": [
+              "fast"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w6c",
+            "type": "choice",
+            "word": "fast",
+            "sentence": "The car is very fast.",
+            "translation": "这辆车开得很快。",
+            "answer": "快的",
+            "choices": [
+              "快的",
+              "满的",
+              "脚（复数）"
+            ],
+            "note": "fast = 快的"
+          },
+          {
+            "id": "fr0w7s",
+            "type": "spell",
+            "word": "father",
+            "meaning": "父亲",
+            "answer": "father",
+            "note": "father = 父亲"
+          },
+          {
+            "id": "fr0w7t",
+            "type": "tiles",
+            "word": "father",
+            "sentence": "My father is kind.",
+            "translation": "我的父亲很和善。",
+            "answer": "My father is kind.",
+            "note": "father = 父亲",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w7b",
+            "type": "blank",
+            "word": "father",
+            "sentence": "My father is kind.",
+            "translation": "我的父亲很和善。",
+            "answer": "father",
+            "note": "father = 父亲",
+            "choices": [
+              "father"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr0w7c",
+            "type": "choice",
+            "word": "father",
+            "sentence": "My father is kind.",
+            "translation": "我的父亲很和善。",
+            "answer": "父亲",
+            "choices": [
+              "父亲",
+              "错误的",
+              "找到"
+            ],
+            "note": "father = 父亲"
+          },
+          {
+            "id": "fr0m",
+            "type": "match",
+            "pairs": [
+              [
+                "face",
+                "脸"
+              ],
+              [
+                "fact",
+                "事实"
+              ],
+              [
+                "false",
+                "错误的"
+              ],
+              [
+                "family",
+                "家庭；家人"
+              ],
+              [
+                "far",
+                "远的"
+              ]
+            ],
+            "note": "All the pairs are connected! 五组词语配对完成！"
+          },
+          {
+            "id": "fr0h",
+            "type": "chat",
+            "prompt": "Which sentence uses “face” correctly?",
+            "choices": [
+              "She has a smile on her face.",
+              "It is a fact that the sky is blue.",
+              "His answer was false."
+            ],
+            "answer": "She has a smile on her face.",
+            "note": "face = 脸"
+          }
+        ]
+      },
+      {
+        "words": [
+          [
+            "feel",
+            "感觉",
+            "I feel happy today.",
+            "我今天感觉很开心。",
+            "feel"
+          ],
+          [
+            "feet",
+            "脚（复数）",
+            "I have two feet.",
+            "我有两只脚。",
+            "feet"
+          ],
+          [
+            "few",
+            "少数；几个",
+            "I have a few candies left.",
+            "我还剩几颗糖。",
+            "few"
+          ],
+          [
+            "field",
+            "田地；场地",
+            "The cows are in the field.",
+            "奶牛在田野里。",
+            "field"
+          ],
+          [
+            "find",
+            "找到",
+            "I can find my book.",
+            "我能找到我的书。",
+            "find"
+          ],
+          [
+            "fire",
+            "火",
+            "The fire is hot.",
+            "火很热。",
+            "fire"
+          ],
+          [
+            "first",
+            "第一",
+            "She won first place.",
+            "她赢得了第一名。",
+            "first"
+          ],
+          [
+            "fish",
+            "鱼",
+            "The fish is swimming.",
+            "鱼正在游泳。",
+            "fish"
+          ]
+        ],
+        "questions": [
+          {
+            "id": "fr1w0s",
+            "type": "spell",
+            "word": "feel",
+            "meaning": "感觉",
+            "answer": "feel",
+            "note": "feel = 感觉"
+          },
+          {
+            "id": "fr1w0t",
+            "type": "tiles",
+            "word": "feel",
+            "sentence": "I feel happy today.",
+            "translation": "我今天感觉很开心。",
+            "answer": "I feel happy today.",
+            "note": "feel = 感觉",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w0b",
+            "type": "blank",
+            "word": "feel",
+            "sentence": "I feel happy today.",
+            "translation": "我今天感觉很开心。",
+            "answer": "feel",
+            "note": "feel = 感觉",
+            "choices": [
+              "feel"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w0c",
+            "type": "choice",
+            "word": "feel",
+            "sentence": "I feel happy today.",
+            "translation": "我今天感觉很开心。",
+            "answer": "感觉",
+            "choices": [
+              "感觉",
+              "五",
+              "前面"
+            ],
+            "note": "feel = 感觉"
+          },
+          {
+            "id": "fr1w1s",
+            "type": "spell",
+            "word": "feet",
+            "meaning": "脚（复数）",
+            "answer": "feet",
+            "note": "feet = 脚（复数）"
+          },
+          {
+            "id": "fr1w1t",
+            "type": "tiles",
+            "word": "feet",
+            "sentence": "I have two feet.",
+            "translation": "我有两只脚。",
+            "answer": "I have two feet.",
+            "note": "feet = 脚（复数）",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w1b",
+            "type": "blank",
+            "word": "feet",
+            "sentence": "I have two feet.",
+            "translation": "我有两只脚。",
+            "answer": "feet",
+            "note": "feet = 脚（复数）",
+            "choices": [
+              "feet"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w1c",
+            "type": "choice",
+            "word": "feet",
+            "sentence": "I have two feet.",
+            "translation": "我有两只脚。",
+            "answer": "脚（复数）",
+            "choices": [
+              "脚（复数）",
+              "食物",
+              "事实"
+            ],
+            "note": "feet = 脚（复数）"
+          },
+          {
+            "id": "fr1w2s",
+            "type": "spell",
+            "word": "few",
+            "meaning": "少数；几个",
+            "answer": "few",
+            "note": "few = 少数；几个"
+          },
+          {
+            "id": "fr1w2t",
+            "type": "tiles",
+            "word": "few",
+            "sentence": "I have a few candies left.",
+            "translation": "我还剩几颗糖。",
+            "answer": "I have a few candies left.",
+            "note": "few = 少数；几个",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w2b",
+            "type": "blank",
+            "word": "few",
+            "sentence": "I have a few candies left.",
+            "translation": "我还剩几颗糖。",
+            "answer": "few",
+            "note": "few = 少数；几个",
+            "choices": [
+              "few"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w2c",
+            "type": "choice",
+            "word": "few",
+            "sentence": "I have a few candies left.",
+            "translation": "我还剩几颗糖。",
+            "answer": "少数；几个",
+            "choices": [
+              "少数；几个",
+              "四",
+              "远的"
+            ],
+            "note": "few = 少数；几个"
+          },
+          {
+            "id": "fr1w3s",
+            "type": "spell",
+            "word": "field",
+            "meaning": "田地；场地",
+            "answer": "field",
+            "note": "field = 田地；场地"
+          },
+          {
+            "id": "fr1w3t",
+            "type": "tiles",
+            "word": "field",
+            "sentence": "The cows are in the field.",
+            "translation": "奶牛在田野里。",
+            "answer": "The cows are in the field.",
+            "note": "field = 田地；场地",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w3b",
+            "type": "blank",
+            "word": "field",
+            "sentence": "The cows are in the field.",
+            "translation": "奶牛在田野里。",
+            "answer": "field",
+            "note": "field = 田地；场地",
+            "choices": [
+              "field"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w3c",
+            "type": "choice",
+            "word": "field",
+            "sentence": "The cows are in the field.",
+            "translation": "奶牛在田野里。",
+            "answer": "田地；场地",
+            "choices": [
+              "田地；场地",
+              "前面",
+              "父亲"
+            ],
+            "note": "field = 田地；场地"
+          },
+          {
+            "id": "fr1w4s",
+            "type": "spell",
+            "word": "find",
+            "meaning": "找到",
+            "answer": "find",
+            "note": "find = 找到"
+          },
+          {
+            "id": "fr1w4t",
+            "type": "tiles",
+            "word": "find",
+            "sentence": "I can find my book.",
+            "translation": "我能找到我的书。",
+            "answer": "I can find my book.",
+            "note": "find = 找到",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w4b",
+            "type": "blank",
+            "word": "find",
+            "sentence": "I can find my book.",
+            "translation": "我能找到我的书。",
+            "answer": "find",
+            "note": "find = 找到",
+            "choices": [
+              "find"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w4c",
+            "type": "choice",
+            "word": "find",
+            "sentence": "I can find my book.",
+            "translation": "我能找到我的书。",
+            "answer": "找到",
+            "choices": [
+              "找到",
+              "事实",
+              "少数；几个"
+            ],
+            "note": "find = 找到"
+          },
+          {
+            "id": "fr1w5s",
+            "type": "spell",
+            "word": "fire",
+            "meaning": "火",
+            "answer": "fire",
+            "note": "fire = 火"
+          },
+          {
+            "id": "fr1w5t",
+            "type": "tiles",
+            "word": "fire",
+            "sentence": "The fire is hot.",
+            "translation": "火很热。",
+            "answer": "The fire is hot.",
+            "note": "fire = 火",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w5b",
+            "type": "blank",
+            "word": "fire",
+            "sentence": "The fire is hot.",
+            "translation": "火很热。",
+            "answer": "fire",
+            "note": "fire = 火",
+            "choices": [
+              "fire"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w5c",
+            "type": "choice",
+            "word": "fire",
+            "sentence": "The fire is hot.",
+            "translation": "火很热。",
+            "answer": "火",
+            "choices": [
+              "火",
+              "远的",
+              "第一"
+            ],
+            "note": "fire = 火"
+          },
+          {
+            "id": "fr1w6s",
+            "type": "spell",
+            "word": "first",
+            "meaning": "第一",
+            "answer": "first",
+            "note": "first = 第一"
+          },
+          {
+            "id": "fr1w6t",
+            "type": "tiles",
+            "word": "first",
+            "sentence": "She won first place.",
+            "translation": "她赢得了第一名。",
+            "answer": "She won first place.",
+            "note": "first = 第一",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w6b",
+            "type": "blank",
+            "word": "first",
+            "sentence": "She won first place.",
+            "translation": "她赢得了第一名。",
+            "answer": "first",
+            "note": "first = 第一",
+            "choices": [
+              "first"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w6c",
+            "type": "choice",
+            "word": "first",
+            "sentence": "She won first place.",
+            "translation": "她赢得了第一名。",
+            "answer": "第一",
+            "choices": [
+              "第一",
+              "父亲",
+              "飞"
+            ],
+            "note": "first = 第一"
+          },
+          {
+            "id": "fr1w7s",
+            "type": "spell",
+            "word": "fish",
+            "meaning": "鱼",
+            "answer": "fish",
+            "note": "fish = 鱼"
+          },
+          {
+            "id": "fr1w7t",
+            "type": "tiles",
+            "word": "fish",
+            "sentence": "The fish is swimming.",
+            "translation": "鱼正在游泳。",
+            "answer": "The fish is swimming.",
+            "note": "fish = 鱼",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w7b",
+            "type": "blank",
+            "word": "fish",
+            "sentence": "The fish is swimming.",
+            "translation": "鱼正在游泳。",
+            "answer": "fish",
+            "note": "fish = 鱼",
+            "choices": [
+              "fish"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr1w7c",
+            "type": "choice",
+            "word": "fish",
+            "sentence": "The fish is swimming.",
+            "translation": "鱼正在游泳。",
+            "answer": "鱼",
+            "choices": [
+              "鱼",
+              "少数；几个",
+              "形成"
+            ],
+            "note": "fish = 鱼"
+          },
+          {
+            "id": "fr1m",
+            "type": "match",
+            "pairs": [
+              [
+                "feel",
+                "感觉"
+              ],
+              [
+                "feet",
+                "脚（复数）"
+              ],
+              [
+                "few",
+                "少数；几个"
+              ],
+              [
+                "field",
+                "田地；场地"
+              ],
+              [
+                "find",
+                "找到"
+              ]
+            ],
+            "note": "All the pairs are connected! 五组词语配对完成！"
+          },
+          {
+            "id": "fr1h",
+            "type": "chat",
+            "prompt": "Which sentence uses “feel” correctly?",
+            "choices": [
+              "I feel happy today.",
+              "I have two feet.",
+              "I have a few candies left."
+            ],
+            "answer": "I feel happy today.",
+            "note": "feel = 感觉"
+          }
+        ]
+      },
+      {
+        "words": [
+          [
+            "five",
+            "五",
+            "I have five apples.",
+            "我有五个苹果。",
+            "five"
+          ],
+          [
+            "fly",
+            "飞",
+            "Birds fly in the sky.",
+            "鸟儿在天空中飞翔。",
+            "fly"
+          ],
+          [
+            "follow",
+            "跟随",
+            "Please follow me.",
+            "请跟着我。",
+            "follow"
+          ],
+          [
+            "food",
+            "食物",
+            "I like to eat food.",
+            "我喜欢吃食物。",
+            "food"
+          ],
+          [
+            "form",
+            "形成",
+            "Ice can form from water.",
+            "水可以形成冰。",
+            "form"
+          ],
+          [
+            "found",
+            "找到了（find 的过去式）",
+            "I found my lost toy.",
+            "我找到了丢失的玩具。",
+            "found"
+          ],
+          [
+            "four",
+            "四",
+            "I have four books.",
+            "我有四本书。",
+            "four"
+          ],
+          [
+            "friend",
+            "朋友",
+            "My friend is very nice.",
+            "我的朋友很友好。",
+            "friend"
+          ]
+        ],
+        "questions": [
+          {
+            "id": "fr2w0s",
+            "type": "spell",
+            "word": "five",
+            "meaning": "五",
+            "answer": "five",
+            "note": "five = 五"
+          },
+          {
+            "id": "fr2w0t",
+            "type": "tiles",
+            "word": "five",
+            "sentence": "I have five apples.",
+            "translation": "我有五个苹果。",
+            "answer": "I have five apples.",
+            "note": "five = 五",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w0b",
+            "type": "blank",
+            "word": "five",
+            "sentence": "I have five apples.",
+            "translation": "我有五个苹果。",
+            "answer": "five",
+            "note": "five = 五",
+            "choices": [
+              "five"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w0c",
+            "type": "choice",
+            "word": "five",
+            "sentence": "I have five apples.",
+            "translation": "我有五个苹果。",
+            "answer": "五",
+            "choices": [
+              "五",
+              "来自",
+              "快的"
+            ],
+            "note": "five = 五"
+          },
+          {
+            "id": "fr2w1s",
+            "type": "spell",
+            "word": "fly",
+            "meaning": "飞",
+            "answer": "fly",
+            "note": "fly = 飞"
+          },
+          {
+            "id": "fr2w1t",
+            "type": "tiles",
+            "word": "fly",
+            "sentence": "Birds fly in the sky.",
+            "translation": "鸟儿在天空中飞翔。",
+            "answer": "Birds fly in the sky.",
+            "note": "fly = 飞",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w1b",
+            "type": "blank",
+            "word": "fly",
+            "sentence": "Birds fly in the sky.",
+            "translation": "鸟儿在天空中飞翔。",
+            "answer": "fly",
+            "note": "fly = 飞",
+            "choices": [
+              "fly"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w1c",
+            "type": "choice",
+            "word": "fly",
+            "sentence": "Birds fly in the sky.",
+            "translation": "鸟儿在天空中飞翔。",
+            "answer": "飞",
+            "choices": [
+              "飞",
+              "脸",
+              "脚（复数）"
+            ],
+            "note": "fly = 飞"
+          },
+          {
+            "id": "fr2w1v0t",
+            "type": "tiles",
+            "word": "fly",
+            "sentence": "There is a fly on the table.",
+            "translation": "桌上有一只苍蝇。",
+            "answer": "There is a fly on the table.",
+            "note": "fly = 苍蝇",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w1v0b",
+            "type": "blank",
+            "word": "fly",
+            "sentence": "There is a fly on the table.",
+            "translation": "桌上有一只苍蝇。",
+            "answer": "fly",
+            "note": "fly = 苍蝇",
+            "choices": [
+              "fly"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w1v0c",
+            "type": "choice",
+            "word": "fly",
+            "sentence": "There is a fly on the table.",
+            "translation": "桌上有一只苍蝇。",
+            "answer": "苍蝇",
+            "choices": [
+              "苍蝇",
+              "飞",
+              "脸"
+            ],
+            "note": "fly = 苍蝇"
+          },
+          {
+            "id": "fr2w2s",
+            "type": "spell",
+            "word": "follow",
+            "meaning": "跟随",
+            "answer": "follow",
+            "note": "follow = 跟随"
+          },
+          {
+            "id": "fr2w2t",
+            "type": "tiles",
+            "word": "follow",
+            "sentence": "Please follow me.",
+            "translation": "请跟着我。",
+            "answer": "Please follow me.",
+            "note": "follow = 跟随",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w2b",
+            "type": "blank",
+            "word": "follow",
+            "sentence": "Please follow me.",
+            "translation": "请跟着我。",
+            "answer": "follow",
+            "note": "follow = 跟随",
+            "choices": [
+              "follow"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w2c",
+            "type": "choice",
+            "word": "follow",
+            "sentence": "Please follow me.",
+            "translation": "请跟着我。",
+            "answer": "跟随",
+            "choices": [
+              "跟随",
+              "家庭；家人",
+              "找到"
+            ],
+            "note": "follow = 跟随"
+          },
+          {
+            "id": "fr2w3s",
+            "type": "spell",
+            "word": "food",
+            "meaning": "食物",
+            "answer": "food",
+            "note": "food = 食物"
+          },
+          {
+            "id": "fr2w3t",
+            "type": "tiles",
+            "word": "food",
+            "sentence": "I like to eat food.",
+            "translation": "我喜欢吃食物。",
+            "answer": "I like to eat food.",
+            "note": "food = 食物",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w3b",
+            "type": "blank",
+            "word": "food",
+            "sentence": "I like to eat food.",
+            "translation": "我喜欢吃食物。",
+            "answer": "food",
+            "note": "food = 食物",
+            "choices": [
+              "food"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w3c",
+            "type": "choice",
+            "word": "food",
+            "sentence": "I like to eat food.",
+            "translation": "我喜欢吃食物。",
+            "answer": "食物",
+            "choices": [
+              "食物",
+              "快的",
+              "鱼"
+            ],
+            "note": "food = 食物"
+          },
+          {
+            "id": "fr2w4s",
+            "type": "spell",
+            "word": "form",
+            "meaning": "形成",
+            "answer": "form",
+            "note": "form = 形成"
+          },
+          {
+            "id": "fr2w4t",
+            "type": "tiles",
+            "word": "form",
+            "sentence": "Ice can form from water.",
+            "translation": "水可以形成冰。",
+            "answer": "Ice can form from water.",
+            "note": "form = 形成",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w4b",
+            "type": "blank",
+            "word": "form",
+            "sentence": "Ice can form from water.",
+            "translation": "水可以形成冰。",
+            "answer": "form",
+            "note": "form = 形成",
+            "choices": [
+              "form"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w4c",
+            "type": "choice",
+            "word": "form",
+            "sentence": "Ice can form from water.",
+            "translation": "水可以形成冰。",
+            "answer": "形成",
+            "choices": [
+              "形成",
+              "脚（复数）",
+              "跟随"
+            ],
+            "note": "form = 形成"
+          },
+          {
+            "id": "fr2w4v0t",
+            "type": "tiles",
+            "word": "form",
+            "sentence": "Please fill out this form.",
+            "translation": "请填写这张表格。",
+            "answer": "Please fill out this form.",
+            "note": "form = 表格",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w4v0b",
+            "type": "blank",
+            "word": "form",
+            "sentence": "Please fill out this form.",
+            "translation": "请填写这张表格。",
+            "answer": "form",
+            "note": "form = 表格",
+            "choices": [
+              "form"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w4v0c",
+            "type": "choice",
+            "word": "form",
+            "sentence": "Please fill out this form.",
+            "translation": "请填写这张表格。",
+            "answer": "表格",
+            "choices": [
+              "表格",
+              "形成",
+              "脚（复数）"
+            ],
+            "note": "form = 表格"
+          },
+          {
+            "id": "fr2w5s",
+            "type": "spell",
+            "word": "found",
+            "meaning": "找到了（find 的过去式）",
+            "answer": "found",
+            "note": "found = 找到了（find 的过去式）"
+          },
+          {
+            "id": "fr2w5t",
+            "type": "tiles",
+            "word": "found",
+            "sentence": "I found my lost toy.",
+            "translation": "我找到了丢失的玩具。",
+            "answer": "I found my lost toy.",
+            "note": "found = 找到了（find 的过去式）",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w5b",
+            "type": "blank",
+            "word": "found",
+            "sentence": "I found my lost toy.",
+            "translation": "我找到了丢失的玩具。",
+            "answer": "found",
+            "note": "found = 找到了（find 的过去式）",
+            "choices": [
+              "found"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w5c",
+            "type": "choice",
+            "word": "found",
+            "sentence": "I found my lost toy.",
+            "translation": "我找到了丢失的玩具。",
+            "answer": "找到了（find 的过去式）",
+            "choices": [
+              "找到了（find 的过去式）",
+              "找到",
+              "四"
+            ],
+            "note": "found = 找到了（find 的过去式）"
+          },
+          {
+            "id": "fr2w6s",
+            "type": "spell",
+            "word": "four",
+            "meaning": "四",
+            "answer": "four",
+            "note": "four = 四"
+          },
+          {
+            "id": "fr2w6t",
+            "type": "tiles",
+            "word": "four",
+            "sentence": "I have four books.",
+            "translation": "我有四本书。",
+            "answer": "I have four books.",
+            "note": "four = 四",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w6b",
+            "type": "blank",
+            "word": "four",
+            "sentence": "I have four books.",
+            "translation": "我有四本书。",
+            "answer": "four",
+            "note": "four = 四",
+            "choices": [
+              "four"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w6c",
+            "type": "choice",
+            "word": "four",
+            "sentence": "I have four books.",
+            "translation": "我有四本书。",
+            "answer": "四",
+            "choices": [
+              "四",
+              "鱼",
+              "前面"
+            ],
+            "note": "four = 四"
+          },
+          {
+            "id": "fr2w7s",
+            "type": "spell",
+            "word": "friend",
+            "meaning": "朋友",
+            "answer": "friend",
+            "note": "friend = 朋友"
+          },
+          {
+            "id": "fr2w7t",
+            "type": "tiles",
+            "word": "friend",
+            "sentence": "My friend is very nice.",
+            "translation": "我的朋友很友好。",
+            "answer": "My friend is very nice.",
+            "note": "friend = 朋友",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w7b",
+            "type": "blank",
+            "word": "friend",
+            "sentence": "My friend is very nice.",
+            "translation": "我的朋友很友好。",
+            "answer": "friend",
+            "note": "friend = 朋友",
+            "choices": [
+              "friend"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr2w7c",
+            "type": "choice",
+            "word": "friend",
+            "sentence": "My friend is very nice.",
+            "translation": "我的朋友很友好。",
+            "answer": "朋友",
+            "choices": [
+              "朋友",
+              "跟随",
+              "事实"
+            ],
+            "note": "friend = 朋友"
+          },
+          {
+            "id": "fr2m",
+            "type": "match",
+            "pairs": [
+              [
+                "five",
+                "五"
+              ],
+              [
+                "fly",
+                "飞"
+              ],
+              [
+                "follow",
+                "跟随"
+              ],
+              [
+                "food",
+                "食物"
+              ],
+              [
+                "form",
+                "形成"
+              ]
+            ],
+            "note": "All the pairs are connected! 五组词语配对完成！"
+          },
+          {
+            "id": "fr2h",
+            "type": "chat",
+            "prompt": "Which sentence uses “five” correctly?",
+            "choices": [
+              "I have five apples.",
+              "Birds fly in the sky.",
+              "Please follow me."
+            ],
+            "answer": "I have five apples.",
+            "note": "five = 五"
+          }
+        ]
+      },
+      {
+        "words": [
+          [
+            "from",
+            "来自",
+            "I am from Canada.",
+            "我来自加拿大。",
+            "from"
+          ],
+          [
+            "front",
+            "前面",
+            "The dog is in the front of the house.",
+            "狗在房子的前部。",
+            "front"
+          ],
+          [
+            "full",
+            "满的",
+            "My cup is full of water.",
+            "我的杯子装满了水。",
+            "full"
+          ]
+        ],
+        "questions": [
+          {
+            "id": "fr3w0s",
+            "type": "spell",
+            "word": "from",
+            "meaning": "来自",
+            "answer": "from",
+            "note": "from = 来自"
+          },
+          {
+            "id": "fr3w0t",
+            "type": "tiles",
+            "word": "from",
+            "sentence": "I am from Canada.",
+            "translation": "我来自加拿大。",
+            "answer": "I am from Canada.",
+            "note": "from = 来自",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr3w0b",
+            "type": "blank",
+            "word": "from",
+            "sentence": "I am from Canada.",
+            "translation": "我来自加拿大。",
+            "answer": "from",
+            "note": "from = 来自",
+            "choices": [
+              "from"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr3w0c",
+            "type": "choice",
+            "word": "from",
+            "sentence": "I am from Canada.",
+            "translation": "我来自加拿大。",
+            "answer": "来自",
+            "choices": [
+              "来自",
+              "农场",
+              "第一"
+            ],
+            "note": "from = 来自"
+          },
+          {
+            "id": "fr3w1s",
+            "type": "spell",
+            "word": "front",
+            "meaning": "前面",
+            "answer": "front",
+            "note": "front = 前面"
+          },
+          {
+            "id": "fr3w1t",
+            "type": "tiles",
+            "word": "front",
+            "sentence": "The dog is in the front of the house.",
+            "translation": "狗在房子的前部。",
+            "answer": "The dog is in the front of the house.",
+            "note": "front = 前面",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr3w1b",
+            "type": "blank",
+            "word": "front",
+            "sentence": "The dog is in the front of the house.",
+            "translation": "狗在房子的前部。",
+            "answer": "front",
+            "note": "front = 前面",
+            "choices": [
+              "front"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr3w1c",
+            "type": "choice",
+            "word": "front",
+            "sentence": "The dog is in the front of the house.",
+            "translation": "狗在房子的前部。",
+            "answer": "前面",
+            "choices": [
+              "前面",
+              "感觉",
+              "飞"
+            ],
+            "note": "front = 前面"
+          },
+          {
+            "id": "fr3w2s",
+            "type": "spell",
+            "word": "full",
+            "meaning": "满的",
+            "answer": "full",
+            "note": "full = 满的"
+          },
+          {
+            "id": "fr3w2t",
+            "type": "tiles",
+            "word": "full",
+            "sentence": "My cup is full of water.",
+            "translation": "我的杯子装满了水。",
+            "answer": "My cup is full of water.",
+            "note": "full = 满的",
+            "choices": [],
+            "alternatives": []
+          },
+          {
+            "id": "fr3w2b",
+            "type": "blank",
+            "word": "full",
+            "sentence": "My cup is full of water.",
+            "translation": "我的杯子装满了水。",
+            "answer": "full",
+            "note": "full = 满的",
+            "choices": [
+              "full"
+            ],
+            "alternatives": []
+          },
+          {
+            "id": "fr3w2c",
+            "type": "choice",
+            "word": "full",
+            "sentence": "My cup is full of water.",
+            "translation": "我的杯子装满了水。",
+            "answer": "满的",
+            "choices": [
+              "满的",
+              "田地；场地",
+              "形成"
+            ],
+            "note": "full = 满的"
+          },
+          {
+            "id": "fr3m",
+            "type": "match",
+            "pairs": [
+              [
+                "from",
+                "来自"
+              ],
+              [
+                "front",
+                "前面"
+              ],
+              [
+                "full",
+                "满的"
+              ]
+            ],
+            "note": "All the pairs are connected! 五组词语配对完成！"
+          },
+          {
+            "id": "fr3h",
+            "type": "chat",
+            "prompt": "Which sentence uses “from” correctly?",
+            "choices": [
+              "I am from Canada.",
+              "The dog is in the front of the house.",
+              "My cup is full of water."
+            ],
+            "answer": "I am from Canada.",
+            "note": "from = 来自"
           }
         ]
       }
