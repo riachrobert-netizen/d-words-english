@@ -45,29 +45,61 @@ const cWords = [
   ['cut','剪；切','Please cut the paper.','请剪这张纸。']
 ];
 
-// Editable starter vocabulary for E. Replace these entries with the taught E list when available.
+// E and F from the teacher's "Basic sentences using the most common English words starting with E + F.docx".
 const eWords = [
-  ['each','每一个','Each child has a book.','每个孩子都有一本书。'],
-  ['ear','耳朵','I can hear with my ears.','我可以用耳朵听。','ears'],
-  ['early','早的；提早','We arrived early today.','我们今天到得很早。'],
-  ['earth','地球','We live on Earth.','我们生活在地球上。','Earth'],
+  ['each','每一个','Each student has a book.','每个学生都有一本书。','Each'],
+  ['early','早地','We woke up early today.','我们今天起得很早。'],
+  ['earth','地球','The Earth is round.','地球是圆的。','Earth'],
   ['east','东方','The sun rises in the east.','太阳从东方升起。'],
-  ['easy','容易的','This question is easy.','这道题很容易。'],
-  ['eat','吃','I eat breakfast every morning.','我每天早上吃早餐。'],
-  ['egg','鸡蛋','There is an egg on my plate.','我的盘子里有一个鸡蛋。'],
-  ['eight','八','I have eight pencils.','我有八支铅笔。'],
-  ['elephant','大象','The elephant has a long trunk.','大象有一条长鼻子。'],
-  ['else','其他；另外','What else do you need?','你还需要什么？'],
-  ['end','结束；末尾','The story has a happy end.','这个故事有一个快乐的结局。'],
-  ['enjoy','喜欢；享受','I enjoy reading books.','我喜欢读书。'],
-  ['enough','足够的','We have enough water.','我们有足够的水。'],
-  ['enter','进入','Please enter the classroom.','请走进教室。'],
-  ['even','甚至','Even my little brother can do it.','甚至我的弟弟也能做到。','Even'],
-  ['evening','傍晚；晚上','We eat dinner in the evening.','我们在晚上吃晚饭。'],
-  ['every','每个','I read every day.','我每天读书。'],
-  ['example','例子','Can you give me an example?','你能给我举个例子吗？'],
-  ['excited','兴奋的','She is excited about the trip.','她对旅行感到兴奋。']
+  ['easy','容易的','This test is easy.','这次测验很容易。'],
+  ['eat','吃','I like to eat apples.','我喜欢吃苹果。'],
+  ['effort','努力','She made a big effort to win.','她为了获胜付出了很大努力。'],
+  ['enough','足够的','We have enough food.','我们有足够的食物。'],
+  ['every','每一个','Every child has a toy.','每个孩子都有一个玩具。','Every'],
+  ['example','例子','This is an example of a good sentence.','这是一个好句子的例子。'],
+  ['experience','经历；体验','I had a fun experience at the zoo.','我在动物园有一次有趣的体验。'],
+  ['explain','解释','Please explain the answer to me.','请向我解释答案。'],
+  ['eye','眼睛','I have two eyes.','我有两只眼睛。','eyes']
 ];
+
+const fWords = [
+  ['face','脸','She has a smile on her face.','她脸上带着微笑。'],
+  ['fact','事实','It is a fact that the sky is blue.','天空是蓝色的，这是事实。'],
+  ['false','错误的','His answer was false.','他的答案是错误的。'],
+  ['family','家庭；家人','I love my family.','我爱我的家人。'],
+  ['far','远的','My school is far from my house.','我的学校离家很远。'],
+  ['farm','农场','There are many animals on the farm.','农场里有许多动物。'],
+  ['fast','快的','The car is very fast.','这辆车开得很快。'],
+  ['father','父亲','My father is kind.','我的父亲很和善。'],
+  ['feel','感觉','I feel happy today.','我今天感觉很开心。'],
+  ['feet','脚（复数）','I have two feet.','我有两只脚。'],
+  ['few','少数；几个','I have a few candies left.','我还剩几颗糖。'],
+  ['field','田地；场地','The cows are in the field.','奶牛在田野里。'],
+  ['find','找到','I can find my book.','我能找到我的书。'],
+  ['fire','火','The fire is hot.','火很热。'],
+  ['first','第一','She won first place.','她赢得了第一名。'],
+  ['fish','鱼','The fish is swimming.','鱼正在游泳。'],
+  ['five','五','I have five apples.','我有五个苹果。'],
+  ['fly','飞','Birds fly in the sky.','鸟儿在天空中飞翔。'],
+  ['follow','跟随','Please follow me.','请跟着我。'],
+  ['food','食物','I like to eat food.','我喜欢吃食物。'],
+  ['form','形成','Ice can form from water.','水可以形成冰。'],
+  ['found','找到了（find 的过去式）','I found my lost toy.','我找到了丢失的玩具。'],
+  ['four','四','I have four books.','我有四本书。'],
+  ['friend','朋友','My friend is very nice.','我的朋友很友好。'],
+  ['from','来自','I am from Canada.','我来自加拿大。'],
+  ['front','前面','The dog is in the front of the house.','狗在房子的前部。'],
+  ['full','满的','My cup is full of water.','我的杯子装满了水。']
+];
+
+const alternateExamples = {
+  e: {earth: [['泥土','Plants grow in the earth.','植物生长在泥土里。','earth']]},
+  f: {
+    face: [['面向','Please face the board.','请面向黑板。','face']],
+    fly: [['苍蝇','There is a fly on the table.','桌上有一只苍蝇。','fly']],
+    form: [['表格','Please fill out this form.','请填写这张表格。','form']]
+  }
+};
 
 function makeCategory(id, words, roundSize = 8) {
   const entries = words.map(w => [w[0], w[1], w[2], w[3], w[4] || w[0]]);
@@ -79,17 +111,23 @@ function makeCategory(id, words, roundSize = 8) {
     subset.forEach((w, wi) => {
       const [word, meaning, sentence, translation, form] = w;
       const note = `${word} = ${meaning}`;
-      const base = `${id}r${ri}w${wi}`;
+      const base = `${id === 'e' ? 'e2' : id}r${ri}w${wi}`;
       questions.push({id: base + 's', type: 'spell', word, meaning, answer: word, note});
       questions.push({id: base + 't', type: 'tiles', word, sentence, translation, answer: sentence, note, choices: [], alternatives: []});
       if (sentence.includes(form)) questions.push({id: base + 'b', type: 'blank', word, sentence, translation, answer: form, note, choices: [form], alternatives: []});
       const others = [...new Set(entries.map(x => x[1]).filter(x => x !== meaning))];
       questions.push({id: base + 'c', type: 'choice', word, sentence, translation, answer: meaning, choices: [meaning, others[(start + wi * 3 + 7) % others.length], others[(start + wi * 3 + 16) % others.length]], note});
+      for (const [ai, [otherMeaning, otherSentence, otherTranslation, otherForm]] of (alternateExamples[id]?.[word] || []).entries()) {
+        const variant = base + 'v' + ai;
+        questions.push({id: variant + 't', type: 'tiles', word, sentence: otherSentence, translation: otherTranslation, answer: otherSentence, note: `${word} = ${otherMeaning}`, choices: [], alternatives: []});
+        questions.push({id: variant + 'b', type: 'blank', word, sentence: otherSentence, translation: otherTranslation, answer: otherForm, note: `${word} = ${otherMeaning}`, choices: [otherForm], alternatives: []});
+        questions.push({id: variant + 'c', type: 'choice', word, sentence: otherSentence, translation: otherTranslation, answer: otherMeaning, choices: [otherMeaning, meaning, others[(start + wi * 3 + 7) % others.length]], note: `${word} = ${otherMeaning}`});
+      }
     });
     const pairs = subset.slice(0, 5).map(w => [w[0], w[1]]);
-    questions.push({id: `${id}r${ri}m`, type: 'match', pairs, note: 'All the pairs are connected! 五组词语配对完成！'});
+    questions.push({id: `${id === 'e' ? 'e2' : id}r${ri}m`, type: 'match', pairs, note: 'All the pairs are connected! 五组词语配对完成！'});
     const subject = subset.find(w => /^(Please|Can|Could|What|I |We |She |He )/.test(w[2])) || subset[0];
-    questions.push({id: `${id}r${ri}h`, type: 'chat', prompt: `Which sentence uses “${subject[0]}” correctly?`, choices: [subject[2], ...subset.filter(w => w !== subject).slice(0, 2).map(w => w[2])], answer: subject[2], note: `${subject[0]} = ${subject[1]}`});
+    questions.push({id: `${id === 'e' ? 'e2' : id}r${ri}h`, type: 'chat', prompt: `Which sentence uses “${subject[0]}” correctly?`, choices: [subject[2], ...subset.filter(w => w !== subject).slice(0, 2).map(w => w[2])], answer: subject[2], note: `${subject[0]} = ${subject[1]}`});
     rounds.push({words: subset, questions});
   }
   return {id, label: id.toUpperCase(), words: entries, rounds};
@@ -99,7 +137,8 @@ bank.a = makeCategory('a', bank.ab.words.filter(w => w[0].toLowerCase().startsWi
 bank.b = makeCategory('b', bank.ab.words.filter(w => w[0].toLowerCase().startsWith('b')));
 bank.c = makeCategory('c', cWords);
 bank.e = makeCategory('e', eWords);
-const ordered = {a: bank.a, b: bank.b, c: bank.c, d: bank.d, e: bank.e, ab: bank.ab};
+bank.f = makeCategory('f', fWords);
+const ordered = {a: bank.a, b: bank.b, c: bank.c, d: bank.d, e: bank.e, f: bank.f, ab: bank.ab};
 ordered.ab.hidden = true;
 fs.writeFileSync(bankPath, 'window.WORD_CLUB_BANK = ' + JSON.stringify(ordered, null, 2) + ';\n');
 console.log(Object.fromEntries(Object.entries(ordered).map(([id, c]) => [id, `${c.words.length} words, ${c.rounds.length} rounds`])));
