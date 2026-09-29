@@ -1,22 +1,24 @@
 # Word Club
 
-A single browser app for the A + B and D word sets. The root `index.html` link still opens D, and `a-b-words.html` still opens A + B. Both send students to `word-club/index.html` with a category query parameter. The civilization game is independent.
+A mobile friendly browser app with individual A, B, C, D and E categories. Each has rounds, quick practice, mistake review and a weekly five minute challenge. The original A+B bank stays hidden so past scores and sessions still load. The old `a-b-words.html` link opens A; the old root `index.html` opens D. Separate `a-words.html` through `e-words.html` links open each category directly.
 
-## Playing
+## Source vocabulary
 
-- Enter a player name on each device. A device can keep several separate player profiles.
-- Choose A + B or D; each has four original rounds.
-- Quick practice offers 5, 10 or 15 mixed questions.
-- Mistake review draws questions answered incorrectly. A correct retry removes them from that queue.
-- Time Challenge uses ten questions and five minutes, with accuracy then elapsed time determining the personal best. It has the same question set each week per category, in a randomized order. Weeks begin Monday in China time. Its timer continues across reloads and backgrounding.
-- Results are saved locally in that browser. Students can save a result image or copy the result text. The results history exports as a CSV for the selected profile. There is no online shared leaderboard.
+- A and B: the original A+B words, split without changing meanings or example sentences.
+- C: all 32 target words and their example sentences from `c words sentences only input.docx` (19 September 2026). Chinese translations and practice questions were added. British spellings `centre` and `colour` are retained.
+- D: the original 20 word, four round category, unchanged.
+- E: an editable **starter set** of 20 words with examples, since no teacher supplied E list was found. Replace these when the class vocabulary is available.
 
-Browser storage belongs to a particular browser on a particular device. Clearing site data clears profiles and scores. The first visit also imports compatible saved rounds from the earlier `ab-word-club-v1` and `d-word-club-v1` storage keys, when opened on the same GitHub Pages origin.
+## Playing and saved scores
 
-## Adding a category
+Enter a player name on each device. A device can hold several local profiles. A category has its own rounds, quick practice, mistake review and time challenge. Time Challenge chooses ten questions per category for each China time week; the five minute timer continues across reloads. Results can be saved as a picture, copied, or exported as CSV. There is no shared online leaderboard. Clearing browser site data erases local results.
 
-`assets/words.js` contains the category bank keyed by a short ID. Each category has `id`, `label`, `words` and `rounds`. Every round has `words` and `questions`. Question IDs must be unique within the category. The common engine in `assets/app.js` reads any category in that bank, creates the home tile, practice sessions, review, and weekly challenge, then saves results under the category ID. Include at least four fill-in questions, three spelling questions and three sentence builders for a ten-question challenge. Add a redirect page if an old category link must be retained.
+Older `word-club-v2` profiles and results remain accessible. Previous A+B results still appear in history as A+B; new results go into A or B. The first visit can also import compatible old `ab-word-club-v1` and `d-word-club-v1` rounds from the same origin.
 
-Question types: `tiles` (sentence builder), `spell`, `blank`, `choice`, `chat`, `match`. Multiple-choice questions must include the `answer` in `choices`. `blank` also needs its `answer` in `sentence`. `match` uses English/Chinese `pairs`. Words are arrays: English word, Chinese meaning, sample sentence, Chinese translation, tested form.
+## Adding another letter
 
-All files are local HTML, CSS and JavaScript. There are no external fonts, images, libraries or score services.
+`assets/words.js` is the category bank. Each visible category has `id` (lowercase letter), `label` (uppercase letter), `words`, and `rounds`. Each round has `words` and `questions`. Question IDs must be unique within a category. Each word row is `[English, Chinese meaning, English sentence, Chinese sentence, tested form]`. The common engine generates the category tile and modes from this data automatically. For ten question challenges, supply at least four `blank`, three `spell` and three `tiles` questions across rounds.
+
+`tools/expand-bank.cjs` holds the editable C and E sources and the A/B split generator. Run `node word-club/tools/expand-bank.cjs` from the repo root after editing those lists. To add F and later categories, define its source rows, call `makeCategory('f', rows)`, and include it in `ordered`. Provide a simple root redirect page if a direct link is useful. Question types are `tiles`, `spell`, `blank`, `choice`, `chat` and `match`.
+
+The app uses local HTML, CSS and JavaScript without external fonts, images, libraries or score services.
